@@ -1,0 +1,33 @@
+{
+  "name": "amadeus-ts",
+  "version": "10.1.0",
+  "description": "Node library for the Amadeus travel APIs Written in TypeScript",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "pnpm lint",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc"
+  },
+  "keywords": [
+    "amadeus",
+    "travel",
+    "api",
+    "apis",
+    "hotels",
+    "flights",
+    "sdk"
+  ],
+  "author": "darseen",
+  "homepage": "https://developers.amadeus.com",
+  "repository": {
+    "url": "https://github.com/darseen/amadeus-ts"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@9.6.0+sha512.38dc6fba8dba35b39340b9700112c2fe1e12f10b17134715a4aa98ccf7bb035e76fd981cf0bb384dfa98f8d6af5481c2bef2f4266a24bfa20c34eb7147ce0b5e",
+  "devDependencies": {
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
+  }
+}

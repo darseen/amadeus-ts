@@ -79,6 +79,7 @@ class Validator {
     options: Options,
     fallback?: Fallback
   ) {
+    //Env variables names expected to be in SNAKE_CASE and uppercase
     const envKey = `AMADEUS_${key
       .replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`)
       .toUpperCase()}`;

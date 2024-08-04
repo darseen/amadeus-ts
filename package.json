@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "pnpm lint",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "test": "vitest",
     "lint": "tsc"
   },
   "files": [
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@types/node": "^22.1.0",
     "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   }
 }

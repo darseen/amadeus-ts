@@ -48,9 +48,9 @@ export default class Client implements Options {
   public host!: string;
   public ssl!: boolean;
   public port!: number;
+  public http!: Network;
   public customAppId?: string;
   public customAppVersion?: string;
-  public http!: Network;
 
   constructor(options: Options = {}) {
     new Validator().validateAndInitialize(this, options);
@@ -61,10 +61,9 @@ export default class Client implements Options {
    * Logs the request, when in debug mode
    *
    * @param  {Request} request the request object to log
-   * @private
+   * @public
    */
   public log(request: Request) {
-    /* istanbul ignore next */
     if (this.debug()) {
       this.logger.log(util.inspect(request, false, null));
     }
@@ -76,7 +75,7 @@ export default class Client implements Options {
    * @return {boolean}
    */
   public debug() {
-    return this.logLevel == "debug";
+    return this.logLevel === "debug";
   }
 
   /**
@@ -85,6 +84,6 @@ export default class Client implements Options {
    * @return {boolean}
    */
   public warn() {
-    return this.logLevel == "warn" || this.debug();
+    return this.logLevel === "warn" || this.debug();
   }
 }

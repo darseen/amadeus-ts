@@ -21,6 +21,7 @@ import Schedule from "./amadeus/namespaces/schedule";
 import Analytics from "./amadeus/namespaces/analytics";
 import Airline from "./amadeus/namespaces/airline";
 import Location from "./amadeus/namespaces/location";
+import Response from "./amadeus/client/response";
 
 /**
  * The Amadeus client library for accessing the travel APIs.
@@ -134,5 +135,99 @@ export default class Amadeus implements IAmadeus {
     this.analytics = new Analytics(this.client);
     this.location = new Location(this.client);
     this.airline = new Airline(this.client);
+  }
+
+  /**
+   * The previous page for the given response. Resolves to null if the page
+   * could not be found.
+   *
+   * ```ts
+   * amadeus.referenceData.locations.get({
+   *   keyword: 'LON',
+   *   subType: 'AIRPORT,CITY',
+   *   page: { offset: 2 }
+   * }).then(function(response){
+   *   console.log(response);
+   *   return amadeus.previous(response);
+   * }).then(function(previousPage){
+   *   console.log(previousPage);
+   * });
+   * ```
+   *
+   * @param response the previous response for an API call
+   * @return {Promise<Response|ResponseError>} a Promise
+   */
+  public previous(response: Response) {
+    return this.pagination.page("previous", response);
+  }
+
+  /**
+   * The next page for the given response. Resolves to null if the page could
+   * not be found.
+   *
+   * ```ts
+   * amadeus.referenceData.locations.get({
+   *   keyword: 'LON',
+   *   subType: 'AIRPORT,CITY'
+   * }).then(function(response){
+   *   console.log(response);
+   *   return amadeus.next(response);
+   * }).then(function(nextPage){
+   *   console.log(nextPage);
+   * });
+   * ```
+   *
+   * @param response the previous response for an API call
+   * @return {Promise<Response|ResponseError>} a Promise
+   */
+  public next(response: Response) {
+    return this.pagination.page("next", response);
+  }
+
+  /**
+   * The first page for the given response. Resolves to null if the page
+   * could not be found.
+   *
+   * ```ts
+   * amadeus.referenceData.locations.get({
+   *   keyword: 'LON',
+   *   subType: 'AIRPORT,CITY',
+   *   page: { offset: 2 }
+   * }).then(function(response){
+   *   console.log(response);
+   *   return amadeus.first(response);
+   * }).then(function(firstPage){
+   *   console.log(firstPage);
+   * });
+   * ```
+   *
+   * @param response the previous response for an API call
+   * @return {Promise<Response|ResponseError>} a Promise
+   */
+  public first(response: Response) {
+    return this.pagination.page("first", response);
+  }
+
+  /**
+   * The last page for the given response. Resolves to null if the page
+   * could not be found.
+   *
+   * ```ts
+   * amadeus.referenceData.locations.get({
+   *   keyword: 'LON',
+   *   subType: 'AIRPORT,CITY'
+   * }).then(function(response){
+   *   console.log(response);
+   *   return amadeus.last(response);
+   * }).then(function(lastPage){
+   *   console.log(lastPage);
+   * });
+   * ```
+   *
+   * @param response the previous response for an API call
+   * @return {Promise<Response|ResponseError>} a Promise
+   */
+  public last(response: Response) {
+    return this.pagination.page("last", response);
   }
 }

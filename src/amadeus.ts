@@ -1,11 +1,26 @@
 import {
-  Direction,
+  DirectionType,
   Hostname,
-  Location,
+  IAmadeus,
+  LocationType,
   LogLevel,
   Options,
 } from "./types/amadeus";
+
 import Client from "./amadeus/client";
+import ReferenceData from "./amadeus/namespaces/reference-data";
+import Shopping from "./amadeus/namespaces/shopping";
+import Booking from "./amadeus/namespaces/booking";
+import Travel from "./amadeus/namespaces/travel";
+import EReputation from "./amadeus/namespaces/e-reputation";
+import Media from "./amadeus/namespaces/media";
+import Ordering from "./amadeus/namespaces/ordering";
+import Airport from "./amadeus/namespaces/airport";
+import Pagination from "./amadeus/client/pagination";
+import Schedule from "./amadeus/namespaces/schedule";
+import Analytics from "./amadeus/namespaces/analytics";
+import Airline from "./amadeus/namespaces/airline";
+import Location from "./amadeus/namespaces/location";
 
 /**
  * The Amadeus client library for accessing the travel APIs.
@@ -73,16 +88,31 @@ import Client from "./amadeus/client";
  * ```
  *
  */
-export default class Amadeus {
+export default class Amadeus implements IAmadeus {
   private client: Client;
   private version: string;
-  static location: Location = {
+
+  public referenceData: ReferenceData;
+  public shopping: Shopping;
+  public booking: Booking;
+  public travel: Travel;
+  public eReputation: EReputation;
+  public media: Media;
+  public ordering: Ordering;
+  public airport: Airport;
+  public pagination: Pagination;
+  public schedule: Schedule;
+  public analytics: Analytics;
+  public location: Location;
+  public airline: Airline;
+
+  static location: LocationType = {
     airport: "AIRPORT",
     city: "CITY",
     any: "AIRPORT,CITY",
   };
 
-  static direction: Direction = {
+  static direction: DirectionType = {
     arriving: "ARRIVING",
     departing: "DEPARTING",
   };
@@ -90,5 +120,19 @@ export default class Amadeus {
   constructor(options: Options = {}) {
     this.client = new Client(options);
     this.version = this.client.version;
+
+    this.referenceData = new ReferenceData(this.client);
+    this.shopping = new Shopping(this.client);
+    this.booking = new Booking(this.client);
+    this.travel = new Travel(this.client);
+    this.eReputation = new EReputation(this.client);
+    this.media = new Media(this.client);
+    this.ordering = new Ordering(this.client);
+    this.airport = new Airport(this.client);
+    this.pagination = new Pagination(this.client);
+    this.schedule = new Schedule(this.client);
+    this.analytics = new Analytics(this.client);
+    this.location = new Location(this.client);
+    this.airline = new Airline(this.client);
   }
 }

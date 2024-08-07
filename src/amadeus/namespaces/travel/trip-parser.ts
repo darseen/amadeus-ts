@@ -39,7 +39,7 @@ export default class TripParser {
    * Helper method to convert file contents in UTF-8 encoded string
    * into Base64 encoded string
    */
-  public fromFile(fileContentsInUTF8Format: string): string {
+  public fromFile(fileContentsInUTF8Format: string | Buffer): string {
     return Buffer.from(fileContentsInUTF8Format).toString("base64");
   }
 }

@@ -1,5 +1,5 @@
 import Client from "../../client";
-import Analytics from "../analytics";
+import Analytics from "./analytics";
 
 /**
  * A namespaced client for the

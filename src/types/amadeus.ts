@@ -5,7 +5,7 @@ export type LogLevel = "debug" | "warn" | "silent";
 export type Hostname = "production" | "test";
 export type Network = typeof http | typeof https;
 
-export interface Options {
+export type Options = {
   clientId?: string;
   clientSecret?: string;
   logger?: Console;
@@ -17,7 +17,7 @@ export interface Options {
   customAppId?: string;
   customAppVersion?: string;
   http?: Network;
-}
+};
 
 export type Location = {
   airport: "AIRPORT";

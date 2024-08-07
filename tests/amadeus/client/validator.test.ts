@@ -34,14 +34,16 @@ describe("Validator", () => {
   describe(".initOptional", () => {
     it("should return the expected values", () => {
       const options: Options = {
-        logLevel: "silent",
+        logLevel: "debug",
       };
       process.env.AMADEUS_CLIENT_ID = "asd";
       process.env.AMADEUS_CLIENT_SECRET = "qwe";
 
       expect(validator["initOptional"]("clientId", options)).toBe("asd");
       expect(validator["initOptional"]("clientSecret", options)).toBe("qwe");
-      expect(validator["initOptional"]("logLevel", options)).toBe("silent");
+      expect(validator["initOptional"]("logLevel", options, "silent")).toBe(
+        "debug"
+      );
       expect(validator["initOptional"]("port", options, 443)).toBe(443);
       expect(validator["initOptional"]("ssl", options, true)).toBe(true);
       expect(validator["initOptional"]("customAppId", options)).toBe(undefined);

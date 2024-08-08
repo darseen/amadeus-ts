@@ -95,7 +95,7 @@ describe("Listener", () => {
           return true;
         });
 
-        handler["onEnd"](response)();
+        handler["onEnd"](response);
         expect(handler["onSuccess"]).toHaveBeenCalledWith(response);
         expect(response.parse).toHaveBeenCalled();
       });
@@ -110,7 +110,7 @@ describe("Listener", () => {
           return false;
         });
 
-        handler["onEnd"](response)();
+        handler["onEnd"](response);
         expect(handler["onFail"]).toHaveBeenCalledWith(response);
         expect(response.parse).toHaveBeenCalled();
       });
@@ -204,7 +204,7 @@ describe("Listener", () => {
         response.parse = vi.fn();
         handler.emitter.emit = vi.fn();
 
-        handler["onNetworkError"](response)();
+        handler["onNetworkError"](response);
         expect(response.parse).toHaveBeenCalled();
         expect(handler.emitter.emit).toHaveBeenCalledWith(
           "reject",

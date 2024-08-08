@@ -1,19 +1,18 @@
-import http from "node:http";
-import https from "node:https";
+import type * as http from "node:http";
+import type * as https from "node:https";
 
-import Client from "../amadeus/client";
-import ReferenceData from "../amadeus/namespaces/reference-data";
-import Shopping from "../amadeus/namespaces/shopping";
-import Booking from "../amadeus/namespaces/booking";
-import Travel from "../amadeus/namespaces/travel";
-import EReputation from "../amadeus/namespaces/e-reputation";
-import Media from "../amadeus/namespaces/media";
-import Ordering from "../amadeus/namespaces/ordering";
-import Airport from "../amadeus/namespaces/airport";
-import Pagination from "../amadeus/client/pagination";
-import Schedule from "../amadeus/namespaces/schedule";
-import Analytics from "../amadeus/namespaces/analytics";
-import Airline from "../amadeus/namespaces/airline";
+import type ReferenceData from "../amadeus/namespaces/reference-data";
+import type Shopping from "../amadeus/namespaces/shopping";
+import type Booking from "../amadeus/namespaces/booking";
+import type Travel from "../amadeus/namespaces/travel";
+import type EReputation from "../amadeus/namespaces/e-reputation";
+import type Media from "../amadeus/namespaces/media";
+import type Ordering from "../amadeus/namespaces/ordering";
+import type Airport from "../amadeus/namespaces/airport";
+import type Pagination from "../amadeus/client/pagination";
+import type Schedule from "../amadeus/namespaces/schedule";
+import type Analytics from "../amadeus/namespaces/analytics";
+import type Airline from "../amadeus/namespaces/airline";
 
 export interface IAmadeus {
   referenceData: ReferenceData;

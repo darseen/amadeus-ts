@@ -1,5 +1,5 @@
-import { OutgoingHttpHeaders } from "http2";
-import { Verb } from "../client";
+import type { OutgoingHttpHeaders } from "http";
+import type { Verb } from "../client";
 import { ListHTTPOverride } from "../../../constants";
 
 export interface IRequest {

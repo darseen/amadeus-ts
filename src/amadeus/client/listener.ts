@@ -65,7 +65,7 @@ export default class Listener {
 
   public onError(httpResponse: IncomingMessage | Error) {
     const response = new Response(httpResponse, this.request);
-    this.onNetworkError(response)();
+    this.onNetworkError(response);
   }
 
   /**
@@ -75,15 +75,13 @@ export default class Listener {
    * @param  {Response} response
    * @private
    */
-  private onEnd(response: Response): () => void {
-    return () => {
-      response.parse();
-      if (response.success()) {
-        this.onSuccess(response);
-      } else {
-        this.onFail(response);
-      }
-    };
+  private onEnd(response: Response): void {
+    response.parse();
+    if (response.success()) {
+      this.onSuccess(response);
+    } else {
+      this.onFail(response);
+    }
   }
 
   /**
@@ -145,13 +143,11 @@ export default class Listener {
    * @param  {Response} response
    * @private
    */
-  private onNetworkError(response: Response): () => void {
-    return () => {
-      response.parse();
-      const error = new NetworkError(response);
-      this.log(response, error);
-      this.emitter.emit("reject", error);
-    };
+  private onNetworkError(response: Response): void {
+    response.parse();
+    const error = new NetworkError(response);
+    this.log(response, error);
+    this.emitter.emit("reject", error);
   }
 
   /**

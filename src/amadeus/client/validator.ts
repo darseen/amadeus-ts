@@ -1,5 +1,6 @@
-import http from "node:http";
-import https from "node:https";
+import * as http from "http";
+import * as https from "https";
+
 import { LogLevel, Network, Options } from "../../types/amadeus";
 import {
   Fallback,

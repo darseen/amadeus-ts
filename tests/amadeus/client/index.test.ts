@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import https from "https";
+import * as https from "https";
 import EventEmitter from "events";
 import Client from "../../../src/amadeus/client";
 import { Hostname, LogLevel } from "../../../src/types/amadeus";
@@ -214,6 +214,9 @@ describe("Client", () => {
           end: vi.fn(),
         };
 
+        vi.mock("https", () => ({
+          request: vi.fn().mockImplementation(() => http_request),
+        }));
         client.http.request = vi.fn().mockImplementation(() => http_request);
 
         client["execute"](request, emitter);

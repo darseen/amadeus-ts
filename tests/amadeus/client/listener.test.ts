@@ -42,8 +42,8 @@ describe("Listener", () => {
     });
 
     it("should initialize the params", () => {
-      expect(handler.request).toBe(request);
-      expect(handler.emitter).toBe(emitter);
+      expect(handler["request"]).toBe(request);
+      expect(handler["emitter"]).toBe(emitter);
     });
 
     describe(".onResponse", () => {
@@ -118,7 +118,7 @@ describe("Listener", () => {
 
     describe(".onSuccess", () => {
       it("should emit the response", () => {
-        handler.emitter.emit = vi.fn();
+        handler["emitter"].emit = vi.fn();
 
         //@ts-expect-error
         const response = new Response(http_response, request);
@@ -205,11 +205,11 @@ describe("Listener", () => {
         // @ts-expect-error
         const response = new Response(http_response, {});
         response.parse = vi.fn();
-        handler.emitter.emit = vi.fn();
+        handler["emitter"].emit = vi.fn();
 
         handler["onNetworkError"](response);
         expect(response.parse).toHaveBeenCalled();
-        expect(handler.emitter.emit).toHaveBeenCalledWith(
+        expect(handler["emitter"].emit).toHaveBeenCalledWith(
           "reject",
           expect.any(ResponseError)
         );

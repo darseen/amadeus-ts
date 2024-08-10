@@ -14,9 +14,9 @@ import Response from "./response";
  *  from the  {@link Response}'s parsed data
  */
 export class ResponseError {
-  response: ReturnedResponse;
-  code!: string;
-  description: any;
+  public response: ReturnedResponse;
+  public code!: string;
+  public description: any;
 
   constructor(response: Response) {
     this.response = response.returnResponse();

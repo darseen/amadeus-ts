@@ -29,8 +29,8 @@ export default class Pagination {
    */
   public page(
     pageName: PageName,
-    response: ReturnedResponse
-  ): Promise<unknown> {
+    response: ReturnedResponse<any, any>
+  ): Promise<any> {
     const pageNumber = this.pageNumber(response, pageName);
 
     if (pageNumber) return this.call(response.request, pageNumber);
@@ -46,7 +46,7 @@ export default class Pagination {
    * @return {Promise<Response|ResponseError>} a Promise
    * @private
    */
-  private call(request: Request, pageNumber: string): Promise<unknown> {
+  private call(request: Request, pageNumber: string): Promise<any> {
     const params = request.params || {};
     params["page"] = params["page"] || {};
     params["page"]["offset"] = pageNumber;

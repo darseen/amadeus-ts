@@ -1,6 +1,5 @@
 import EventEmitter from "events";
 import Client from ".";
-import Response from "./response";
 import { AmadeusOAuth2TokenSuccessResponse } from "../../types/amadeus/client/access-token";
 import { ReturnedResponse } from "../../types/amadeus/client/response";
 
@@ -86,7 +85,10 @@ export default class AccessToken {
    * @param  {EventEmitter} emitter the EventEmitter used to emit the token
    * @private
    */
-  private async loadAccessToken(client: Client, emitter: EventEmitter) {
+  private async loadAccessToken(
+    client: Client,
+    emitter: EventEmitter
+  ): Promise<void> {
     try {
       const response = await client.unauthenticatedRequest<
         AmadeusOAuth2TokenSuccessResponse,
@@ -112,7 +114,7 @@ export default class AccessToken {
    */
   private storeAccessToken(
     response: ReturnedResponse<AmadeusOAuth2TokenSuccessResponse>
-  ) {
+  ): void {
     this.accessToken = response.result?.access_token;
     this.expiresAt = response.result
       ? Date.now() + response.result.expires_in * 1000

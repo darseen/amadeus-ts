@@ -26,9 +26,9 @@ import Request from "./request";
  */
 
 export default class Listener {
-  request: Request;
-  emitter: EventEmitter;
-  client: Client;
+  private request: Request;
+  private emitter: EventEmitter;
+  private client: Client;
 
   constructor(request: Request, emitter: EventEmitter, client: Client) {
     this.request = request;
@@ -156,7 +156,7 @@ export default class Listener {
    * @param  {Response} response the response object to log
    * @private
    */
-  private log(response: Response, error: ResponseError | null = null) {
+  private log(response: Response, error: ResponseError | null = null): void {
     if (this.client.debug()) {
       this.client.logger.log(util.inspect(response, false, null));
     }

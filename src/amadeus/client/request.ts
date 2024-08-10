@@ -30,20 +30,20 @@ import { ListHTTPOverride } from "../../constants";
  * @param {Object} options
  */
 export default class Request implements IRequest {
-  appId: string | null;
-  appVersion: string | null;
-  bearerToken: string | null;
-  clientVersion: string;
-  headers: OutgoingHttpHeaders;
-  host: string;
-  languageVersion: string;
-  params: any;
-  path: string;
-  port: number;
-  queryPath: string;
-  scheme: string;
-  ssl: boolean;
-  verb: Verb;
+  public appId: string | null;
+  public appVersion: string | null;
+  public bearerToken: string | null;
+  public clientVersion: string;
+  public headers: OutgoingHttpHeaders;
+  public host: string;
+  public languageVersion: string;
+  public params: any;
+  public path: string;
+  public port: number;
+  public queryPath: string;
+  public scheme: string;
+  public ssl: boolean;
+  public verb: Verb;
 
   constructor(options: Omit<IRequest, "headers" | "scheme" | "queryPath">) {
     this.host = options.host;
@@ -102,7 +102,7 @@ export default class Request implements IRequest {
   }
 
   /**
-   * Build up the custom User Agent
+   * Builds up the custom User Agent
    *
    * @return {string} a user agent in the format "library/version language/version app/version"
    * @private
@@ -114,7 +114,7 @@ export default class Request implements IRequest {
   }
 
   /**
-   * Build the full query path, combining the path with the query params if the
+   * Builds the full query path, combining the path with the query params if the
    * verb is 'GET'. For example: '/foo/bar?baz=qux'
    *
    * @return {string} the path and params combined into one string.

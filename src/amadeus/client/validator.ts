@@ -19,7 +19,7 @@ class Validator {
    * @param  {Object} options the associative array of options passed to the
    *  client on initialization
    */
-  public validateAndInitialize(client: Client, options: Options) {
+  public validateAndInitialize(client: Client, options: Options): void {
     this.initializeClientCredentials(client, options);
     this.initializeLogger(client, options);
     this.initializeHost(client, options);
@@ -29,7 +29,7 @@ class Validator {
     this.warnOnUnrecognizedOptions(options, client, RECOGNIZED_OPTIONS);
   }
 
-  private initializeClientCredentials(client: Client, options: Options) {
+  private initializeClientCredentials(client: Client, options: Options): void {
     client.clientId = this.initRequired("clientId", options) as string;
     client.clientSecret = this.initRequired("clientSecret", options) as string;
   }
@@ -43,7 +43,7 @@ class Validator {
     client.logger = this.initOptional("logger", options, console) as Console;
   }
 
-  private initializeHost(client: Client, options: Options) {
+  private initializeHost(client: Client, options: Options): void {
     const hostname = this.initOptional(
       "hostname",
       options,
@@ -54,7 +54,7 @@ class Validator {
     client.ssl = this.initOptional("ssl", options, true) as boolean;
   }
 
-  private initializeCustomApp(client: Client, options: Options) {
+  private initializeCustomApp(client: Client, options: Options): void {
     client.customAppId = this.initOptional("customAppId", options) as
       | string
       | undefined;
@@ -64,7 +64,7 @@ class Validator {
       | undefined;
   }
 
-  private initializeHttp(client: Client, options: Options) {
+  private initializeHttp(client: Client, options: Options): void {
     const network = client.ssl ? https : http;
     client.http = this.initOptional("http", options, network) as Network;
   }
@@ -92,7 +92,7 @@ class Validator {
     options: Options,
     client: Client,
     recognizedOptions: RecognizedOptionsArray
-  ) {
+  ): void {
     Object.keys(options).forEach((key) => {
       if (
         recognizedOptions.indexOf(key as RecognizedOptionsItem) === -1 &&
@@ -101,7 +101,6 @@ class Validator {
         client.logger.log(`Unrecognized option: ${key}`);
       }
     });
-    return null;
   }
 }
 

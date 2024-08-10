@@ -1,6 +1,9 @@
 import { IncomingHttpHeaders, IncomingMessage } from "http";
 import Request from "./request";
-import { ReturnedResponse } from "../../types/amadeus/client/response";
+import {
+  IResponse,
+  ReturnedResponse,
+} from "../../types/amadeus/client/response";
 
 const JSON_CONTENT_TYPES = ["application/json", "application/vnd.amadeus+json"];
 
@@ -20,7 +23,9 @@ const JSON_CONTENT_TYPES = ["application/json", "application/vnd.amadeus+json"];
  * @property {Error} error the error that could have been thrown by the onError method in the listener class
  *
  */
-export default class Response<T = unknown, K = unknown> {
+export default class Response<T = unknown, K = unknown>
+  implements IResponse<T, K>
+{
   public headers: IncomingHttpHeaders;
   public statusCode: number | undefined;
   public body: string;

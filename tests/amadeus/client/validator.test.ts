@@ -75,7 +75,7 @@ describe("Validator", () => {
           client,
           RECOGNIZED_OPTIONS
         )
-      ).toBe(null);
+      ).toBe(undefined);
       expect(logSpy).not.toHaveBeenCalled();
     });
 

@@ -31,7 +31,7 @@
     "qs": "^6.13.0"
   },
   "devDependencies": {
-    "@types/node": "^22.1.0",
+    "@types/node": "^22.2.0",
     "@types/qs": "^6.9.15",
     "rimraf": "^6.0.1",
     "tsup": "^8.2.4",

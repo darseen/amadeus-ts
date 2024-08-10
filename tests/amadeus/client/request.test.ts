@@ -51,7 +51,7 @@ describe("Request", () => {
       expect(request.appVersion).toBe(appVersion);
       expect(request.headers).toEqual({
         Accept: "application/json, application/vnd.amadeus+json",
-        "User-Agent": "amadeus-node/1.2.3 node/2.3.4 amadeus-cli/3.4.5",
+        "User-Agent": "amadeus-ts/1.2.3 node/2.3.4 amadeus-cli/3.4.5",
         Authorization: "Bearer token",
         "Content-Type": "application/vnd.amadeus+json",
       });
@@ -61,14 +61,14 @@ describe("Request", () => {
       it("should build the user agent", () => {
         request.appId = null;
         request.appVersion = null;
-        expect(request["userAgent"]()).toBe("amadeus-node/1.2.3 node/2.3.4");
+        expect(request["userAgent"]()).toBe("amadeus-ts/1.2.3 node/2.3.4");
       });
 
       it("should build use the custom App ID and Version when present", () => {
         request.appId = "amadeus-cli";
         request.appVersion = "3.4.5";
         expect(request["userAgent"]()).toBe(
-          "amadeus-node/1.2.3 node/2.3.4 amadeus-cli/3.4.5"
+          "amadeus-ts/1.2.3 node/2.3.4 amadeus-cli/3.4.5"
         );
       });
     });
@@ -162,7 +162,7 @@ describe("Request", () => {
           headers: {
             Accept: "application/json, application/vnd.amadeus+json",
             Authorization: "Bearer token",
-            "User-Agent": "amadeus-node/1.2.3 node/2.3.4 amadeus-cli/3.4.5",
+            "User-Agent": "amadeus-ts/1.2.3 node/2.3.4 amadeus-cli/3.4.5",
             "Content-Type": "application/vnd.amadeus+json",
           },
         });

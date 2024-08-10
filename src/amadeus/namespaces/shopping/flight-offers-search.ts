@@ -1,4 +1,13 @@
+import {
+  FlightOffersSearchGetRequest,
+  FlightOffersSearchGetResponse,
+  FlightOffersSearchGetReturnType,
+  FlightOffersSearchPostRequest,
+  FlightOffersSearchPostResponse,
+  FlightOffersSearchPostReturnType,
+} from "../../../types/amadeus/namespaces/shopping/flight-offers-search";
 import Client from "../../client";
+import Response from "../../client/response";
 
 /**
  * A namespaced client for the
@@ -42,21 +51,26 @@ export default class FlightOffersSearch {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v2/shopping/flight-offers", params);
+  public get(
+    params: FlightOffersSearchGetRequest
+  ): FlightOffersSearchGetReturnType {
+    return this.client.get<
+      FlightOffersSearchGetResponse,
+      FlightOffersSearchGetResponse["data"]
+    >("/v2/shopping/flight-offers", params);
   }
 
   /**
    * To do a customized search with every option available.
    *
-   * @param {Object} params
+   * @param {FlightOffersSearchPostRequest} params
    * @param {number} params.getFlightOffersBody list of criteria to retrieve a list of flight offers
    * @return {Promise<Response|ResponseError>} a Promise
    *
    * To do a customized search with given options.
    *
    * ```ts
-   * amadeus.shopping.flightOffersSearch.post (JSON.stringify({
+   * amadeus.shopping.flightOffersSearch.post(JSON.stringify({
         "currencyCode": "USD",
         "originDestinations": [
           {
@@ -121,7 +135,12 @@ export default class FlightOffersSearch {
       }))
     * ```
     */
-  public post(params: Object = {}) {
-    return this.client.post("/v2/shopping/flight-offers", params);
+  public post(
+    params: FlightOffersSearchPostRequest
+  ): FlightOffersSearchPostReturnType {
+    return this.client.post<
+      FlightOffersSearchPostResponse,
+      FlightOffersSearchPostResponse["data"]
+    >("/v2/shopping/flight-offers", JSON.stringify(params));
   }
 }

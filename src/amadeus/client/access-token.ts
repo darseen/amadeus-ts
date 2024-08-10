@@ -1,6 +1,8 @@
 import EventEmitter from "events";
 import Client from ".";
 import Response from "./response";
+import { AmadeusOAuth2TokenSuccessResponse } from "../../types/amadeus/client/access-token";
+import { ReturnedResponse } from "../../types/amadeus/client/response";
 
 // The number of seconds before the token expires, when
 // we will already try to refresh it
@@ -15,10 +17,12 @@ const TOKEN_BUFFER = 10;
  * @property {number} expiresAt the aproximate time this token expires at
  */
 export default class AccessToken {
-  private accessToken!: string;
-  private expiresAt!: number;
+  private accessToken?: string;
+  private expiresAt: number;
 
-  constructor() {}
+  constructor() {
+    this.expiresAt = 0;
+  }
 
   /**
    * Fetches or returns a cached bearer token. Used by the Client to get a
@@ -84,15 +88,14 @@ export default class AccessToken {
    */
   private async loadAccessToken(client: Client, emitter: EventEmitter) {
     try {
-      const response = await client.unauthenticatedRequest<Response>(
-        "POST",
-        "/v1/security/oauth2/token",
-        {
-          grant_type: "client_credentials",
-          client_id: client.clientId,
-          client_secret: client.clientSecret,
-        }
-      );
+      const response = await client.unauthenticatedRequest<
+        AmadeusOAuth2TokenSuccessResponse,
+        unknown
+      >("POST", "/v1/security/oauth2/token", {
+        grant_type: "client_credentials",
+        client_id: client.clientId,
+        client_secret: client.clientSecret,
+      });
 
       this.storeAccessToken(response);
       this.emitOrLoadAccessToken(client, emitter);
@@ -107,8 +110,12 @@ export default class AccessToken {
    * @param  {Response} response the response object received from the client
    * @private
    */
-  private storeAccessToken(response: Response) {
-    this.accessToken = response.result["access_token"];
-    this.expiresAt = Date.now() + response.result["expires_in"] * 1000;
+  private storeAccessToken(
+    response: ReturnedResponse<AmadeusOAuth2TokenSuccessResponse>
+  ) {
+    this.accessToken = response.result?.access_token;
+    this.expiresAt = response.result
+      ? Date.now() + response.result.expires_in * 1000
+      : 0;
   }
 }

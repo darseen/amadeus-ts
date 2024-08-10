@@ -424,7 +424,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flightOffersSearch.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.flightOffersSearch.get();
+      amadeus.shopping.flightOffersSearch.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v2/shopping/flight-offers",
         {}
@@ -433,10 +433,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flightOffersSearch.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.flightOffersSearch.post();
+      amadeus.shopping.flightOffersSearch.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v2/shopping/flight-offers",
-        {}
+        JSON.stringify({})
       );
     });
 

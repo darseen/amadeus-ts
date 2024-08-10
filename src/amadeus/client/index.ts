@@ -7,6 +7,8 @@ import AccessToken from "./access-token";
 import { Verb } from "../../types/amadeus/client";
 import EventEmitter from "node:events";
 import Listener from "./listener";
+import Response from "./response";
+import { ReturnedResponse } from "../../types/amadeus/client/response";
 
 /**
  * A convenient wrapper around the API, allowing for generic, authenticated and
@@ -74,8 +76,11 @@ export default class Client implements Options {
    * @param {Object} [params={}] the query string parameters
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public get(path: string, params: object = {}): Promise<unknown> {
-    return this.request("GET", path, params);
+  public get<T, K = unknown>(
+    path: string,
+    params: object = {}
+  ): Promise<ReturnedResponse<T, K>> {
+    return this.request<T, K>("GET", path, params);
   }
 
   /**
@@ -88,8 +93,11 @@ export default class Client implements Options {
    * @param {Object} [params={}] the POST parameters
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public post(path: string, params: object = {}): Promise<unknown> {
-    return this.request("POST", path, params);
+  public post<T, K = unknown>(
+    path: string,
+    params: object | string = {}
+  ): Promise<ReturnedResponse<T, K>> {
+    return this.request<T, K>("POST", path, params);
   }
 
   /**
@@ -106,8 +114,6 @@ export default class Client implements Options {
     return this.request("DELETE", path, params);
   }
 
-  // PROTECTED
-
   /**
    * Make an authenticated API call.
    *
@@ -120,13 +126,13 @@ export default class Client implements Options {
    * @return {Promise<Response|ResponseError>} a Promise
    * @public
    */
-  public async request(
+  public async request<T, K>(
     verb: Verb,
     path: string,
-    options: Object = {}
-  ): Promise<unknown> {
+    params: object | string = {}
+  ): Promise<ReturnedResponse<T, K>> {
     const bearerToken = (await this.accessToken.bearerToken(this)) as string;
-    return this.unauthenticatedRequest(verb, path, options, bearerToken);
+    return this.unauthenticatedRequest<T, K>(verb, path, params, bearerToken);
   }
 
   /**
@@ -145,16 +151,16 @@ export default class Client implements Options {
    * @return {Promise<Response|ResponseError>} a Promise
    * @public
    */
-  public unauthenticatedRequest<T>(
+  public unauthenticatedRequest<T, K>(
     verb: Verb,
     path: string,
-    params: Object,
+    params: object | string = {},
     bearerToken: string | null = null
-  ): Promise<T> {
+  ): Promise<ReturnedResponse<T, K>> {
     const request = this.buildRequest(verb, path, params, bearerToken);
     this.log(request);
     const emitter = new EventEmitter();
-    const promise = this.buildPromise<T>(emitter);
+    const promise = this.buildPromise<T, K>(emitter);
 
     this.execute(request, emitter);
     return promise;
@@ -217,9 +223,13 @@ export default class Client implements Options {
    * @return {Promise} a promise
    * @private
    */
-  private buildPromise<T>(emitter: EventEmitter): Promise<T> {
+  private buildPromise<T, K>(
+    emitter: EventEmitter
+  ): Promise<ReturnedResponse<T, K>> {
     return new Promise((resolve, reject) => {
-      emitter.on("resolve", (response) => resolve(response as T));
+      emitter.on("resolve", (response) =>
+        resolve(response as ReturnedResponse<T, K>)
+      );
       emitter.on("reject", (error) => reject(error));
     });
   }
@@ -227,10 +237,10 @@ export default class Client implements Options {
   /**
    * Logs the request, when in debug mode
    *
-   * @param  {Request} request the request object to log
+   * @param {Request} request the request object to log
    * @public
    */
-  public log(request: Request) {
+  public log(request: Request): void {
     if (this.debug()) {
       this.logger.log(util.inspect(request, false, null));
     }
@@ -241,7 +251,7 @@ export default class Client implements Options {
    *
    * @return {boolean}
    */
-  public debug() {
+  public debug(): boolean {
     return this.logLevel === "debug";
   }
 
@@ -250,7 +260,7 @@ export default class Client implements Options {
    *
    * @return {boolean}
    */
-  public warn() {
+  public warn(): boolean {
     return this.logLevel === "warn" || this.debug();
   }
 }

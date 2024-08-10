@@ -6,6 +6,7 @@ import {
   LogLevel,
   Options,
 } from "./types/amadeus";
+import { ReturnedResponse } from "./types/amadeus/client/response";
 
 import Client from "./amadeus/client";
 import ReferenceData from "./amadeus/namespaces/reference-data";
@@ -21,7 +22,6 @@ import Schedule from "./amadeus/namespaces/schedule";
 import Analytics from "./amadeus/namespaces/analytics";
 import Airline from "./amadeus/namespaces/airline";
 import Location from "./amadeus/namespaces/location";
-import Response from "./amadeus/client/response";
 
 /**
  * The Amadeus client library for accessing the travel APIs.
@@ -157,7 +157,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public previous(response: Response) {
+  public previous(response: ReturnedResponse<any, any>): Promise<unknown> {
     return this.pagination.page("previous", response);
   }
 
@@ -180,7 +180,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public next(response: Response) {
+  public next(response: ReturnedResponse<any, any>): Promise<unknown> {
     return this.pagination.page("next", response);
   }
 
@@ -204,7 +204,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public first(response: Response) {
+  public first(response: ReturnedResponse<any, any>): Promise<unknown> {
     return this.pagination.page("first", response);
   }
 
@@ -227,7 +227,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public last(response: Response) {
+  public last(response: ReturnedResponse<any, any>): Promise<unknown> {
     return this.pagination.page("last", response);
   }
 }

@@ -63,8 +63,8 @@ export default class Listener {
    * @public
    */
 
-  public onError(httpResponse: IncomingMessage | Error) {
-    const response = new Response(httpResponse, this.request);
+  public onError(error: Error) {
+    const response = new Response(error, this.request);
     this.onNetworkError(response);
   }
 
@@ -93,7 +93,7 @@ export default class Listener {
    */
   private onSuccess(response: Response): void {
     this.log(response);
-    this.emitter.emit("resolve", response);
+    this.emitter.emit("resolve", response.returnResponse());
   }
 
   /**

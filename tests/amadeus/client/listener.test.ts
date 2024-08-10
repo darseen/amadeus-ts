@@ -123,7 +123,10 @@ describe("Listener", () => {
         //@ts-expect-error
         const response = new Response(http_response, request);
         handler["onSuccess"](response);
-        expect(emitter.emit).toHaveBeenCalledWith("resolve", response);
+        expect(emitter.emit).toHaveBeenCalledWith(
+          "resolve",
+          response.returnResponse()
+        );
       });
     });
 

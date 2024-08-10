@@ -1,3 +1,4 @@
+import { ReturnedResponse } from "../../types/amadeus/client/response";
 import Response from "./response";
 
 /**
@@ -13,12 +14,12 @@ import Response from "./response";
  *  from the  {@link Response}'s parsed data
  */
 export class ResponseError {
-  response: Response;
+  response: ReturnedResponse;
   code!: string;
   description: any;
 
   constructor(response: Response) {
-    this.response = response;
+    this.response = response.returnResponse();
     this.determineDescription();
   }
 
@@ -28,7 +29,12 @@ export class ResponseError {
       return;
     }
     const result = this.response.result;
-    if (result && result.errors) {
+    if (
+      result &&
+      typeof result === "object" &&
+      "errors" in result &&
+      result.errors
+    ) {
       this.description = result.errors;
     } else if (result) {
       this.description = result;

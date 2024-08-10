@@ -1,5 +1,6 @@
 import { IncomingHttpHeaders, IncomingMessage } from "http";
 import Request from "./request";
+import { ReturnedResponse } from "../../types/amadeus/client/response";
 
 const JSON_CONTENT_TYPES = ["application/json", "application/vnd.amadeus+json"];
 
@@ -16,20 +17,21 @@ const JSON_CONTENT_TYPES = ["application/json", "application/vnd.amadeus+json"];
  * @property {Object} data the data attribute taken from the result
  * @property {boolean} parsed wether the raw body has been parsed into JSON
  * @property {Request} request the request object used to make this API call
+ * @property {Error} error the error that could have been thrown by the onError method in the listener class
  *
  */
-export default class Response {
-  headers: IncomingHttpHeaders;
-  statusCode: number | undefined;
-  body: string;
-  result: any;
-  data: any;
-  parsed: boolean;
-  request: Request;
-  error: Error | null;
+export default class Response<T = unknown, K = unknown> {
+  public headers: IncomingHttpHeaders;
+  public statusCode: number | undefined;
+  public body: string;
+  public result: T | null;
+  public data: K | null;
+  public parsed: boolean;
+  public request: Request;
+  private error: Error | null;
 
   constructor(http_response: IncomingMessage | Error, request: Request) {
-    // check if the incoming response is an error passed from the onError method in the listener
+    // check if the incoming response is an error passed from the onError method in the listener class
     if (http_response instanceof Error) {
       this.headers = {};
       this.statusCode = undefined;
@@ -56,9 +58,7 @@ export default class Response {
    * @public
    */
   public addChunk(chunk: string): void {
-    if (!this.error) {
-      this.body += chunk;
-    }
+    if (!this.error) this.body += chunk;
   }
 
   /**
@@ -69,18 +69,17 @@ export default class Response {
     if (this.error) return;
 
     try {
-      if (this.statusCode === 204) {
-        return;
-      }
+      if (this.statusCode === 204) return;
+
       if (this.isJson()) {
         this.result = JSON.parse(this.body);
-        this.data = this.result.data;
+        this.data = (this.result as T & { data: K }).data;
         this.parsed = true;
-      } else {
-        this.parsed = false;
       }
-    } catch (SyntaxError) {
-      this.parsed = false;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        this.error = error;
+      }
     }
   }
 
@@ -104,8 +103,6 @@ export default class Response {
     return false;
   }
 
-  // PRIVATE
-
   /**
    * Tests if the content is seemingly JSON
    *
@@ -114,5 +111,24 @@ export default class Response {
    */
   private isJson(): boolean {
     return JSON_CONTENT_TYPES.indexOf(this.headers["content-type"]!) !== -1;
+  }
+
+  /**
+   * This method return only the data that the user need,
+   * and removes the ablility to use any of the public methods that can be used to manipulate the response.
+   *
+   * @return {ReturnedResponse}
+   * @public
+   */
+  public returnResponse(): ReturnedResponse {
+    return {
+      headers: this.headers,
+      statusCode: this.statusCode,
+      body: this.body,
+      result: this.result,
+      data: this.data,
+      parsed: this.parsed,
+      request: this.request,
+    } as ReturnedResponse;
   }
 }

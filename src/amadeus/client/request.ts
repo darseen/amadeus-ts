@@ -108,7 +108,7 @@ export default class Request implements IRequest {
    * @private
    */
   private userAgent(): string {
-    const userAgent = `amadeus-node/${this.clientVersion} node/${this.languageVersion}`;
+    const userAgent = `amadeus-ts/${this.clientVersion} node/${this.languageVersion}`;
     if (!this.appId) return userAgent;
     return `${userAgent} ${this.appId}/${this.appVersion}`;
   }

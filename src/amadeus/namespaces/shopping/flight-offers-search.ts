@@ -7,7 +7,6 @@ import {
   FlightOffersSearchPostReturnType,
 } from "../../../types/amadeus/namespaces/shopping/flight-offers-search";
 import Client from "../../client";
-import Response from "../../client/response";
 
 /**
  * A namespaced client for the

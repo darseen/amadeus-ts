@@ -20,14 +20,14 @@ jobs:
             pnpm-version: 9
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up pnpm ${{ matrix.node-pnpm-combo.pnpm-version }}
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: ${{ matrix.node-pnpm-combo.pnpm-version }}
 
       - name: Set up Node.js ${{ matrix.node-pnpm-combo.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-pnpm-combo.node-version }}
           cache: pnpm

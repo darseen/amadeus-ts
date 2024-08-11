@@ -11,22 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x, 20.x]
-        pnpm-version: [7, 8, 9, 9] # pnpm versions aligned with Node.js versions
+        node-pnpm-combo:
+          - node-version: 14.x
+            pnpm-version: 7
+          - node-version: 16.x
+            pnpm-version: 8
+          - node-version: 18.x
+            pnpm-version: 9
+          - node-version: 20.x
+            pnpm-version: 9
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ matrix.node-pnpm-combo.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-pnpm-combo.node-version }}
           cache: pnpm
 
-      - name: Set up pnpm ${{ matrix.pnpm-version }}
+      - name: Set up pnpm ${{ matrix.node-pnpm-combo.pnpm-version }}
         uses: pnpm/action-setup@v2
         with:
-          version: ${{ matrix.pnpm-version }}
+          version: ${{ matrix.node-pnpm-combo.pnpm-version }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

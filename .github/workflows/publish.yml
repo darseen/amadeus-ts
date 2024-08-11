@@ -1,8 +1,8 @@
 name: Publish
 on:
   push:
-    tags:
-      - "v*"
+    branches: [main]
+
 concurrency: ${{github.workflow}}-${{github.ref}}
 
 jobs:

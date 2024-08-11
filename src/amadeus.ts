@@ -7,6 +7,7 @@ import {
   Options,
 } from "./types/amadeus";
 import { ReturnedResponse } from "./types/amadeus/client/response";
+import { ResponseError } from "./amadeus/client/errors";
 
 import Client from "./amadeus/client";
 import ReferenceData from "./amadeus/namespaces/reference-data";
@@ -231,3 +232,5 @@ export default class Amadeus implements IAmadeus {
     return this.pagination.page("last", response);
   }
 }
+
+export { ResponseError };

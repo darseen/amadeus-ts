@@ -12,23 +12,30 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x, 20.x]
+        pnpm-version: [7, 8, 9, 9] # pnpm versions aligned with Node.js versions
 
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 9
-      - name: Set up Node ${{ matrix.node-version }}
+
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
 
+      - name: Set up pnpm ${{ matrix.pnpm-version }}
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: lint
+
+      - name: Lint
         run: pnpm lint
-      - name: test
+
+      - name: Test
         run: pnpm test
-      - name: build
+
+      - name: Build
         run: pnpm build

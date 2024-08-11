@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up pnpm ${{ matrix.node-pnpm-combo.pnpm-version }}
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v2
         with:
           version: ${{ matrix.node-pnpm-combo.pnpm-version }}
 

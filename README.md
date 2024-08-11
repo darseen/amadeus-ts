@@ -22,7 +22,7 @@ To make your first API call, you will need to [register](https://developers.amad
 ## Usage
 
 ```ts
-import Amadeus from "amadeus-ts";
+import Amadeus, { ResponseError } from "amadeus-ts";
 
 const amadeus = new Amadeus({
   clientId: "REPLACE_BY_YOUR_API_KEY",
@@ -38,8 +38,10 @@ async function getFlightOffers() {
       adults: 2,
     });
     console.log(response.data);
-  } catch (responseError) {
-    console.log(responseError.code);
+  } catch (responseError: unknown) {
+    if (responseError instanceof ResponseError) {
+      console.log(responseError.code);
+    }
   }
 }
 

@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "pnpm lint && rimraf ./dist",
     "build": "tsup ./src/amadeus.ts --clean --format cjs,esm --dts",
-    "test": "vitest",
+    "test": "vitest run",
     "lint": "tsc"
   },
   "keywords": [

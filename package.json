@@ -1,6 +1,6 @@
 {
   "name": "amadeus-ts",
-  "version": "10.1.0",
+  "version": "0.0.1",
   "description": "Node library for the Amadeus travel APIs Written in TypeScript",
   "main": "dist/amadeus.js",
   "module": "dist/amadeus.mjs",

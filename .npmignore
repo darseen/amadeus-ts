@@ -1,9 +1,11 @@
 /src
 /node_modules
 /.github
+/tests
 
 .env
 .DS_Store
 .gitignore
 
+pnpm-lock.yaml
 tsconfig.json

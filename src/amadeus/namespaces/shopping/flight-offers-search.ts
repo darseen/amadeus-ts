@@ -70,7 +70,7 @@ export default class FlightOffersSearch {
    * To do a customized search with given options.
    *
    * ```ts
-   * amadeus.shopping.flightOffersSearch.post(JSON.stringify({
+   * amadeus.shopping.flightOffersSearch.post({
         "currencyCode": "USD",
         "originDestinations": [
           {
@@ -132,7 +132,7 @@ export default class FlightOffersSearch {
             }
           }
         }
-      }))
+      });
     * ```
     */
   public post(

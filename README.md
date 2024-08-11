@@ -38,9 +38,9 @@ async function getFlightOffers() {
       adults: 2,
     });
     console.log(response.data);
-  } catch (responseError: unknown) {
-    if (responseError instanceof ResponseError) {
-      console.log(responseError.code);
+  } catch (error: unknown) {
+    if (error instanceof ResponseError) {
+      console.log(error.code);
     }
   }
 }

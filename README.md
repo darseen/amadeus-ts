@@ -25,8 +25,8 @@ To make your first API call, you will need to [register](https://developers.amad
 import Amadeus, { ResponseError } from "amadeus-ts";
 
 const amadeus = new Amadeus({
-  clientId: "REPLACE_BY_YOUR_API_KEY",
-  clientSecret: "REPLACE_BY_YOUR_API_SECRET",
+  clientId: process.env.AMADEUS_CLIENT_ID,
+  clientSecret: process.env.AMADEUS_CLIENT_SECRET,
 });
 
 async function getFlightOffers() {

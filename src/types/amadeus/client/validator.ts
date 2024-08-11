@@ -1,5 +1,5 @@
 import { HOSTS, RECOGNIZED_OPTIONS } from "../../../constants";
-import type { Network } from "../../amadeus";
+import type { Network } from "../";
 
 export type RecognizedOptionsArray = typeof RECOGNIZED_OPTIONS;
 export type RecognizedOptionsItem = (typeof RECOGNIZED_OPTIONS)[number];

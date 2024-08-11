@@ -1,5 +1,5 @@
-import Amadeus from "../src/amadeus";
-import Client from "../src/amadeus/client";
+import Amadeus from "../../src/amadeus";
+import Client from "../../src/amadeus/client";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 
 let amadeus: Amadeus;

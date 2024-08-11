@@ -7,7 +7,6 @@ import AccessToken from "./access-token";
 import { Verb } from "../../types/amadeus/client";
 import EventEmitter from "node:events";
 import Listener from "./listener";
-import Response from "./response";
 import { ReturnedResponse } from "../../types/amadeus/client/response";
 
 /**

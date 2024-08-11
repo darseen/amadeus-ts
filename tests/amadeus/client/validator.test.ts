@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import Validator from "../../../src/amadeus/client/validator";
 import Client from "../../../src/amadeus/client";
-import { Options } from "../../../src/types/amadeus";
 import { RECOGNIZED_OPTIONS } from "../../../src/constants";
+import { Options } from "../../../src/types/amadeus";
 
 const validator = new Validator();
 

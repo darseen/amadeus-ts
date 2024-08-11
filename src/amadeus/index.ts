@@ -5,24 +5,24 @@ import {
   LocationType,
   LogLevel,
   Options,
-} from "./types/amadeus";
-import { ReturnedResponse } from "./types/amadeus/client/response";
-import { ResponseError } from "./amadeus/client/errors";
+} from "../types/amadeus";
+import { ReturnedResponse } from "../types/amadeus/client/response";
+import { ResponseError } from "./client/errors";
 
-import Client from "./amadeus/client";
-import ReferenceData from "./amadeus/namespaces/reference-data";
-import Shopping from "./amadeus/namespaces/shopping";
-import Booking from "./amadeus/namespaces/booking";
-import Travel from "./amadeus/namespaces/travel";
-import EReputation from "./amadeus/namespaces/e-reputation";
-import Media from "./amadeus/namespaces/media";
-import Ordering from "./amadeus/namespaces/ordering";
-import Airport from "./amadeus/namespaces/airport";
-import Pagination from "./amadeus/client/pagination";
-import Schedule from "./amadeus/namespaces/schedule";
-import Analytics from "./amadeus/namespaces/analytics";
-import Airline from "./amadeus/namespaces/airline";
-import Location from "./amadeus/namespaces/location";
+import Client from "./client";
+import ReferenceData from "./namespaces/reference-data";
+import Shopping from "./namespaces/shopping";
+import Booking from "./namespaces/booking";
+import Travel from "./namespaces/travel";
+import EReputation from "./namespaces/e-reputation";
+import Media from "./namespaces/media";
+import Ordering from "./namespaces/ordering";
+import Airport from "./namespaces/airport";
+import Pagination from "./client/pagination";
+import Schedule from "./namespaces/schedule";
+import Analytics from "./namespaces/analytics";
+import Airline from "./namespaces/airline";
+import Location from "./namespaces/location";
 
 /**
  * The Amadeus client library for accessing the travel APIs.

@@ -2,12 +2,12 @@
   "name": "amadeus-ts",
   "version": "1.0.1",
   "description": "Node library for the Amadeus travel APIs Written in TypeScript",
-  "main": "dist/amadeus.js",
-  "module": "dist/amadeus.mjs",
-  "types": "dist/amadeus.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "pnpm lint && rimraf ./dist",
-    "build": "tsup ./src/amadeus.ts --clean --format cjs,esm --dts",
+    "build": "tsup ./src/amadeus/index.ts --clean --format cjs,esm --dts",
     "test": "vitest run",
     "lint": "tsc"
   },

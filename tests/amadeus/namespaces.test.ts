@@ -415,10 +415,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flightOffers.pricing.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.flightOffers.pricing.post();
+      amadeus.shopping.flightOffers.pricing.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/flight-offers/pricing",
-        {}
+        JSON.stringify({})
       );
     });
 

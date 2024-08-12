@@ -34,7 +34,7 @@ describe("Pagination", () => {
         };
 
         client.request = vi.fn();
-        pagination.page("next", response as Response);
+        pagination.page("next", response as any);
         expect(client.request).toHaveBeenCalledWith("GET", "/foo/bar", {
           page: { offset: "2" },
         });
@@ -47,9 +47,7 @@ describe("Pagination", () => {
         };
 
         // client.call = vi.fn();
-        expect(
-          pagination.page("next", response as Response)
-        ).resolves.toBeNull();
+        expect(pagination.page("next", response as any)).resolves.toBeNull();
       });
     });
   });

@@ -1,4 +1,5 @@
-import { ReturnedResponse } from "../../types/amadeus/client/response";
+import { ReturnedResponseError } from "../../types/amadeus/client/response";
+import { Issue } from "../../types/amadeus/namespaces/shared";
 import Response from "./response";
 
 /**
@@ -14,16 +15,16 @@ import Response from "./response";
  *  from the  {@link Response}'s parsed data
  */
 export class ResponseError {
-  public response: ReturnedResponse;
+  public response: ReturnedResponseError;
   public code!: string;
-  public description: any;
+  public description!: Issue[] | Object | null;
 
   constructor(response: Response) {
-    this.response = response.returnResponse();
+    this.response = response.returnResponseError();
     this.determineDescription();
   }
 
-  private determineDescription() {
+  private determineDescription(): void {
     if (!this.response || !this.response.parsed) {
       this.description = null;
       return;
@@ -35,11 +36,10 @@ export class ResponseError {
       "errors" in result &&
       result.errors
     ) {
-      this.description = result.errors;
+      this.description = result.errors as Issue[];
     } else if (result) {
-      this.description = result;
+      this.description = result as {};
     }
-    return;
   }
 }
 

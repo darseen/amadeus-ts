@@ -12,7 +12,21 @@ export interface IResponse<T, K> {
   request: Request;
 }
 
-export type ReturnedResponse<T = unknown, K = unknown> = Omit<
+export type ReturnedResponseError<T = unknown, K = unknown> = Omit<
   Response<T, K>,
-  "addChunk" | "parse" | "success" | "returnResponse" | "error"
+  | "addChunk"
+  | "parse"
+  | "success"
+  | "returnResponseError"
+  | "returnResponseSuccess"
+  | "error"
 >;
+
+export type ReturnedResponseSuccess<T, K> = Omit<
+  ReturnedResponseError<T, K>,
+  "result" | "data" | "statusCode"
+> & {
+  statusCode: number;
+  result: T;
+  data: K;
+};

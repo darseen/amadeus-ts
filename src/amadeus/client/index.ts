@@ -7,7 +7,7 @@ import AccessToken from "./access-token";
 import { Verb } from "../../types/amadeus/client";
 import EventEmitter from "node:events";
 import Listener from "./listener";
-import { ReturnedResponse } from "../../types/amadeus/client/response";
+import { ReturnedResponseSuccess } from "../../types/amadeus/client/response";
 
 /**
  * A convenient wrapper around the API, allowing for generic, authenticated and
@@ -78,7 +78,7 @@ export default class Client implements Options {
   public get<T, K = unknown>(
     path: string,
     params: object = {}
-  ): Promise<ReturnedResponse<T, K>> {
+  ): Promise<ReturnedResponseSuccess<T, K>> {
     return this.request<T, K>("GET", path, params);
   }
 
@@ -95,7 +95,7 @@ export default class Client implements Options {
   public post<T, K = unknown>(
     path: string,
     params: object | string = {}
-  ): Promise<ReturnedResponse<T, K>> {
+  ): Promise<ReturnedResponseSuccess<T, K>> {
     return this.request<T, K>("POST", path, params);
   }
 
@@ -129,7 +129,7 @@ export default class Client implements Options {
     verb: Verb,
     path: string,
     params: object | string = {}
-  ): Promise<ReturnedResponse<T, K>> {
+  ): Promise<ReturnedResponseSuccess<T, K>> {
     const bearerToken = (await this.accessToken.bearerToken(this)) as string;
     return this.unauthenticatedRequest<T, K>(verb, path, params, bearerToken);
   }
@@ -155,7 +155,7 @@ export default class Client implements Options {
     path: string,
     params: object | string = {},
     bearerToken: string | null = null
-  ): Promise<ReturnedResponse<T, K>> {
+  ): Promise<ReturnedResponseSuccess<T, K>> {
     const request = this.buildRequest(verb, path, params, bearerToken);
     this.log(request);
     const emitter = new EventEmitter();
@@ -224,10 +224,10 @@ export default class Client implements Options {
    */
   private buildPromise<T, K>(
     emitter: EventEmitter
-  ): Promise<ReturnedResponse<T, K>> {
+  ): Promise<ReturnedResponseSuccess<T, K>> {
     return new Promise((resolve, reject) => {
       emitter.on("resolve", (response) =>
-        resolve(response as ReturnedResponse<T, K>)
+        resolve(response as ReturnedResponseSuccess<T, K>)
       );
       emitter.on("reject", (error) => reject(error));
     });

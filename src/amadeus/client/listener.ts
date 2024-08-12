@@ -93,7 +93,7 @@ export default class Listener {
    */
   private onSuccess(response: Response): void {
     this.log(response);
-    this.emitter.emit("resolve", response.returnResponse());
+    this.emitter.emit("resolve", response.returnResponseSuccess());
   }
 
   /**

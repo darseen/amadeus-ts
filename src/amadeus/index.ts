@@ -6,7 +6,7 @@ import {
   LogLevel,
   Options,
 } from "../types/amadeus";
-import { ReturnedResponse } from "../types/amadeus/client/response";
+import { ReturnedResponseSuccess } from "../types/amadeus/client/response";
 import { ResponseError } from "./client/errors";
 
 import Client from "./client";
@@ -158,7 +158,9 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public previous(response: ReturnedResponse<any, any>): Promise<unknown> {
+  public previous(
+    response: ReturnedResponseSuccess<any, any>
+  ): Promise<unknown> {
     return this.pagination.page("previous", response);
   }
 
@@ -181,7 +183,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public next(response: ReturnedResponse<any, any>): Promise<unknown> {
+  public next(response: ReturnedResponseSuccess<any, any>): Promise<unknown> {
     return this.pagination.page("next", response);
   }
 
@@ -205,7 +207,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public first(response: ReturnedResponse<any, any>): Promise<unknown> {
+  public first(response: ReturnedResponseSuccess<any, any>): Promise<unknown> {
     return this.pagination.page("first", response);
   }
 
@@ -228,7 +230,7 @@ export default class Amadeus implements IAmadeus {
    * @param response the previous response for an API call
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public last(response: ReturnedResponse<any, any>): Promise<unknown> {
+  public last(response: ReturnedResponseSuccess<any, any>): Promise<unknown> {
     return this.pagination.page("last", response);
   }
 }

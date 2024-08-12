@@ -1,7 +1,7 @@
 import EventEmitter from "events";
 import Client from ".";
 import { AmadeusOAuth2TokenSuccessResponse } from "../../types/amadeus/client/access-token";
-import { ReturnedResponse } from "../../types/amadeus/client/response";
+import { ReturnedResponseSuccess } from "../../types/amadeus/client/response";
 
 // The number of seconds before the token expires, when
 // we will already try to refresh it
@@ -113,7 +113,10 @@ export default class AccessToken {
    * @private
    */
   private storeAccessToken(
-    response: ReturnedResponse<AmadeusOAuth2TokenSuccessResponse>
+    response: ReturnedResponseSuccess<
+      AmadeusOAuth2TokenSuccessResponse,
+      unknown
+    >
   ): void {
     this.accessToken = response.result?.access_token;
     this.expiresAt = response.result

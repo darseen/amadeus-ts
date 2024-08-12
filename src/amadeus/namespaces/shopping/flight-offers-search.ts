@@ -1,10 +1,10 @@
 import {
-  FlightOffersSearchGetRequest,
-  FlightOffersSearchGetResponse,
-  FlightOffersSearchGetReturnType,
-  FlightOffersSearchPostRequest,
-  FlightOffersSearchPostResponse,
-  FlightOffersSearchPostReturnType,
+  FlightOffersSearchGetParams,
+  FlightOffersSearchGetResult,
+  FlightOffersSearchGetReturnedResponse,
+  FlightOffersSearchPostParams,
+  FlightOffersSearchPostResult,
+  FlightOffersSearchPostReturnedResponse,
 } from "../../../types/amadeus/namespaces/shopping/flight-offers-search";
 import Client from "../../client";
 
@@ -51,11 +51,11 @@ export default class FlightOffersSearch {
    * ```
    */
   public get(
-    params: FlightOffersSearchGetRequest
-  ): FlightOffersSearchGetReturnType {
+    params: FlightOffersSearchGetParams
+  ): FlightOffersSearchGetReturnedResponse {
     return this.client.get<
-      FlightOffersSearchGetResponse,
-      FlightOffersSearchGetResponse["data"]
+      FlightOffersSearchGetResult,
+      FlightOffersSearchGetResult["data"]
     >("/v2/shopping/flight-offers", params);
   }
 
@@ -135,11 +135,11 @@ export default class FlightOffersSearch {
     * ```
     */
   public post(
-    params: FlightOffersSearchPostRequest
-  ): FlightOffersSearchPostReturnType {
+    params: FlightOffersSearchPostParams
+  ): FlightOffersSearchPostReturnedResponse {
     return this.client.post<
-      FlightOffersSearchPostResponse,
-      FlightOffersSearchPostResponse["data"]
+      FlightOffersSearchPostResult,
+      FlightOffersSearchPostResult["data"]
     >("/v2/shopping/flight-offers", JSON.stringify(params));
   }
 }

@@ -1,3 +1,9 @@
+import {
+  FlightOffersPricingAdditionalParams,
+  FlightOffersPricingParams,
+  FlightOffersPricingResult,
+  FlightOffersPricingReturnedResponse,
+} from "../../../../types/amadeus/namespaces/shopping/flight-offers/pricing";
 import Client from "../../../client";
 
 /**
@@ -35,17 +41,25 @@ export default class Pricing {
    *
    * ```ts
    * amadeus.shopping.flightOffers.pricing.post({
-   *  'data': {
-   *      'type': 'flight-offers-pricing',
-   *      'flightOffers': []
+   *  data: {
+   *      type: 'flight-offers-pricing',
+   *      flightOffers: []
    *  }
    * });
    * ```
    */
-  public post(params: Object = {}, additionalParams: Record<string, any> = {}) {
+  public post(
+    params: FlightOffersPricingParams,
+    additionalParams: FlightOffersPricingAdditionalParams = {}
+  ): Promise<FlightOffersPricingReturnedResponse> {
     // Convert additionalParams object to query string
     const queryString = Object.keys(additionalParams)
-      .map((key) => key + "=" + additionalParams[key])
+      .map(
+        (key) =>
+          key +
+          "=" +
+          additionalParams[key as keyof FlightOffersPricingAdditionalParams]
+      )
       .join("&");
 
     // Check if queryString is empty before appending it to the URL
@@ -54,6 +68,9 @@ export default class Pricing {
       url += "?" + queryString;
     }
 
-    return this.client.post(url, params);
+    return this.client.post<
+      FlightOffersPricingResult,
+      FlightOffersPricingResult["data"]
+    >(url, JSON.stringify(params));
   }
 }

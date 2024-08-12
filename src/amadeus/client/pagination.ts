@@ -1,6 +1,6 @@
 import Client from ".";
 import { PageName } from "../../types/amadeus/client/pagination";
-import { ReturnedResponse } from "../../types/amadeus/client/response";
+import { ReturnedResponseSuccess } from "../../types/amadeus/client/response";
 import Request from "./request";
 
 /**
@@ -29,7 +29,7 @@ export default class Pagination {
    */
   public page(
     pageName: PageName,
-    response: ReturnedResponse<any, any>
+    response: ReturnedResponseSuccess<any, any>
   ): Promise<any> {
     const pageNumber = this.pageNumber(response, pageName);
 
@@ -58,13 +58,13 @@ export default class Pagination {
    * Tries to determine the page number from the page name. If not present, it
    * just returns null
    *
-   * @param  {ReturnedResponse} response the response containing the links to the next pages
+   * @param  {ReturnedResponseSuccess} response the response containing the links to the next pages
    * @param  {PageName} pageName the name of the page to fetch
    * @return {string}
    * @private
    */
   private pageNumber(
-    response: ReturnedResponse<any, any>,
+    response: ReturnedResponseSuccess<any, any>,
     pageName: PageName
   ): string | null {
     try {

@@ -2,7 +2,8 @@ import { IncomingHttpHeaders, IncomingMessage } from "http";
 import Request from "./request";
 import {
   IResponse,
-  ReturnedResponse,
+  ReturnedResponseError,
+  ReturnedResponseSuccess,
 } from "../../types/amadeus/client/response";
 
 const JSON_CONTENT_TYPES = ["application/json", "application/vnd.amadeus+json"];
@@ -77,7 +78,7 @@ export default class Response<T = unknown, K = unknown>
       if (this.statusCode === 204) return;
 
       if (this.isJson()) {
-        this.result = JSON.parse(this.body);
+        this.result = JSON.parse(this.body) as T;
         this.data = (this.result as T & { data: K }).data;
         this.parsed = true;
       }
@@ -119,13 +120,14 @@ export default class Response<T = unknown, K = unknown>
   }
 
   /**
-   * This method return only the data that the user need,
+   * This method return only the data that the user needs,
    * and removes the ablility to use any of the public methods that can be used to manipulate the response.
+   * It returns the response with 'result' and 'data' being possibly null that's the only difference between it and returnResponseSuccess method.
    *
-   * @return {ReturnedResponse}
+   * @return {ReturnedResponseError}
    * @public
    */
-  public returnResponse(): ReturnedResponse {
+  public returnResponseError(): ReturnedResponseError {
     return {
       headers: this.headers,
       statusCode: this.statusCode,
@@ -134,6 +136,25 @@ export default class Response<T = unknown, K = unknown>
       data: this.data,
       parsed: this.parsed,
       request: this.request,
-    } as ReturnedResponse;
+    } as ReturnedResponseError;
+  }
+
+  /**
+   * This method return only the data that the user needs,
+   * and removes the ablility to use any of the public methods that can be used to manipulate the response.
+   *
+   * @return {ReturnedResponseSuccess}
+   * @public
+   */
+  public returnResponseSuccess(): ReturnedResponseSuccess<T, K> {
+    return {
+      headers: this.headers,
+      statusCode: this.statusCode,
+      body: this.body,
+      result: this.result,
+      data: this.data,
+      parsed: this.parsed,
+      request: this.request,
+    } as ReturnedResponseSuccess<T, K>;
   }
 }

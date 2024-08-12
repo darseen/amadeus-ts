@@ -125,7 +125,7 @@ describe("Listener", () => {
         handler["onSuccess"](response);
         expect(emitter.emit).toHaveBeenCalledWith(
           "resolve",
-          response.returnResponse()
+          response.returnResponseSuccess()
         );
       });
     });

@@ -9,7 +9,8 @@
     "prebuild": "pnpm lint && rimraf ./dist",
     "build": "tsup ./src/amadeus/index.ts --clean --format cjs,esm --dts",
     "test": "vitest run",
-    "lint": "tsc"
+    "lint": "tsc",
+    "release": "pnpm build && pnpm publish"
   },
   "keywords": [
     "amadeus",

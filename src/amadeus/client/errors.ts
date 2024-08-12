@@ -1,3 +1,4 @@
+import { ErrorCodes } from "../../types/amadeus/client/errors";
 import { ReturnedResponseError } from "../../types/amadeus/client/response";
 import { Issue } from "../../types/amadeus/namespaces/shared";
 import Response from "./response";
@@ -16,7 +17,7 @@ import Response from "./response";
  */
 export class ResponseError {
   public response: ReturnedResponseError;
-  public code!: string;
+  public code!: ErrorCodes;
   public description: Issue[];
 
   constructor(response: Response) {

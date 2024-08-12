@@ -17,18 +17,28 @@ import Response from "./response";
 export class ResponseError {
   public response: ReturnedResponseError;
   public code!: string;
-  public description!: Issue[] | Object | null;
+  public description: Issue[];
 
   constructor(response: Response) {
     this.response = response.returnResponseError();
+    // default description
+    this.description = [
+      {
+        code: 0,
+        detail: "Unknown error",
+        source: {
+          pointer: "",
+        },
+        status: 0,
+        title: "Unknown error",
+      },
+    ];
     this.determineDescription();
   }
 
   private determineDescription(): void {
-    if (!this.response || !this.response.parsed) {
-      this.description = null;
-      return;
-    }
+    if (!this.response || !this.response.parsed) return;
+
     const result = this.response.result;
     if (
       result &&
@@ -38,7 +48,8 @@ export class ResponseError {
     ) {
       this.description = result.errors as Issue[];
     } else if (result) {
-      this.description = result as {};
+      // this is not ideal but it will do for now
+      this.description = result as Issue[];
     }
   }
 }

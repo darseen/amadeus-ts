@@ -1,5 +1,12 @@
 import { ReturnedResponseSuccess } from "../../../client/response";
-import { Dictionaries, FlightOffer, ServiceName } from "../../shared";
+import {
+  Dictionaries,
+  ElementaryPrice,
+  FlightOffer,
+  Issue,
+  ServiceName,
+  Traveler,
+} from "../../shared";
 
 // export type PricingOptionsFareType = "PUBLISHED"[];
 
@@ -97,11 +104,6 @@ export type Bags = BaggageAllowance & {
   travelerIds?: string[];
 };
 
-export interface ElementaryPrice {
-  amount?: string;
-  currencyCode?: string;
-}
-
 export interface BaggageAllowance {
   quantity?: number;
   weight?: number;
@@ -117,125 +119,6 @@ export interface OtherServices {
   travelerIds?: string[];
 }
 
-export interface Stakeholder {
-  id?: string;
-  dateOfBirth?: string;
-  gender?: StakeholderGender;
-  name?: Name;
-  documents?: IdentityDocument[];
-}
-
-export type StakeholderGender = "MALE" | "FEMALE";
-
-export type IdentityDocument = Document & {
-  documentType?: DocumentType;
-  validityCountry?: string;
-  birthCountry?: string;
-  holder?: boolean;
-};
-
-export interface Document {
-  number?: string;
-  issuanceDate?: string;
-  expiryDate?: string;
-  issuanceCountry?: string;
-  issuanceLocation?: string;
-  nationality?: string;
-  birthPlace?: string;
-}
-
-export type DocumentType =
-  | "VISA"
-  | "PASSPORT"
-  | "IDENTITY_CARD"
-  | "KNOWN_TRAVELER"
-  | "REDRESS";
-
-export interface EmergencyContact {
-  addresseeName?: string;
-  countryCode?: string;
-  number?: string;
-  text?: string;
-}
-
-export interface LoyaltyProgram {
-  programOwner?: string;
-  id?: string;
-}
-
-export interface Discount {
-  subType?: DiscountType;
-  cityName?: string;
-  travelerType?: DiscountTravelerType;
-  cardNumber?: string;
-  certificateNumber?: string;
-}
-
-export type DiscountType =
-  | "SPANISH_RESIDENT"
-  | "AIR_FRANCE_DOMESTIC"
-  | "AIR_FRANCE_COMBINED"
-  | "AIR_FRANCE_METROPOLITAN";
-
-export type DiscountTravelerType =
-  | "SPANISH_CITIZEN"
-  | "EUROPEAN_CITIZEN"
-  | "GOVERNMENT_WORKER"
-  | "MILITARY"
-  | "MINOR_WITHOUT_ID";
-
-export type Traveler = Stakeholder & {
-  emergencyContact?: EmergencyContact;
-  loyaltyPrograms?: LoyaltyProgram[];
-  discountEligibility?: Discount[];
-  contact?: Contact;
-};
-
-export type Contact = ContactDictionary & {
-  phones?: Phone[];
-  companyName?: string;
-  emailAddress?: string;
-};
-
-export type ContactPurpose =
-  | "STANDARD"
-  | "INVOICE"
-  | "STANDARD_WITHOUT_TRANSMISSION";
-
-export interface ContactDictionary {
-  addresseeName?: Name;
-  address?: Address;
-  language?: string;
-  purpose?: ContactPurpose;
-}
-
-export type Name = BaseName & {
-  secondLastName?: string;
-};
-
-export interface BaseName {
-  firstName?: string;
-  lastName?: string;
-  middleName?: string;
-}
-
-export interface Phone {
-  deviceType?: PhoneDeviceType;
-  countryCallingCode?: string;
-  number?: string;
-}
-
-export type PhoneDeviceType = "MOBILE" | "LANDLINE" | "FAX";
-
-export interface Address {
-  lines?: string[];
-  postalCode?: string;
-  countryCode?: string;
-  cityName?: string;
-  stateName?: string;
-  postalBox?: string;
-}
-
 export type FlightOffersPricingParams = {
   data: FlightOfferPricingIn;
 };
@@ -247,6 +130,7 @@ export type FlightOffersPricingAdditionalParams = {
 
 export type FlightOffersPricingResult = {
   data: FlightOfferPricingOut;
+  warnings?: Issue[];
   included?: {
     "credit-card-fees": {
       [key: string]: CreditCardFee;

@@ -1,33 +1,16 @@
 import { ReturnedResponseSuccess } from "../../client/response";
 import {
+  CollectionMeta,
+  CollectionMetaLink,
   Dictionaries,
   FlightOffer,
   FlightOfferSource,
+  Issue,
   TravelClass,
   TravelerType,
 } from "../shared";
 
 type UtilRequiredKeys<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
-
-export interface CollectionMeta {
-  count?: number;
-  oneWayCombinations?: {
-    originDestinationId?: string;
-    flightOfferIds?: string[];
-  }[];
-}
-
-export interface CollectionMetaLink {
-  count?: number;
-  links?: {
-    self?: string;
-    next?: string;
-    previous?: string;
-    last?: string;
-    first?: string;
-    up?: string;
-  };
-}
 
 export type OriginDestination = OriginDestinationLight & {
   originRadius?: number;
@@ -138,6 +121,7 @@ export type FlightOffersSearchPostParams = {
 
 export type FlightOffersSearchPostResult = {
   meta: CollectionMeta;
+  warnings?: Issue[];
   data: FlightOffer[];
   dictionaries: Dictionaries;
 };
@@ -161,6 +145,7 @@ export type FlightOffersSearchGetParams = {
 
 export type FlightOffersSearchGetResult = {
   meta: CollectionMetaLink;
+  warnings?: Issue[];
   data: FlightOffer[];
   dictionaries: Dictionaries;
 };

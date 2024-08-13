@@ -52,6 +52,6 @@ export default class FlightOrder {
   public delete() {
     if (this.orderId)
       return this.client.delete("/v1/booking/flight-orders/" + this.orderId);
-    else throw new Error("MISSING_REQUIRED_PARAMETER");
+    throw new Error("MISSING_REQUIRED_PARAMETER");
   }
 }

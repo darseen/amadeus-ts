@@ -8,6 +8,7 @@ import { Verb } from "../../types/amadeus/client";
 import EventEmitter from "node:events";
 import Listener from "./listener";
 import { ReturnedResponseSuccess } from "../../types/amadeus/client/response";
+import { ResponseError } from "./errors";
 
 /**
  * A convenient wrapper around the API, allowing for generic, authenticated and
@@ -109,8 +110,11 @@ export default class Client implements Options {
    * @param {Object} [params={}] the query string parameters
    * @return {Promise<Response|ResponseError>} a Promise
    */
-  public delete(path: string, params: object = {}): Promise<unknown> {
-    return this.request("DELETE", path, params);
+  public delete<T, K>(
+    path: string,
+    params: object = {}
+  ): Promise<ReturnedResponseSuccess<T, K>> {
+    return this.request<T, K>("DELETE", path, params);
   }
 
   /**

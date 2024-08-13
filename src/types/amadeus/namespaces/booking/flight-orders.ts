@@ -1,11 +1,14 @@
 import { ReturnedResponseSuccess } from "../../client/response";
 import {
+  AssociatedRecord,
   CollectionMetaLink,
   Contact,
   Dictionaries,
   ElementaryPrice,
   FlightOffer,
   Issue,
+  Remarks,
+  TicketingAgreement,
   Traveler,
 } from "../shared";
 
@@ -40,18 +43,6 @@ export interface FormOfIdentification {
   flightOfferIds?: string[];
 }
 
-export interface TicketingAgreement {
-  option?: TicketingAgreementOption;
-  delay?: string;
-  dateTime?: string;
-  segmentIds?: string[];
-}
-
-export type TicketingAgreementOption =
-  | "CONFIRM"
-  | "DELAY_TO_QUEUE"
-  | "DELAY_TO_CANCEL";
-
 export interface AutomatedProcessCommon {
   code?: AutomatedProcessCode;
   queue?: {
@@ -68,46 +59,6 @@ export type AutomatedProcess = AutomatedProcessCommon & {
 };
 
 export type AutomatedProcessCode = "IMMEDIATE" | "DELAYED" | "ERROR";
-
-export interface Remarks {
-  general?: GeneralRemark[];
-  airline?: AirlineRemark[];
-}
-
-export interface GeneralRemark {
-  subType: GeneralRemarkType;
-  category?: string;
-  text: string;
-  travelerIds?: string[];
-  flightOfferIds?: string[];
-}
-
-export type GeneralRemarkType =
-  | "GENERAL_MISCELLANEOUS"
-  | "CONFIDENTIAL"
-  | "INVOICE"
-  | "QUALITY_CONTROL"
-  | "BACKOFFICE"
-  | "FULFILLMENT"
-  | "ITINERARY"
-  | "TICKETING_MISCELLANEOUS"
-  | "TOUR_CODE";
-
-export interface AirlineRemark {
-  subType: AirlineRemarkType;
-  keyword?: string;
-  airlineCode: string;
-  text: string;
-  travelerIds?: string[];
-  flightOfferIds?: string[];
-}
-
-export type AirlineRemarkType =
-  | "OTHER_SERVICE_INFORMATION"
-  | "KEYWORD"
-  | "OTHER_SERVICE"
-  | "CLIENT_ID"
-  | "ADVANCED_TICKET_TIME_LIMIT";
 
 export interface FormOfPayment {
   b2bWallet?: B2BWallet;
@@ -158,16 +109,6 @@ export interface OtherMethod {
 }
 
 export type OtherPaymentMethod = "ACCOUNT" | "CHECK" | "CASH" | "NONREFUNDABLE";
-
-export interface AssociatedRecordCommon {
-  reference?: string;
-  creationDate?: string;
-  originSystemCode?: string;
-}
-
-export type AssociatedRecord = AssociatedRecordCommon & {
-  flightOfferId?: string;
-};
 
 export type AirTravelDocument = AirTravelDocumentCommon & {
   travelerId?: string;

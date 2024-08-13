@@ -1,3 +1,8 @@
+import { ReturnedResponseSuccess } from "../../../types/amadeus/client/response";
+import {
+  FlightOrderGetResult,
+  FlightOrderGetReturenedResponse,
+} from "../../../types/amadeus/namespaces/booking/flight-order";
 import Client from "../../client";
 
 /**
@@ -32,10 +37,12 @@ export default class FlightOrder {
    * amadeus.booking.flightOrder('XXX').get();
    * ```
    */
-  public get() {
-    if (this.orderId)
-      return this.client.get("/v1/booking/flight-orders/" + this.orderId);
-    throw new Error("MISSING_REQUIRED_PARAMETER");
+  public get(): Promise<FlightOrderGetReturenedResponse> {
+    if (!this.orderId) throw new Error("MISSING_REQUIRED_PARAMETER");
+
+    return this.client.get<FlightOrderGetResult, FlightOrderGetResult["data"]>(
+      "/v1/booking/flight-orders/" + this.orderId
+    );
   }
 
   /**
@@ -49,9 +56,11 @@ export default class FlightOrder {
    * amadeus.booking.flightOrder('XXX').delete();
    * ```
    */
-  public delete() {
-    if (this.orderId)
-      return this.client.delete("/v1/booking/flight-orders/" + this.orderId);
-    throw new Error("MISSING_REQUIRED_PARAMETER");
+  public delete(): Promise<ReturnedResponseSuccess<null, null>> {
+    if (!this.orderId) throw new Error("MISSING_REQUIRED_PARAMETER");
+
+    return this.client.delete<null, null>(
+      "/v1/booking/flight-orders/" + this.orderId
+    );
   }
 }

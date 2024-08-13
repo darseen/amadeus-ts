@@ -337,11 +337,10 @@ export type DiscountTravelerType =
   | "MILITARY"
   | "MINOR_WITHOUT_ID";
 
-  export type Name = BaseName & {
-    secondLastName?: string;
-  };
+export type Name = BaseName & {
+  secondLastName?: string;
+};
 
-  
 export interface BaseName {
   firstName?: string;
   lastName?: string;
@@ -371,26 +370,88 @@ export type ContactPurpose =
   | "INVOICE"
   | "STANDARD_WITHOUT_TRANSMISSION";
 
-  export interface ContactDictionary {
-    addresseeName?: Name;
-    address?: Address;
-    language?: string;
-    purpose?: ContactPurpose;
-  }
+export interface ContactDictionary {
+  addresseeName?: Name;
+  address?: Address;
+  language?: string;
+  purpose?: ContactPurpose;
+}
 
-  export interface Address {
-    lines?: string[];
-    postalCode?: string;
-    countryCode?: string;
-    cityName?: string;
-    stateName?: string;
-    postalBox?: string;
-  }
+export interface Address {
+  lines?: string[];
+  postalCode?: string;
+  countryCode?: string;
+  cityName?: string;
+  stateName?: string;
+  postalBox?: string;
+}
 
-  export interface Phone {
-    deviceType?: PhoneDeviceType;
-    countryCallingCode?: string;
-    number?: string;
-  }
+export interface Phone {
+  deviceType?: PhoneDeviceType;
+  countryCallingCode?: string;
+  number?: string;
+}
 
-  export type PhoneDeviceType = "MOBILE" | "LANDLINE" | "FAX";
+export type PhoneDeviceType = "MOBILE" | "LANDLINE" | "FAX";
+
+export interface Remarks {
+  general?: GeneralRemark[];
+  airline?: AirlineRemark[];
+}
+
+export interface GeneralRemark {
+  subType: GeneralRemarkType;
+  category?: string;
+  text: string;
+  travelerIds?: string[];
+  flightOfferIds?: string[];
+}
+
+export type GeneralRemarkType =
+  | "GENERAL_MISCELLANEOUS"
+  | "CONFIDENTIAL"
+  | "INVOICE"
+  | "QUALITY_CONTROL"
+  | "BACKOFFICE"
+  | "FULFILLMENT"
+  | "ITINERARY"
+  | "TICKETING_MISCELLANEOUS"
+  | "TOUR_CODE";
+
+export interface AirlineRemark {
+  subType: AirlineRemarkType;
+  keyword?: string;
+  airlineCode: string;
+  text: string;
+  travelerIds?: string[];
+  flightOfferIds?: string[];
+}
+
+export type AirlineRemarkType =
+  | "OTHER_SERVICE_INFORMATION"
+  | "KEYWORD"
+  | "OTHER_SERVICE"
+  | "CLIENT_ID"
+  | "ADVANCED_TICKET_TIME_LIMIT";
+
+export interface TicketingAgreement {
+  option?: TicketingAgreementOption;
+  delay?: string;
+  dateTime?: string;
+  segmentIds?: string[];
+}
+
+export type TicketingAgreementOption =
+  | "CONFIRM"
+  | "DELAY_TO_QUEUE"
+  | "DELAY_TO_CANCEL";
+
+export interface AssociatedRecordCommon {
+  reference?: string;
+  creationDate?: string;
+  originSystemCode?: string;
+}
+
+export type AssociatedRecord = AssociatedRecordCommon & {
+  flightOfferId?: string;
+};

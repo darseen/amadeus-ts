@@ -1,28 +1,16 @@
 import { ReturnedResponseSuccess } from "../../client/response";
 import {
-  AssociatedRecord,
   CollectionMetaLink,
-  Contact,
   Dictionaries,
-  FlightOffer,
-  Remarks,
-  TicketingAgreement,
-  Traveler,
+  FlightOrder,
+  Issue,
 } from "../shared";
 
+// Types used in class
 export type FlightOrderGetResult = {
   meta: CollectionMetaLink;
-  data: {
-    type: "flight-order";
-    id: string;
-    queuingOfficeId: string;
-    associatedRecords: AssociatedRecord;
-    flightOffers: FlightOffer[];
-    travelers: Traveler[];
-    remarks: Remarks;
-    ticketingAgreement: TicketingAgreement;
-    contacts: Contact;
-  };
+  warnings?: Issue[];
+  data: FlightOrder;
   dictionaries: Dictionaries;
 };
 

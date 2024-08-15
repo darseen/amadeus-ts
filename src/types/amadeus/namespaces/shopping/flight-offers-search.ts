@@ -111,6 +111,7 @@ export type Coverage =
   | "AT_LEAST_ONE_SEGMENT"
   | "ALL_SEGMENTS";
 
+// Types used in class
 export type FlightOffersSearchPostParams = {
   currencyCode?: string;
   originDestinations: OriginDestination[];

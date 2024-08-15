@@ -1,36 +1,14 @@
 import { ReturnedResponseSuccess } from "../../../client/response";
 import {
+  BaggageAllowance,
   Dictionaries,
   ElementaryPrice,
   FlightOffer,
   Issue,
   ServiceName,
+  TermAndCondition,
   Traveler,
 } from "../../shared";
-
-// export type PricingOptionsFareType = "PUBLISHED"[];
-
-export interface FareRules {
-  currency?: string;
-  rules?: TermAndCondition[];
-}
-
-export interface TermAndCondition {
-  category?:
-    | "REFUND"
-    | "EXCHANGE"
-    | "REVALIDATION"
-    | "REISSUE"
-    | "REBOOK"
-    | "CANCELLATION";
-  circumstances?: string;
-  notApplicable?: boolean;
-  maxPenaltyAmount?: string;
-  descriptions?: {
-    descriptionType?: string;
-    text?: string;
-  }[];
-}
 
 export interface FlightOfferPricingIn {
   type: "flight-offers-pricing";
@@ -104,12 +82,6 @@ export type Bags = BaggageAllowance & {
   travelerIds?: string[];
 };
 
-export interface BaggageAllowance {
-  quantity?: number;
-  weight?: number;
-  weightUnit?: string;
-}
-
 export interface OtherServices {
   name?: ServiceName;
   price?: ElementaryPrice;
@@ -119,6 +91,7 @@ export interface OtherServices {
   travelerIds?: string[];
 }
 
+// Types used in class
 export type FlightOffersPricingParams = {
   data: FlightOfferPricingIn;
 };

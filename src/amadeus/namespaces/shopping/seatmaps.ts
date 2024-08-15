@@ -1,3 +1,11 @@
+import {
+  SeatmapsGetParams,
+  SeatmapsGetResult,
+  SeatmapsGetReturnedResponse,
+  SeatmapsPostParams,
+  SeatmapsPostResult,
+  SeatmapsPostReturnedResponse,
+} from "../../../types/amadeus/namespaces/shopping/seatmaps";
 import Client from "../../client";
 
 /**
@@ -34,8 +42,11 @@ export default class Seatmaps {
    * );
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/shopping/seatmaps", params);
+  public get(params: SeatmapsGetParams): Promise<SeatmapsGetReturnedResponse> {
+    return this.client.get<SeatmapsGetResult, SeatmapsGetResult["data"]>(
+      "/v1/shopping/seatmaps",
+      params
+    );
   }
 
   /**
@@ -54,14 +65,19 @@ export default class Seatmaps {
    *    departureDate: '2020-08-01'
    * }).then(function(response){
    *    return amadeus.shopping.flightOffers.seatmaps.post(
-   *        JSON.stringify({
+   *        {
    *            'data': response.data
-   *        })
+   *        }
    *    );
    * });
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post("/v1/shopping/seatmaps", params);
+  public post(
+    params: SeatmapsPostParams
+  ): Promise<SeatmapsPostReturnedResponse> {
+    return this.client.post<SeatmapsPostResult, SeatmapsPostResult["data"]>(
+      "/v1/shopping/seatmaps",
+      JSON.stringify(params)
+    );
   }
 }

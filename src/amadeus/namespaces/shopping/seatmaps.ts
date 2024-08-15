@@ -65,7 +65,7 @@ export default class Seatmaps {
    *    departureDate: '2020-08-01',
    *    adults: 1,
    * }).then(function(response){
-   *    return amadeus.shopping.flightOffers.seatmaps.post(
+   *    return amadeus.shopping.seatmaps.post(
    *        {
    *            'data': response.data
    *        }

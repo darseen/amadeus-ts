@@ -442,7 +442,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.seatmaps.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.seatmaps.get();
+      amadeus.shopping.seatmaps.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/shopping/seatmaps",
         {}
@@ -451,10 +451,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.seatmaps.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.seatmaps.post();
+      amadeus.shopping.seatmaps.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/seatmaps",
-        {}
+        JSON.stringify({})
       );
     });
 

@@ -60,9 +60,10 @@ export default class Seatmaps {
    *
    * ```ts
    * amadeus.shopping.flightOffers.get({
-   *    origin: 'MAD',
-   *    destination: 'NYC',
-   *    departureDate: '2020-08-01'
+   *    originLocationCode: 'MAD',
+   *    destinationLocationCode: 'NYC',
+   *    departureDate: '2020-08-01',
+   *    adults: 1,
    * }).then(function(response){
    *    return amadeus.shopping.flightOffers.seatmaps.post(
    *        {

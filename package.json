@@ -10,7 +10,7 @@
     "build": "tsup ./src/amadeus/index.ts --clean --format cjs,esm --dts",
     "test": "vitest run",
     "lint": "tsc",
-    "release": "pnpm build && pnpm publish --access public"
+    "release": "pnpm build && pnpm publish"
   },
   "keywords": [
     "amadeus",

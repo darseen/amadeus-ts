@@ -1,3 +1,8 @@
+import {
+  ItineraryPriceMetricsParams,
+  ItineraryPriceMetricsResult,
+  ItineraryPriceMetricsReturnedResponse,
+} from "../../../types/amadeus/namespaces/analytics/itinerary-price-metrics";
 import Client from "../../client";
 
 /**
@@ -37,7 +42,12 @@ export default class ItineraryPriceMetrics {
    * });
    * ```
    */
-  public get(params = {}) {
-    return this.client.get("/v1/analytics/itinerary-price-metrics", params);
+  public get(
+    params: ItineraryPriceMetricsParams
+  ): Promise<ItineraryPriceMetricsReturnedResponse> {
+    return this.client.get<
+      ItineraryPriceMetricsResult,
+      ItineraryPriceMetricsResult["data"]
+    >("/v1/analytics/itinerary-price-metrics", params);
   }
 }

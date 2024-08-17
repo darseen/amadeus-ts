@@ -1,5 +1,5 @@
 import Client from "../../client";
-import ItineraryPriceMetrics from "./itenrary-price-metrics";
+import ItineraryPriceMetrics from "./itinerary-price-metrics";
 
 /**
  * A namespaced client for the

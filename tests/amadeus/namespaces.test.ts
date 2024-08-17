@@ -328,7 +328,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.analytics.itineraryPriceMetrics.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.analytics.itineraryPriceMetrics.get();
+      amadeus.analytics.itineraryPriceMetrics.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/analytics/itinerary-price-metrics",
         {}

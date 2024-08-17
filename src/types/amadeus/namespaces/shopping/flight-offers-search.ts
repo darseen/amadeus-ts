@@ -2,6 +2,7 @@ import { ReturnedResponseSuccess } from "../../client/response";
 import {
   CollectionMeta,
   CollectionMetaLink,
+  CurrencyCode,
   Dictionaries,
   FlightOffer,
   FlightOfferSource,
@@ -113,7 +114,7 @@ export type Coverage =
 
 // Types used in class
 export type FlightOffersSearchPostParams = {
-  currencyCode?: string;
+  currencyCode?: CurrencyCode;
   originDestinations: OriginDestination[];
   travelers: ExtendedTravelerInfo[];
   sources: FlightOfferSource[];
@@ -139,7 +140,7 @@ export type FlightOffersSearchGetParams = {
   includedAirlineCodes?: string;
   excludedAirlineCodes?: string;
   nonStop?: boolean;
-  currencyCode?: string;
+  currencyCode?: CurrencyCode;
   maxPrice?: number;
   max?: number;
 };

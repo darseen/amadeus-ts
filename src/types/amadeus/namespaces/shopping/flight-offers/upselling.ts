@@ -21,6 +21,7 @@ export interface CollectionMetaUpsell {
   }[];
 }
 
+// Types used in class
 export type FlightOffersUpsellingParams = {
   data: FlightOfferUpsellIn;
 };

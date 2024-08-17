@@ -94,6 +94,41 @@ export interface OperatingFlight {
   carrierCode?: string;
 }
 
+export type CurrencyCode =
+  | "CAD"
+  | "HKD"
+  | "ISK"
+  | "PHP"
+  | "DKK"
+  | "HUF"
+  | "CZK"
+  | "AUD"
+  | "RON"
+  | "SEK"
+  | "IDR"
+  | "INR"
+  | "BRL"
+  | "RUB"
+  | "HRK"
+  | "JPY"
+  | "THB"
+  | "EUR"
+  | "CHF"
+  | "SGD"
+  | "PLN"
+  | "BGN"
+  | "TRY"
+  | "CNY"
+  | "NOK"
+  | "NZD"
+  | "ZAR"
+  | "USD"
+  | "MXN"
+  | "ILS"
+  | "GBP"
+  | "KRW"
+  | "MYR";
+
 export interface Price {
   currency?: string;
   total?: string;
@@ -346,7 +381,7 @@ export interface BaseName {
 
 export interface ElementaryPrice {
   amount?: string;
-  currencyCode?: string;
+  currencyCode?: CurrencyCode;
 }
 
 export type Traveler = Stakeholder & {

@@ -26,9 +26,6 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Checkout branch
-        run: git checkout ${{ github.ref_name }}
-
       - name: Publish to NPM
         run: pnpm release
 

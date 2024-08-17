@@ -1,3 +1,8 @@
+import {
+  FlightOffersUpsellingParams,
+  FlightOffersUpsellingResult,
+  FlightOffersUpsellingReturnedResponse,
+} from "../../../../types/amadeus/namespaces/shopping/flight-offers/upselling";
 import Client from "../../../client";
 
 /**
@@ -30,7 +35,12 @@ export default class Upselling {
    * amadeus.shopping.flightOffers.upselling.post(body);
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post("/v1/shopping/flight-offers/upselling", params);
+  public post(
+    params: FlightOffersUpsellingParams
+  ): Promise<FlightOffersUpsellingReturnedResponse> {
+    return this.client.post<
+      FlightOffersUpsellingResult,
+      FlightOffersUpsellingResult["data"]
+    >("/v1/shopping/flight-offers/upselling", JSON.stringify(params));
   }
 }

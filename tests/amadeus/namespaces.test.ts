@@ -606,10 +606,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flight_offers.upselling.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.flightOffers.upselling.post();
+      amadeus.shopping.flightOffers.upselling.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/flight-offers/upselling",
-        {}
+        JSON.stringify({})
       );
     });
 

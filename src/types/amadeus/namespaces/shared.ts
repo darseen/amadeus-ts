@@ -74,7 +74,6 @@ export interface FlightEndPoint {
   iataCode?: string;
   terminal?: string;
   at?: string;
-
 }
 
 export interface OriginalFlightStop {
@@ -471,7 +470,6 @@ export interface FlightOrder {
   formOfIdentifications?: FormOfIdentification[];
 }
 
-
 export interface FormOfIdentification {
   identificationType?:
     | "DRIVERS_LICENSE"
@@ -503,16 +501,11 @@ export type AutomatedProcess = AutomatedProcessCommon & {
 
 export type AutomatedProcessCode = "IMMEDIATE" | "DELAYED" | "ERROR";
 
-
-
 export interface FormOfPayment {
   b2bWallet?: B2BWallet;
   creditCard?: CreditCard;
   other?: OtherMethod;
 }
-
-
-
 
 export interface B2BWallet {
   cardId?: string;
@@ -551,8 +544,6 @@ export type CreditCardBrand =
   | "DINERS"
   | "EASYPAY";
 
-
-  
 export interface OtherMethod {
   method?: OtherPaymentMethod;
   flightOfferIds?: string[];
@@ -592,3 +583,17 @@ export interface TermAndCondition {
     text?: string;
   }[];
 }
+
+export type PaymentBrand =
+  | "VISA"
+  | "AMERICAN_EXPRESS"
+  | "MASTERCARD"
+  | "VISA_ELECTRON"
+  | "VISA_DEBIT"
+  | "MASTERCARD_DEBIT"
+  | "MAESTRO"
+  | "DINERS"
+  | "MASTERCARD_IXARIS"
+  | "VISA_IXARIS"
+  | "MASTERCARD_AIRPLUS"
+  | "UATP_AIRPLUS";

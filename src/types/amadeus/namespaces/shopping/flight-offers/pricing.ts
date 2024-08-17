@@ -5,6 +5,7 @@ import {
   ElementaryPrice,
   FlightOffer,
   Issue,
+  PaymentBrand,
   ServiceName,
   TermAndCondition,
   Traveler,
@@ -52,20 +53,6 @@ export interface CreditCardFee {
   currency?: string;
   flightOfferId?: string;
 }
-
-export type PaymentBrand =
-  | "VISA"
-  | "AMERICAN_EXPRESS"
-  | "MASTERCARD"
-  | "VISA_ELECTRON"
-  | "VISA_DEBIT"
-  | "MASTERCARD_DEBIT"
-  | "MAESTRO"
-  | "DINERS"
-  | "MASTERCARD_IXARIS"
-  | "VISA_IXARIS"
-  | "MASTERCARD_AIRPLUS"
-  | "UATP_AIRPLUS";
 
 export interface DetailedFareRules {
   fareBasis?: string;

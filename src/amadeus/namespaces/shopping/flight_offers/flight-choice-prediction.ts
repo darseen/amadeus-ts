@@ -1,3 +1,8 @@
+import {
+  FlightOffersPredictionParams,
+  FlightOffersPredictionResult,
+  FlightOffersPredictionReturnedResponse,
+} from "../../../../types/amadeus/namespaces/shopping/flight-offers/flight-choice-prediction";
 import Client from "../../../client";
 
 /**
@@ -36,7 +41,7 @@ export default class FlightChoicePrediction {
    *     adults: '2'
    * }).then(function(response){
    *     return amadeus.shopping.flightOffers.prediction.post(
-   *       JSON.stringify(response)
+   *       response
    *     );
    * }).then(function(response){
    *     console.log(response.data);
@@ -45,7 +50,12 @@ export default class FlightChoicePrediction {
    * });
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post("/v2/shopping/flight-offers/prediction", params);
+  public post(
+    params: FlightOffersPredictionParams
+  ): Promise<FlightOffersPredictionReturnedResponse> {
+    return this.client.post<
+      FlightOffersPredictionResult,
+      FlightOffersPredictionResult["data"]
+    >("/v2/shopping/flight-offers/prediction", JSON.stringify(params));
   }
 }

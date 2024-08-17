@@ -7,6 +7,7 @@ import {
   FareRules,
   Fee,
   FlightEndPoint,
+  FlightOffer,
   FlightOfferSource,
   Issue,
   LocationEntry,
@@ -25,60 +26,6 @@ export interface OperatingFlight {
   carrierCode?: string;
   number?: string;
   suffix?: string;
-}
-
-export interface FlightOffer {
-  type: string;
-  id: string;
-  source?: FlightOfferSource;
-  instantTicketingRequired?: boolean;
-  disablePricing?: boolean;
-  nonHomogeneous?: boolean;
-  oneWay?: boolean;
-  paymentCardRequired?: boolean;
-  lastTicketingDate?: string;
-  numberOfBookableSeats?: number;
-  itineraries?: {
-    duration?: string;
-    segments: Segment[];
-  }[];
-  price?: ExtendedPrice;
-  pricingOptions?: {
-    fareType?: PricingOptionsFareType;
-    corporateCodes?: string[];
-    includedCheckedBagsOnly?: boolean;
-    refundableFare?: boolean;
-    noRestrictionFare?: boolean;
-    noPenaltyFare?: boolean;
-  };
-  validatingAirlineCodes?: string[];
-  travelerPricings?: {
-    travelerId: string;
-    fareOption: TravelerPricingFareOption;
-    travelerType: TravelerType;
-    associatedAdultId?: string;
-    price?: Price;
-    fareDetailsBySegment: {
-      segmentId: string;
-      cabin?: TravelClass;
-      fareBasis?: string;
-      brandedFare?: string;
-      class?: string;
-      isAllotment?: boolean;
-      allotmentDetails?: {
-        tourName?: string;
-        tourReference?: string;
-      };
-      sliceDiceIndicator?: SliceDiceIndicator;
-      includedCheckedBags?: BaggageAllowance;
-      additionalServices?: {
-        chargeableCheckedBags?: BaggageAllowance;
-        chargeableSeatNumber?: string;
-        otherServices?: ServiceName[];
-      };
-    }[];
-  }[];
-  fareRules?: FareRules;
 }
 
 export interface BaggageAllowance {

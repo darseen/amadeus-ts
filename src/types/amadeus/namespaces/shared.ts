@@ -20,22 +20,26 @@ export interface Issue {
 
 export interface CollectionMeta {
   count?: number;
-  oneWayCombinations?: {
-    originDestinationId?: string;
-    flightOfferIds?: string[];
-  }[];
+  oneWayCombinations?: OneWayCombinations;
 }
+
+export type OneWayCombinations = {
+  originDestinationId?: string;
+  flightOfferIds?: string[];
+}[];
 
 export interface CollectionMetaLink {
   count?: number;
-  links?: {
-    self?: string;
-    next?: string;
-    previous?: string;
-    last?: string;
-    first?: string;
-    up?: string;
-  };
+  links?: CollectionLinks;
+}
+
+export interface CollectionLinks {
+  self?: string;
+  next?: string;
+  previous?: string;
+  last?: string;
+  first?: string;
+  up?: string;
 }
 
 export interface LocationValue {
@@ -223,6 +227,7 @@ export interface FlightOffer {
       };
     }[];
   }[];
+  fareRules?: FareRules;
 }
 
 export type Segment = {

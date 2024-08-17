@@ -122,10 +122,10 @@ export type FlightOffersSearchPostParams = {
 };
 
 export type FlightOffersSearchPostResult = {
-  meta: CollectionMeta;
+  meta?: CollectionMeta;
   warnings?: Issue[];
   data: FlightOffer[];
-  dictionaries: Dictionaries;
+  dictionaries?: Dictionaries;
 };
 
 export type FlightOffersSearchGetParams = {
@@ -146,10 +146,10 @@ export type FlightOffersSearchGetParams = {
 };
 
 export type FlightOffersSearchGetResult = {
-  meta: CollectionMetaLink;
+  meta?: CollectionMetaLink;
   warnings?: Issue[];
   data: FlightOffer[];
-  dictionaries: Dictionaries;
+  dictionaries?: Dictionaries;
 };
 
 export type FlightOffersSearchGetReturnedResponse = Promise<

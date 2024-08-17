@@ -397,10 +397,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flightOffers.prediction.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.flightOffers.prediction.post();
+      amadeus.shopping.flightOffers.prediction.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v2/shopping/flight-offers/prediction",
-        {}
+        JSON.stringify({})
       );
     });
 

@@ -621,3 +621,22 @@ export type PaymentBrand =
   | "VISA_IXARIS"
   | "MASTERCARD_AIRPLUS"
   | "UATP_AIRPLUS";
+
+export type Defaults = {
+  departureDate?: string;
+  oneWay?: boolean;
+  duration?: string;
+  nonStop?: boolean;
+  maxPrice?: number;
+  viewBy?: "COUNTRY" | "DATE" | "DESTINATION" | "DURATION" | "WEEK";
+};
+
+export type Links = {
+  self?: string;
+};
+
+export type Meta = {
+  currency?: string;
+  links?: Links;
+  defaults?: Defaults;
+};

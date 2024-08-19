@@ -1,3 +1,8 @@
+import {
+  FlightDatesParams,
+  FlightDatesResult,
+  FlightDatesReturnedResponse,
+} from "../../../types/amadeus/namespaces/shopping/flight-dates";
 import Client from "../../client";
 
 /**
@@ -39,7 +44,10 @@ export default class FlightDates {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/shopping/flight-dates", params);
+  public get(params: FlightDatesParams): Promise<FlightDatesReturnedResponse> {
+    return this.client.get<FlightDatesResult, FlightDatesResult["data"]>(
+      "/v1/shopping/flight-dates",
+      params
+    );
   }
 }

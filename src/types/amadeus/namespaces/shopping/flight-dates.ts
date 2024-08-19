@@ -13,7 +13,7 @@ type LocationValue = {
 type LocationDictionary = Record<string, LocationValue>;
 type CurrencyDictionary = Record<string, string>;
 
-type FlightDestination = {
+type FlightDate = {
   type?: string;
   origin?: string;
   destination?: string;
@@ -21,7 +21,7 @@ type FlightDestination = {
   returnDate?: string;
   price?: Price;
   links?: {
-    flightDates?: string;
+    flightDestinations?: string;
     flightOffers?: string;
   };
 };
@@ -30,18 +30,20 @@ type Dictionaries = {
   currencies?: CurrencyDictionary;
   locations?: LocationDictionary;
 };
-export type FlightDestinationsParams = {
+
+export type FlightDatesParams = {
   origin: string;
+  destination: string;
 } & Defaults;
 
-export type FlightDestinationsResult = {
-  data: FlightDestination[];
+export type FlightDatesResult = {
+  data: FlightDate[];
   dictionaries?: Dictionaries;
   meta?: Meta;
   warnings?: Issue[];
 };
 
-export type FlightDestinationsReturnedResponse = ReturnedResponseSuccess<
-  FlightDestinationsResult,
-  FlightDestinationsResult["data"]
+export type FlightDatesReturnedResponse = ReturnedResponseSuccess<
+  FlightDatesResult,
+  FlightDatesResult["data"]
 >;

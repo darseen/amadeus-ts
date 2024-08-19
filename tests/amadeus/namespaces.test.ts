@@ -379,7 +379,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flightDates.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.flightDates.get();
+      amadeus.shopping.flightDates.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/shopping/flight-dates",
         {}

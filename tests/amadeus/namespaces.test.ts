@@ -388,7 +388,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.flightDestinations.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.flightDestinations.get();
+      amadeus.shopping.flightDestinations.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/shopping/flight-destinations",
         {}

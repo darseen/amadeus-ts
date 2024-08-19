@@ -1,3 +1,8 @@
+import {
+  FlightDestinationsParams,
+  FlightDestinationsResult,
+  FlightDestinationsReturnedResponse,
+} from "../../../types/amadeus/namespaces/shopping/flight-destinations";
 import Client from "../../client";
 
 /**
@@ -36,7 +41,12 @@ export default class FlightDestinations {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/shopping/flight-destinations", params);
+  public get(
+    params: FlightDestinationsParams
+  ): Promise<FlightDestinationsReturnedResponse> {
+    return this.client.get<
+      FlightDestinationsResult,
+      FlightDestinationsResult["data"]
+    >("/v1/shopping/flight-destinations", params);
   }
 }

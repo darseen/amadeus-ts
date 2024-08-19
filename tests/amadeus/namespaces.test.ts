@@ -597,7 +597,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.availability.flightAvailabilities.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.availability.flightAvailabilities.post();
+      amadeus.shopping.availability.flightAvailabilities.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/availability/flight-availabilities",
         {}

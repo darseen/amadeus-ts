@@ -167,6 +167,29 @@ export type Co2Emission = {
 
 export type TravelClass = "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
 
+export type DateTimeType = {
+  date: string;
+  time?: string;
+};
+
+export type CarrierRestrictions = {
+  blacklistedInEUAllowed?: boolean;
+  excludedCarrierCodes?: string[];
+  includedCarrierCodes?: string[];
+};
+
+export type ConnectionRestriction = {
+  maxNumberOfConnections?: number;
+  nonStopPreferred?: boolean;
+  airportChangeAllowed?: boolean;
+  technicalStopsAllowed?: boolean;
+};
+
+export type CabinRestriction = {
+  cabin?: TravelClass;
+  originDestinationIds?: string[];
+};
+
 export type FlightOffer = {
   type: string;
   id: string;
@@ -266,6 +289,12 @@ export type Dictionaries = {
 export type AllotmentDetails = {
   tourName?: string;
   tourReference?: string;
+};
+
+export type TravelerInfo = {
+  id: string;
+  travelerType: TravelerType;
+  associatedAdultId?: string;
 };
 
 export type ChargeableCheckdBags = BaggageAllowance & {

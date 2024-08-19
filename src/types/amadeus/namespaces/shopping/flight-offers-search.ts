@@ -1,13 +1,18 @@
 import { ReturnedResponseSuccess } from "../../client/response";
 import {
+  CabinRestriction,
+  CarrierRestrictions,
   CollectionMeta,
   CollectionMetaLink,
+  ConnectionRestriction,
   CurrencyCode,
+  DateTimeType,
   Dictionaries,
   FlightOffer,
   FlightOfferSource,
   Issue,
   TravelClass,
+  TravelerInfo,
   TravelerType,
 } from "../shared";
 
@@ -35,21 +40,10 @@ type DateTimeRange = UtilRequiredKeys<DateTimeType, "date"> & {
   timeWindow?: string;
 };
 
-type DateTimeType = {
-  date: string;
-  time?: string;
-};
-
 type ExtendedTravelerInfo = UtilRequiredKeys<
   TravelerInfo,
   "id" | "travelerType"
 >;
-
-type TravelerInfo = {
-  id: string;
-  travelerType: TravelerType;
-  associatedAdultId?: string;
-};
 
 type SearchCriteria = {
   excludeAllotments?: boolean;
@@ -66,11 +60,6 @@ type SearchCriteria = {
   flightFilters?: FlightFilters;
 };
 
-type CabinRestriction = {
-  cabin?: TravelClass;
-  originDestinationIds?: string[];
-};
-
 type ExtendedCabinRestriction = CabinRestriction & {
   coverage?: Coverage;
 };
@@ -85,19 +74,6 @@ type FlightFilters = {
   carrierRestrictions?: CarrierRestrictions;
   cabinRestrictions?: ExtendedCabinRestriction[];
   connectionRestriction?: ConnectionRestriction;
-};
-
-type CarrierRestrictions = {
-  blacklistedInEUAllowed?: boolean;
-  excludedCarrierCodes?: string[];
-  includedCarrierCodes?: string[];
-};
-
-type ConnectionRestriction = {
-  maxNumberOfConnections?: number;
-  nonStopPreferred?: boolean;
-  airportChangeAllowed?: boolean;
-  technicalStopsAllowed?: boolean;
 };
 
 type ExtendedPricingOptions = {

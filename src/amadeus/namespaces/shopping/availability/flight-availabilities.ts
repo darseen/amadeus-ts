@@ -1,3 +1,8 @@
+import {
+  FlightAvailabilitiesParams,
+  FlightAvailabilitiesResult,
+  FlightAvailabilitiesReturnedResponse,
+} from "../../../../types/amadeus/namespaces/shopping/availability/flight-availabilities";
 import Client from "../../../client";
 
 /**
@@ -23,17 +28,19 @@ export default class FlightAvailabilities {
   /**
    * Get available seats in different fare classes
    *
-   * @param {Object} params
+   * @param {FlightAvailabilitiesParams} params
    * @return {Promise<Response|ResponseError>} a Promise
    *
    * ```ts
    * amadeus.shopping.availability.flightAvailabilities.post(body);
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post(
-      "/v1/shopping/availability/flight-availabilities",
-      params
-    );
+  public post(
+    params: FlightAvailabilitiesParams
+  ): Promise<FlightAvailabilitiesReturnedResponse> {
+    return this.client.post<
+      FlightAvailabilitiesResult,
+      FlightAvailabilitiesResult["data"]
+    >("/v1/shopping/availability/flight-availabilities", params);
   }
 }

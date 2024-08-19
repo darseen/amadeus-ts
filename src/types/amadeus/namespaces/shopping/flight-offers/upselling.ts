@@ -1,27 +1,26 @@
 import { ReturnedResponseSuccess } from "../../../client/response";
 import { Dictionaries, FlightOffer, Issue, PaymentBrand } from "../../shared";
 
-export interface Payment {
+type Payment = {
   brand?: PaymentBrand;
   binNumber?: number;
   flightOfferIds?: string[];
-}
+};
 
-export interface FlightOfferUpsellIn {
+type FlightOfferUpsellIn = {
   type: "flight-offers-upselling";
   flightOffers: FlightOffer[];
   payments?: Payment[];
-}
+};
 
-export interface CollectionMetaUpsell {
+type CollectionMetaUpsell = {
   count?: number;
   oneWayUpselledCombinations?: {
     flightOfferId?: string;
     upselledFlightOfferIds?: string[];
   }[];
-}
+};
 
-// Types used in class
 export type FlightOffersUpsellingParams = {
   data: FlightOfferUpsellIn;
 };

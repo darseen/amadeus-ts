@@ -2,48 +2,30 @@ import { ReturnedResponseSuccess } from "../../client/response";
 import {
   AircraftEquipment,
   CollectionMetaLink,
-  ElementaryPrice,
-  ExtendedPrice,
-  FareRules,
   Fee,
   FlightEndPoint,
   FlightOffer,
-  FlightOfferSource,
   Issue,
   LocationEntry,
-  PricingOptionsFareType,
-  Segment,
-  ServiceName,
-  SliceDiceIndicator,
   Tax,
-  TravelClass,
   Traveler,
-  TravelerPricingFareOption,
-  TravelerType,
 } from "../shared";
 
-export interface OperatingFlight {
+type OperatingFlight = {
   carrierCode?: string;
   number?: string;
   suffix?: string;
-}
+};
 
-export interface BaggageAllowance {
-  excessRate?: ElementaryPrice;
-  quantity?: number;
-  weight?: number;
-  weightUnit?: string;
-}
-
-export interface Price {
+type Price = {
   currency?: string;
   total?: string;
   base?: string;
   fees?: Fee[];
   taxes?: Tax[];
-}
+};
 
-export interface SeatMap {
+type SeatMap = {
   type?: string;
   id?: string;
   self?: Link;
@@ -59,16 +41,16 @@ export interface SeatMap {
   decks?: Deck[];
   aircraftCabinAmenities?: AircraftCabinAmenities;
   availableSeatsCounters?: AvailableSeatsCounter[];
-}
+};
 
-export interface Deck {
+type Deck = {
   deckType?: "UPPER" | "MAIN" | "LOWER";
   deckConfiguration?: DeckConfiguration;
   facilities?: Facility[];
   seats?: Seat[];
-}
+};
 
-export interface DeckConfiguration {
+type DeckConfiguration = {
   width?: number;
   length?: number;
   startSeatRow?: number;
@@ -78,63 +60,63 @@ export interface DeckConfiguration {
   startWingsRow?: number;
   endWingsRow?: number;
   exitRowsX?: number[];
-}
+};
 
-export interface Facility {
+type Facility = {
   code?: string;
   column?: string;
   row?: string;
   position?: "FRONT" | "REAR" | "SEAT";
   coordinates?: Coordinates;
-}
+};
 
-export interface Seat {
+type Seat = {
   cabin?: string;
   number?: string;
   characteristicsCodes?: string[];
   travelerPricing?: SeatmapTravelerPricing[];
   coordinates?: Coordinates;
-}
+};
 
-export interface Coordinates {
+type Coordinates = {
   x?: number;
   y?: number;
-}
+};
 
-export interface AvailableSeatsCounter {
+type AvailableSeatsCounter = {
   travelerId?: string;
   value?: number;
-}
+};
 
-export interface SeatmapTravelerPricing {
+type SeatmapTravelerPricing = {
   travelerId?: string;
   seatAvailabilityStatus?: "AVAILABLE" | "BLOCKED" | "OCCUPIED";
   price?: Price;
-}
+};
 
-export interface AircraftCabinAmenities {
+type AircraftCabinAmenities = {
   power?: AircraftCabinAmenitiesPower;
   seat?: AmenitySeat;
   wifi?: AircraftCabinAmenitiesWifi;
   entertainment?: AircraftCabinAmenitiesEntertainment[];
   food?: AircraftCabinAmenitiesFood;
   beverage?: AircraftCabinAmenitiesBeverage;
-}
+};
 
-export type AircraftCabinAmenitiesBeverage = Amenity & {
+type AircraftCabinAmenitiesBeverage = Amenity & {
   beverageType?: "ALCOHOLIC" | "NON_ALCOHOLIC" | "ALCOHOLIC_AND_NON_ALCOHOLIC";
 };
 
-export type AircraftCabinAmenitiesPower = Amenity & {
+type AircraftCabinAmenitiesPower = Amenity & {
   powerType?: "PLUG" | "USB_PORT" | "ADAPTOR" | "PLUG_OR_USB_PORT";
   usbType?: "USB_A" | "USB_C" | "USB_A_AND_USB_C";
 };
 
-export type AircraftCabinAmenitiesFood = Amenity & {
+type AircraftCabinAmenitiesFood = Amenity & {
   foodType?: "MEAL" | "FRESH_MEAL" | "SNACK" | "FRESH_SNACK";
 };
 
-export type AircraftCabinAmenitiesEntertainment = Amenity & {
+type AircraftCabinAmenitiesEntertainment = Amenity & {
   entertainmentType?:
     | "LIVE_TV"
     | "MOVIES"
@@ -143,23 +125,23 @@ export type AircraftCabinAmenitiesEntertainment = Amenity & {
     | "IP_TV";
 };
 
-export type AircraftCabinAmenitiesWifi = Amenity & {
+type AircraftCabinAmenitiesWifi = Amenity & {
   wifiCoverage?: "FULL" | "PARTIAL";
 };
 
-export interface Amenity {
+type Amenity = {
   isChargeable?: boolean;
-}
+};
 
-export interface AmenitySeat {
+type AmenitySeat = {
   legSpace?: number;
   spaceUnit?: "INCHES" | "CENTIMENTERS";
   tilt?: "FULL_FLAT" | "ANGLE_FLAT" | "NORMAL";
   amenityType?: "SEAT";
   medias?: AmenityMedia[];
-}
+};
 
-export interface AmenityMedia {
+type AmenityMedia = {
   title?: string;
   href?: string;
   description?: QualifiedFreeText;
@@ -174,29 +156,28 @@ export interface AmenityMedia {
     | "multipart"
     | "text"
     | "video";
-}
+};
 
-export type FacilityDictionary = Record<string, string>;
-export type SeatCharacteristicDictionary = Record<string, string>;
+type FacilityDictionary = Record<string, string>;
+type SeatCharacteristicDictionary = Record<string, string>;
 
-export interface Link {
+type Link = {
   href: string;
   methods?: ("GET" | "PUT" | "DELETE" | "POST" | "PATCH")[];
   count?: number;
-}
+};
 
-export interface QualifiedFreeText {
+type QualifiedFreeText = {
   text?: string;
   lang?: string;
-}
+};
 
-export interface Dictionaries {
+type Dictionaries = {
   locations?: LocationEntry;
   facility?: FacilityDictionary;
   seatCharacteristics?: SeatCharacteristicDictionary;
-}
+};
 
-// Types used in class
 export type SeatmapsGetParams = {
   "flight-orderId": string;
 };

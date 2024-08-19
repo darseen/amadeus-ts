@@ -1,7 +1,7 @@
 import { ReturnedResponseSuccess } from "../../client/response";
 import { CollectionMetaLink, CurrencyCode, Issue } from "../shared";
 
-export interface ItineraryPriceMetric {
+type ItineraryPriceMetric = {
   type?: string;
   origin?: {
     iataCode?: string;
@@ -17,9 +17,8 @@ export interface ItineraryPriceMetric {
     amount?: string;
     quartileRanking?: "MINIMUM" | "FIRST" | "MEDIUM" | "THIRD" | "MAXIMUM";
   }[];
-}
+};
 
-// Types used in class
 export type ItineraryPriceMetricsParams = {
   originIataCode: string;
   destinationIataCode: string;

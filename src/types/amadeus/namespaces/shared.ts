@@ -1,12 +1,12 @@
-export interface Error400 {
+export type Error400 = {
   errors: Issue[];
-}
+};
 
-export interface Error500 {
+export type Error500 = {
   errors: Issue[];
-}
+};
 
-export interface Issue {
+export type Issue = {
   status?: number;
   code?: number;
   title?: string;
@@ -16,54 +16,43 @@ export interface Issue {
     parameter?: string;
     example?: string;
   };
-}
+};
 
-export interface CollectionMeta {
+export type CollectionMeta = {
   count?: number;
   oneWayCombinations?: OneWayCombinations;
-}
+};
 
 export type OneWayCombinations = {
   originDestinationId?: string;
   flightOfferIds?: string[];
 }[];
 
-export interface CollectionMetaLink {
+export type CollectionMetaLink = {
   count?: number;
   links?: CollectionLinks;
-}
+};
 
-export interface CollectionLinks {
+export type CollectionLinks = {
   self?: string;
   next?: string;
   previous?: string;
   last?: string;
   first?: string;
   up?: string;
-}
+};
 
-export interface LocationValue {
+export type LocationValue = {
   cityCode?: string;
   countryCode?: string;
-}
-
-export type LocationEntry = {
-  [key: string]: LocationValue;
 };
 
-export type AircraftEntry = {
-  [key: string]: string;
-};
+export type LocationEntry = Record<string, LocationValue>;
+export type AircraftEntry = Record<string, string>;
+export type CurrencyEntry = Record<string, string>;
+export type CarrierEntry = Record<string, string>;
 
-export type CurrencyEntry = {
-  [key: string]: string;
-};
-
-export type CarrierEntry = {
-  [key: string]: string;
-};
-
-export interface FlightSegment {
+export type FlightSegment = {
   departure?: FlightEndPoint;
   arrival?: FlightEndPoint;
   carrierCode?: string;
@@ -72,31 +61,31 @@ export interface FlightSegment {
   operating?: OperatingFlight;
   duration?: string;
   stops?: FlightStop[];
-}
+};
 
-export interface FlightEndPoint {
+export type FlightEndPoint = {
   iataCode?: string;
   terminal?: string;
   at?: string;
-}
+};
 
-export interface OriginalFlightStop {
+export type OriginalFlightStop = {
   iataCode?: string;
   duration?: string;
-}
+};
 
 export type FlightStop = OriginalFlightStop & {
   arrivalAt?: string;
   departureAt?: string;
 };
 
-export interface AircraftEquipment {
+export type AircraftEquipment = {
   code?: string;
-}
+};
 
-export interface OperatingFlight {
+export type OperatingFlight = {
   carrierCode?: string;
-}
+};
 
 export type CurrencyCode =
   | "CAD"
@@ -133,14 +122,14 @@ export type CurrencyCode =
   | "KRW"
   | "MYR";
 
-export interface Price {
+export type Price = {
   currency?: string;
   total?: string;
   base?: string;
   fees?: Fee[];
   taxes?: Tax[];
   refundableTaxes?: string;
-}
+};
 
 export type ExtendedPrice = {
   margin?: string;
@@ -158,27 +147,27 @@ export type AdditionalServiceType =
   | "SEATS"
   | "OTHER_SERVICES";
 
-export interface Fee {
+export type Fee = {
   amount?: string;
   type?: FeeType;
-}
+};
 
 export type FeeType = "TICKETING" | "FORM_OF_PAYMENT" | "SUPPLIER";
 
-export interface Tax {
+export type Tax = {
   amount?: string;
   code?: string;
-}
+};
 
-export interface Co2Emission {
+export type Co2Emission = {
   weight?: number;
   weightUnit?: string;
   cabin?: TravelClass;
-}
+};
 
 export type TravelClass = "ECONOMY" | "PREMIUM_ECONOMY" | "BUSINESS" | "FIRST";
 
-export interface FlightOffer {
+export type FlightOffer = {
   type: string;
   id: string;
   source?: FlightOfferSource;
@@ -228,7 +217,7 @@ export interface FlightOffer {
     }[];
   }[];
   fareRules?: FareRules;
-}
+};
 
 export type Segment = {
   id?: string;
@@ -267,37 +256,32 @@ export type SliceDiceIndicator =
   | "SUB_OD_AVAILABILITY_1"
   | "SUB_OD_AVAILABILITY_2";
 
-export interface Dictionaries {
+export type Dictionaries = {
   locations?: LocationEntry;
   aircraft?: AircraftEntry;
   currencies?: CurrencyEntry;
   carriers?: CarrierEntry;
-}
+};
 
-export interface LocationValue {
-  cityCode?: string;
-  countryCode?: string;
-}
-
-export interface AllotmentDetails {
+export type AllotmentDetails = {
   tourName?: string;
   tourReference?: string;
-}
+};
 
 export type ChargeableCheckdBags = BaggageAllowance & {
   id?: string;
 };
 
-export interface ChargeableSeat {
+export type ChargeableSeat = {
   id?: string;
   number?: string;
-}
+};
 
-export interface BaggageAllowance {
+export type BaggageAllowance = {
   quantity?: number;
   weight?: number;
   weightUnit?: string;
-}
+};
 
 export type ServiceName = "PRIORITY_BOARDING" | "AIRPORT_CHECKIN";
 
@@ -307,13 +291,13 @@ export type PricingOptionsFareType = (
   | "CORPORATE"
 )[];
 
-export interface Stakeholder {
+export type Stakeholder = {
   id?: string;
   dateOfBirth?: string;
   gender?: StakeholderGender;
   name?: Name;
   documents?: IdentityDocument[];
-}
+};
 
 export type StakeholderGender = "MALE" | "FEMALE";
 
@@ -324,7 +308,7 @@ export type IdentityDocument = Document & {
   holder?: boolean;
 };
 
-export interface Document {
+export type Document = {
   number?: string;
   issuanceDate?: string;
   expiryDate?: string;
@@ -332,7 +316,7 @@ export interface Document {
   issuanceLocation?: string;
   nationality?: string;
   birthPlace?: string;
-}
+};
 
 export type DocumentType =
   | "VISA"
@@ -341,25 +325,25 @@ export type DocumentType =
   | "KNOWN_TRAVELER"
   | "REDRESS";
 
-export interface EmergencyContact {
+export type EmergencyContact = {
   addresseeName?: string;
   countryCode?: string;
   number?: string;
   text?: string;
-}
+};
 
-export interface LoyaltyProgram {
+export type LoyaltyProgram = {
   programOwner?: string;
   id?: string;
-}
+};
 
-export interface Discount {
+export type Discount = {
   subType?: DiscountType;
   cityName?: string;
   travelerType?: DiscountTravelerType;
   cardNumber?: string;
   certificateNumber?: string;
-}
+};
 
 export type DiscountType =
   | "SPANISH_RESIDENT"
@@ -378,16 +362,16 @@ export type Name = BaseName & {
   secondLastName?: string;
 };
 
-export interface BaseName {
+export type BaseName = {
   firstName?: string;
   lastName?: string;
   middleName?: string;
-}
+};
 
-export interface ElementaryPrice {
+export type ElementaryPrice = {
   amount?: string;
   currencyCode?: CurrencyCode;
-}
+};
 
 export type Traveler = Stakeholder & {
   emergencyContact?: EmergencyContact;
@@ -407,42 +391,42 @@ export type ContactPurpose =
   | "INVOICE"
   | "STANDARD_WITHOUT_TRANSMISSION";
 
-export interface ContactDictionary {
+export type ContactDictionary = {
   addresseeName?: Name;
   address?: Address;
   language?: string;
   purpose?: ContactPurpose;
-}
+};
 
-export interface Address {
+export type Address = {
   lines?: string[];
   postalCode?: string;
   countryCode?: string;
   cityName?: string;
   stateName?: string;
   postalBox?: string;
-}
+};
 
-export interface Phone {
+export type Phone = {
   deviceType?: PhoneDeviceType;
   countryCallingCode?: string;
   number?: string;
-}
+};
 
 export type PhoneDeviceType = "MOBILE" | "LANDLINE" | "FAX";
 
-export interface Remarks {
+export type Remarks = {
   general?: GeneralRemark[];
   airline?: AirlineRemark[];
-}
+};
 
-export interface GeneralRemark {
+export type GeneralRemark = {
   subType: GeneralRemarkType;
   category?: string;
   text: string;
   travelerIds?: string[];
   flightOfferIds?: string[];
-}
+};
 
 export type GeneralRemarkType =
   | "GENERAL_MISCELLANEOUS"
@@ -455,14 +439,14 @@ export type GeneralRemarkType =
   | "TICKETING_MISCELLANEOUS"
   | "TOUR_CODE";
 
-export interface AirlineRemark {
+export type AirlineRemark = {
   subType: AirlineRemarkType;
   keyword?: string;
   airlineCode: string;
   text: string;
   travelerIds?: string[];
   flightOfferIds?: string[];
-}
+};
 
 export type AirlineRemarkType =
   | "OTHER_SERVICE_INFORMATION"
@@ -471,29 +455,29 @@ export type AirlineRemarkType =
   | "CLIENT_ID"
   | "ADVANCED_TICKET_TIME_LIMIT";
 
-export interface TicketingAgreement {
+export type TicketingAgreement = {
   option?: TicketingAgreementOption;
   delay?: string;
   dateTime?: string;
   segmentIds?: string[];
-}
+};
 
 export type TicketingAgreementOption =
   | "CONFIRM"
   | "DELAY_TO_QUEUE"
   | "DELAY_TO_CANCEL";
 
-export interface AssociatedRecordCommon {
+export type AssociatedRecordCommon = {
   reference?: string;
   creationDate?: string;
   originSystemCode?: string;
-}
+};
 
 export type AssociatedRecord = AssociatedRecordCommon & {
   flightOfferId?: string;
 };
 
-export interface FlightOrder {
+export type FlightOrder = {
   type: "flight-order";
   id?: string;
   queuingOfficeId?: string;
@@ -508,9 +492,9 @@ export interface FlightOrder {
   contacts?: Contact[];
   tickets?: AirTravelDocument[];
   formOfIdentifications?: FormOfIdentification[];
-}
+};
 
-export interface FormOfIdentification {
+export type FormOfIdentification = {
   identificationType?:
     | "DRIVERS_LICENSE"
     | "PASSPORT"
@@ -522,16 +506,16 @@ export interface FormOfIdentification {
   number?: string;
   travelerIds?: string[];
   flightOfferIds?: string[];
-}
+};
 
-export interface AutomatedProcessCommon {
+export type AutomatedProcessCommon = {
   code?: AutomatedProcessCode;
   queue?: {
     number?: string;
     category?: string;
   };
   text?: string;
-}
+};
 
 export type AutomatedProcess = AutomatedProcessCommon & {
   delay?: string;
@@ -541,13 +525,13 @@ export type AutomatedProcess = AutomatedProcessCommon & {
 
 export type AutomatedProcessCode = "IMMEDIATE" | "DELAYED" | "ERROR";
 
-export interface FormOfPayment {
+export type FormOfPayment = {
   b2bWallet?: B2BWallet;
   creditCard?: CreditCard;
   other?: OtherMethod;
-}
+};
 
-export interface B2BWallet {
+export type B2BWallet = {
   cardId?: string;
   cardUsageName?: string;
   cardFriendlyName?: string;
@@ -557,7 +541,7 @@ export interface B2BWallet {
   }[];
   virtualCreditCardDetails?: VirtualCreditCardDetails;
   flightOfferIds?: string[];
-}
+};
 
 export type VirtualCreditCardDetails = CreditCardCommon & ElementaryPrice;
 
@@ -566,12 +550,12 @@ export type CreditCard = CreditCardCommon & {
   flightOfferIds?: string[];
 };
 
-export interface CreditCardCommon {
+export type CreditCardCommon = {
   brand?: CreditCardBrand;
   holder?: string;
   number?: string;
   expiryDate?: string;
-}
+};
 
 export type CreditCardBrand =
   | "VISA"
@@ -584,10 +568,10 @@ export type CreditCardBrand =
   | "DINERS"
   | "EASYPAY";
 
-export interface OtherMethod {
+export type OtherMethod = {
   method?: OtherPaymentMethod;
   flightOfferIds?: string[];
-}
+};
 
 export type OtherPaymentMethod = "ACCOUNT" | "CHECK" | "CASH" | "NONREFUNDABLE";
 
@@ -596,18 +580,18 @@ export type AirTravelDocument = AirTravelDocumentCommon & {
   segmentIds?: string[];
 };
 
-export interface AirTravelDocumentCommon {
+export type AirTravelDocumentCommon = {
   documentType?: "ETICKET" | "PTICKET" | "EMD" | "MCO";
   documentNumber?: string;
   documentStatus?: "ISSUED" | "REFUNDED" | "VOID" | "ORIGINAL" | "EXCHANGED";
-}
+};
 
-export interface FareRules {
+export type FareRules = {
   currency?: string;
   rules?: TermAndCondition[];
-}
+};
 
-export interface TermAndCondition {
+export type TermAndCondition = {
   category?:
     | "REFUND"
     | "EXCHANGE"
@@ -622,7 +606,7 @@ export interface TermAndCondition {
     descriptionType?: string;
     text?: string;
   }[];
-}
+};
 
 export type PaymentBrand =
   | "VISA"

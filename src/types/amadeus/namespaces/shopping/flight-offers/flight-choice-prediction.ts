@@ -8,7 +8,6 @@ import {
 } from "../../shared";
 import { FlightOffersSearchGetResult } from "../flight-offers-search";
 
-// Types used in class
 export type FlightOffersPredictionParams = FlightOffersSearchGetResult;
 
 export type FlightOffersPredictionResult = {

@@ -6,7 +6,6 @@ import {
   Issue,
 } from "../shared";
 
-// Types used in class
 export type FlightOrdersParams = {
   data: FlightOrder;
 };

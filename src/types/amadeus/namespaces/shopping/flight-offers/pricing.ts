@@ -11,7 +11,7 @@ import {
   Traveler,
 } from "../../shared";
 
-export interface FlightOfferPricingIn {
+type FlightOfferPricingIn = {
   type: "flight-offers-pricing";
   flightOffers: FlightOffer[];
   payments?: {
@@ -20,9 +20,9 @@ export interface FlightOfferPricingIn {
     flightOfferIds?: string[];
   }[];
   travelers?: Traveler[];
-}
+};
 
-export interface FlightOfferPricingOut {
+type FlightOfferPricingOut = {
   type: string;
   flightOffers: FlightOffer[];
   bookingRequirements?: {
@@ -45,23 +45,23 @@ export interface FlightOfferPricingOut {
       residenceRequired?: boolean;
     }[];
   };
-}
+};
 
-export interface CreditCardFee {
+type CreditCardFee = {
   brand?: PaymentBrand;
   amount?: string;
   currency?: string;
   flightOfferId?: string;
-}
+};
 
-export interface DetailedFareRules {
+type DetailedFareRules = {
   fareBasis?: string;
   name?: string;
   fareNotes?: TermAndCondition;
   segmentId?: string;
-}
+};
 
-export type Bags = BaggageAllowance & {
+type Bags = BaggageAllowance & {
   name?: string;
   price?: ElementaryPrice;
   bookableByItinerary?: boolean;
@@ -69,16 +69,15 @@ export type Bags = BaggageAllowance & {
   travelerIds?: string[];
 };
 
-export interface OtherServices {
+type OtherServices = {
   name?: ServiceName;
   price?: ElementaryPrice;
   bookableByTraveler?: boolean;
   bookableByItinerary?: boolean;
   segmentIds?: string[];
   travelerIds?: string[];
-}
+};
 
-// Types used in class
 export type FlightOffersPricingParams = {
   data: FlightOfferPricingIn;
 };
@@ -92,18 +91,10 @@ export type FlightOffersPricingResult = {
   data: FlightOfferPricingOut;
   warnings?: Issue[];
   included?: {
-    "credit-card-fees": {
-      [key: string]: CreditCardFee;
-    };
-    bags: {
-      [key: string]: Bags;
-    };
-    "other-services": {
-      [key: string]: OtherServices;
-    };
-    "detailed-fare-rules": {
-      [key: string]: DetailedFareRules;
-    };
+    "credit-card-fees": Record<string, CreditCardFee>;
+    bags: Record<string, Bags>;
+    "other-services": Record<string, OtherServices>;
+    "detailed-fare-rules": Record<string, DetailedFareRules>;
   };
   dictionaries?: Dictionaries;
 };

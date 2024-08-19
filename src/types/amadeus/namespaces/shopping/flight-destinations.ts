@@ -1,31 +1,23 @@
 import { ReturnedResponseSuccess } from "../../client/response";
 import { Issue } from "../shared";
 
-export interface Links {
+type Links = {
   self?: string;
-}
+};
 
-export interface Price {
+type Price = {
   total?: string;
-}
+};
 
-export type LocationDictionary = any;
-
-export interface LocationValue {
+type LocationValue = {
   subType?: "AIRPORT" | "CITY";
   detailedName?: string;
-}
+};
 
-export type CurrencyDictionary = any;
+type LocationDictionary = Record<string, LocationValue>;
+type CurrencyDictionary = Record<string, string>;
 
-export interface FlightDestinations {
-  data?: FlightDestination[];
-  dictionaries?: Dictionaries;
-  meta?: Meta;
-  warnings?: Issue[];
-}
-
-export interface FlightDestination {
+type FlightDestination = {
   type?: string;
   origin?: string;
   destination?: string;
@@ -36,29 +28,28 @@ export interface FlightDestination {
     flightDates?: string;
     flightOffers?: string;
   };
-}
+};
 
-export interface Dictionaries {
+type Dictionaries = {
   currencies?: CurrencyDictionary;
   locations?: LocationDictionary;
-}
+};
 
-export interface Meta {
+type Meta = {
   currency?: string;
   links?: Links;
   defaults?: Defaults;
-}
+};
 
-export interface Defaults {
+type Defaults = {
   departureDate?: string;
   oneWay?: boolean;
   duration?: string;
   nonStop?: boolean;
   maxPrice?: number;
   viewBy?: "COUNTRY" | "DATE" | "DESTINATION" | "DURATION" | "WEEK";
-}
+};
 
-// Types used in class
 export type FlightDestinationsParams = {
   origin: string;
 } & Defaults;

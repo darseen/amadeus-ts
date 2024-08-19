@@ -13,7 +13,7 @@ import {
 
 type UtilRequiredKeys<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
-export type OriginDestination = OriginDestinationLight & {
+type OriginDestination = OriginDestinationLight & {
   originRadius?: number;
   alternativeOriginsCodes?: string[];
   destinationRadius?: number;
@@ -22,36 +22,36 @@ export type OriginDestination = OriginDestinationLight & {
   arrivalDateTimeRange?: DateTimeRange;
 };
 
-export interface OriginDestinationLight {
+type OriginDestinationLight = {
   id?: string;
   originLocationCode?: string;
   destinationLocationCode?: string;
   includedConnectionPoints?: string[];
   excludedConnectionPoints?: string[];
-}
+};
 
-export type DateTimeRange = UtilRequiredKeys<DateTimeType, "date"> & {
+type DateTimeRange = UtilRequiredKeys<DateTimeType, "date"> & {
   dateWindow?: string;
   timeWindow?: string;
 };
 
-export interface DateTimeType {
+type DateTimeType = {
   date: string;
   time?: string;
-}
+};
 
-export type ExtendedTravelerInfo = UtilRequiredKeys<
+type ExtendedTravelerInfo = UtilRequiredKeys<
   TravelerInfo,
   "id" | "travelerType"
 >;
 
-export interface TravelerInfo {
+type TravelerInfo = {
   id: string;
   travelerType: TravelerType;
   associatedAdultId?: string;
-}
+};
 
-export interface SearchCriteria {
+type SearchCriteria = {
   excludeAllotments?: boolean;
   addOneWayOffers?: boolean;
   maxFlightOffers?: number;
@@ -64,18 +64,18 @@ export interface SearchCriteria {
   };
   pricingOptions?: ExtendedPricingOptions;
   flightFilters?: FlightFilters;
-}
+};
 
-export interface CabinRestriction {
+type CabinRestriction = {
   cabin?: TravelClass;
   originDestinationIds?: string[];
-}
+};
 
-export type ExtendedCabinRestriction = CabinRestriction & {
+type ExtendedCabinRestriction = CabinRestriction & {
   coverage?: Coverage;
 };
 
-export interface FlightFilters {
+type FlightFilters = {
   crossBorderAllowed?: boolean;
   moreOvernightsAllowed?: boolean;
   returnToDepartureAirport?: boolean;
@@ -85,34 +85,30 @@ export interface FlightFilters {
   carrierRestrictions?: CarrierRestrictions;
   cabinRestrictions?: ExtendedCabinRestriction[];
   connectionRestriction?: ConnectionRestriction;
-}
+};
 
-export interface CarrierRestrictions {
+type CarrierRestrictions = {
   blacklistedInEUAllowed?: boolean;
   excludedCarrierCodes?: string[];
   includedCarrierCodes?: string[];
-}
+};
 
-export interface ConnectionRestriction {
+type ConnectionRestriction = {
   maxNumberOfConnections?: number;
   nonStopPreferred?: boolean;
   airportChangeAllowed?: boolean;
   technicalStopsAllowed?: boolean;
-}
+};
 
-export interface ExtendedPricingOptions {
+type ExtendedPricingOptions = {
   includedCheckedBagsOnly?: boolean;
   refundableFare?: boolean;
   noRestrictionFare?: boolean;
   noPenaltyFare?: boolean;
-}
+};
 
-export type Coverage =
-  | "MOST_SEGMENTS"
-  | "AT_LEAST_ONE_SEGMENT"
-  | "ALL_SEGMENTS";
+type Coverage = "MOST_SEGMENTS" | "AT_LEAST_ONE_SEGMENT" | "ALL_SEGMENTS";
 
-// Types used in class
 export type FlightOffersSearchPostParams = {
   currencyCode?: CurrencyCode;
   originDestinations: OriginDestination[];

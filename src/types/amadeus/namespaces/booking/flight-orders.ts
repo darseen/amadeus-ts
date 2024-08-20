@@ -17,7 +17,7 @@ export type FlightOrdersResult = {
   dictionaries: Dictionaries;
 };
 
-export type FlightOrdersReturnType = ReturnedResponseSuccess<
+export type FlightOrdersReturnedResponse = ReturnedResponseSuccess<
   FlightOrdersResult,
   FlightOrdersResult["data"]
 >;

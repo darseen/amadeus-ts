@@ -9,6 +9,7 @@ import {
 import { ReturnedResponseSuccess } from "../types/amadeus/client/response";
 import { ResponseError } from "./client/errors";
 
+// Client And Namespaces
 import Client from "./client";
 import ReferenceData from "./namespaces/reference-data";
 import Shopping from "./namespaces/shopping";
@@ -23,6 +24,93 @@ import Schedule from "./namespaces/schedule";
 import Analytics from "./namespaces/analytics";
 import Airline from "./namespaces/airline";
 import Location from "./namespaces/location";
+
+// Shared Types
+import type {
+  TravelClass,
+  DocumentType,
+  CurrencyCode,
+  TravelerType,
+  DiscountType,
+  DiscountTravelerType,
+  Traveler,
+  Contact,
+  Address,
+  Phone,
+  CreditCardBrand,
+  OtherPaymentMethod,
+  PaymentBrand,
+} from "../types/amadeus/namespaces/shared";
+
+// Namespaces Types
+
+// flight-offers-search
+import type {
+  FlightOffersSearchPostParams,
+  FlightOffersSearchGetParams,
+  FlightOffersSearchPostResult,
+  FlightOffersSearchGetResult,
+} from "../types/amadeus/namespaces/shopping/flight-offers-search";
+
+// flight-offers-pricing
+import type {
+  FlightOffersPricingAdditionalParams,
+  FlightOffersPricingParams,
+  FlightOffersPricingResult,
+} from "../types/amadeus/namespaces/shopping/flight-offers/pricing";
+
+// flight-offers-prediction
+import type {
+  FlightOffersPredictionParams,
+  FlightOffersPredictionResult,
+} from "../types/amadeus/namespaces/shopping/flight-offers/flight-choice-prediction";
+
+// flight-offers-upselling
+import type {
+  FlightOffersUpsellingParams,
+  FlightOffersUpsellingResult,
+} from "../types/amadeus/namespaces/shopping/flight-offers/upselling";
+
+// flight-dates
+import type {
+  FlightDatesParams,
+  FlightDatesResult,
+} from "../types/amadeus/namespaces/shopping/flight-dates";
+
+// flight-destinations
+import type {
+  FlightDestinationsParams,
+  FlightDestinationsResult,
+} from "../types/amadeus/namespaces/shopping/flight-destinations";
+
+// seatmaps
+import type {
+  SeatmapsGetParams,
+  SeatmapsGetResult,
+  SeatmapsPostParams,
+  SeatmapsPostResult,
+} from "../types/amadeus/namespaces/shopping/seatmaps";
+
+// flight-availabilities
+import type {
+  FlightAvailabilitiesParams,
+  FlightAvailabilitiesResult,
+} from "../types/amadeus/namespaces/shopping/availability/flight-availabilities";
+
+// itinerary-price-metrics
+import type {
+  ItineraryPriceMetricsParams,
+  ItineraryPriceMetricsResult,
+} from "../types/amadeus/namespaces/analytics/itinerary-price-metrics";
+
+// flight-order
+import type { FlightOrderGetResult } from "../types/amadeus/namespaces/booking/flight-order";
+
+// flight-orders
+import type {
+  FlightOrdersParams,
+  FlightOrdersResult,
+} from "../types/amadeus/namespaces/booking/flight-orders";
 
 /**
  * The Amadeus client library for accessing the travel APIs.
@@ -235,4 +323,45 @@ export default class Amadeus implements IAmadeus {
   }
 }
 
-export { ResponseError };
+export type {
+  ResponseError,
+  TravelClass,
+  DocumentType,
+  CurrencyCode,
+  TravelerType,
+  DiscountType,
+  DiscountTravelerType,
+  Traveler,
+  Contact,
+  Address,
+  Phone,
+  CreditCardBrand,
+  OtherPaymentMethod,
+  PaymentBrand,
+  FlightOffersSearchGetParams,
+  FlightOffersSearchPostParams,
+  FlightOffersSearchGetResult,
+  FlightOffersSearchPostResult,
+  FlightOffersPricingParams,
+  FlightOffersPricingResult,
+  FlightOffersPricingAdditionalParams,
+  FlightOffersPredictionParams,
+  FlightOffersPredictionResult,
+  FlightOffersUpsellingParams,
+  FlightOffersUpsellingResult,
+  FlightDatesParams,
+  FlightDatesResult,
+  FlightDestinationsParams,
+  FlightDestinationsResult,
+  SeatmapsGetParams,
+  SeatmapsGetResult,
+  SeatmapsPostParams,
+  SeatmapsPostResult,
+  FlightAvailabilitiesParams,
+  FlightAvailabilitiesResult,
+  ItineraryPriceMetricsParams,
+  ItineraryPriceMetricsResult,
+  FlightOrderGetResult,
+  FlightOrdersParams,
+  FlightOrdersResult,
+};

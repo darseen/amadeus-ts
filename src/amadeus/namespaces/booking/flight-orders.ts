@@ -1,7 +1,7 @@
 import {
   FlightOrdersParams,
   FlightOrdersResult,
-  FlightOrdersReturnType,
+  FlightOrdersReturnedResponse,
 } from "../../../types/amadeus/namespaces/booking/flight-orders";
 import Client from "../../client";
 
@@ -41,7 +41,9 @@ export default class FlightOrders {
    * });
    * ```
    */
-  public post(params: FlightOrdersParams): Promise<FlightOrdersReturnType> {
+  public post(
+    params: FlightOrdersParams
+  ): Promise<FlightOrdersReturnedResponse> {
     return this.client.post<FlightOrdersResult, FlightOrdersResult["data"]>(
       "/v1/booking/flight-orders",
       JSON.stringify(params)

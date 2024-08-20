@@ -323,8 +323,9 @@ export default class Amadeus implements IAmadeus {
   }
 }
 
+export { ResponseError };
+
 export type {
-  ResponseError,
   TravelClass,
   DocumentType,
   CurrencyCode,

@@ -48,6 +48,29 @@ async function getFlightOffers() {
 getFlightOffers();
 ```
 
+## Types
+
+You can import the types of each endpoint to define the structure of your objects.
+
+```ts
+import Amadeus, { FlightOffersSearchGetParams } from "amadeus-ts";
+
+const amadeus = new Amadeus({
+  clientId: process.env.AMADEUS_CLIENT_ID,
+  clientSecret: process.env.AMADEUS_CLIENT_SECRET,
+});
+
+// Define the object's type using the FlightOffersSearchGetParams type
+const flightOffersSearch: FlightOffersSearchGetParams = {
+  originLocationCode: "SYD",
+  destinationLocationCode: "BKK",
+  departureDate: "2024-12-01",
+  adults: 2,
+};
+
+amadeus.shopping.flightOffersSearch.get(flightOffersSearch);
+```
+
 ## Documentation
 
 See the official [amadeus-node](https://github.com/amadeus4dev/amadeus-node) documentation.

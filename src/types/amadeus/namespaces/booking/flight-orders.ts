@@ -11,10 +11,10 @@ export type FlightOrdersParams = {
 };
 
 export type FlightOrdersResult = {
-  meta: CollectionMetaLink;
+  meta?: CollectionMetaLink;
   warnings?: Issue[];
   data: FlightOrder;
-  dictionaries: Dictionaries;
+  dictionaries?: Dictionaries;
 };
 
 export type FlightOrdersReturnedResponse = ReturnedResponseSuccess<

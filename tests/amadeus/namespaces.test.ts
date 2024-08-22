@@ -319,7 +319,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.schedule.flights.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.schedule.flights.get();
+      amadeus.schedule.flights.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v2/schedule/flights",
         {}

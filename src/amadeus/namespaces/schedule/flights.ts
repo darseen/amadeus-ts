@@ -1,3 +1,8 @@
+import {
+  ScheduleFlightsParams,
+  ScheduleFlightsResult,
+  ScheduleFlightsReturnedResponse,
+} from "../../../types/amadeus/namespaces/schedule/flights";
 import Client from "../../client";
 
 /**
@@ -32,13 +37,18 @@ export default class Flights {
    * What's the current status of my flight?
    * ```ts
    * amadeus.schedule.flights.get({
-   * carrierCode: 'AZ',
-   * flightNumber: '319',
-   * scheduledDepartureDate: '2021-03-13'
+   *   carrierCode: 'AZ',
+   *   flightNumber: '319',
+   *   scheduledDepartureDate: '2021-03-13'
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v2/schedule/flights", params);
+  public get(
+    params: ScheduleFlightsParams
+  ): Promise<ScheduleFlightsReturnedResponse> {
+    return this.client.get<
+      ScheduleFlightsResult,
+      ScheduleFlightsResult["data"]
+    >("/v2/schedule/flights", params);
   }
 }

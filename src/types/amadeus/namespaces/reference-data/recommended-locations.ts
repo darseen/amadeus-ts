@@ -28,7 +28,7 @@ export type RecommendedLocationsParams = {
 };
 
 export type RecommendedLocationsResult = {
-  meta: Meta;
+  meta?: Meta;
   data: RecommendedLocation[];
   warnings?: Issue[];
 };

@@ -1,3 +1,8 @@
+import {
+  AirpoerPredictionsOnTimeParams,
+  AirpoerPredictionsOnTimeResult,
+  AirportOnTimePredictionReturnedResponse,
+} from "../../../../types/amadeus/namespaces/airport/predictions/on-time";
 import Client from "../../../client";
 
 /**
@@ -37,7 +42,12 @@ export default class OnTime {
    * })
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/airport/predictions/on-time", params);
+  public get(
+    params: AirpoerPredictionsOnTimeParams
+  ): Promise<AirportOnTimePredictionReturnedResponse> {
+    return this.client.get<
+      AirpoerPredictionsOnTimeResult,
+      AirpoerPredictionsOnTimeResult["data"]
+    >("/v1/airport/predictions/on-time", params);
   }
 }

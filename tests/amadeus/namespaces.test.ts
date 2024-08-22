@@ -588,7 +588,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.airport.predictions.onTime.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.airport.predictions.onTime.get();
+      amadeus.airport.predictions.onTime.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/airport/predictions/on-time",
         {}

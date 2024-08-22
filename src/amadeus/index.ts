@@ -130,6 +130,12 @@ import type {
   ScheduleFlightsResult,
 } from "../types/amadeus/namespaces/schedule/flights";
 
+// airport-predictions-on-time
+import type {
+  AirpoerPredictionsOnTimeParams,
+  AirpoerPredictionsOnTimeResult,
+} from "../types/amadeus/namespaces/airport/predictions/on-time";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -389,4 +395,6 @@ export type {
   RecommendedLocationsResult,
   ScheduleFlightsParams,
   ScheduleFlightsResult,
+  AirpoerPredictionsOnTimeParams,
+  AirpoerPredictionsOnTimeResult,
 };

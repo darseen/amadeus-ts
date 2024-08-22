@@ -1,3 +1,8 @@
+import {
+  RecommendedLocationsParams,
+  RecommendedLocationsResult,
+  RecommendedLocationsReturnedResponse,
+} from "../../../types/amadeus/namespaces/reference-data/recommended-locations";
 import Client from "../../client";
 
 /**
@@ -38,7 +43,12 @@ export default class RecommendedLocations {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/recommended-locations", params);
+  public get(
+    params: RecommendedLocationsParams
+  ): Promise<RecommendedLocationsReturnedResponse> {
+    return this.client.get<
+      RecommendedLocationsResult,
+      RecommendedLocationsResult["data"]
+    >("/v1/reference-data/recommended-locations", params);
   }
 }

@@ -1,14 +1,18 @@
+import {
+  ReferenceDataLocationsResult,
+  ReferenceDataLocationsReturnedResponse,
+} from "../../../types/amadeus/namespaces/reference-data/locations";
 import Client from "../../client";
 
 /**
  * A namespaced client for the
- * `/v2/reference-data/locations/:location_id` endpoints
+ * `/v1/reference-data/locations/:location_id` endpoints
  *
  * Access via the {@link Amadeus} object
  *
  * ```ts
  * const amadeus = new Amadeus();
- * amadeus.referenceData.locations('ALHR');
+ * amadeus.referenceData.location('ALHR');
  * ```
  *
  * @param {Client} client
@@ -35,10 +39,12 @@ export default class Location {
    * amadeus.referenceData.location('ALHR').get();
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get(
-      `/v1/reference-data/locations/${this.locationId}`,
-      params
-    );
+  public get(
+    params: Object = {}
+  ): Promise<ReferenceDataLocationsReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsResult,
+      ReferenceDataLocationsResult["data"]
+    >(`/v1/reference-data/locations/${this.locationId}`, params);
   }
 }

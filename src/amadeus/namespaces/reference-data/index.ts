@@ -41,7 +41,7 @@ export default class ReferenceData {
    * @param  {string} [locationId] The ID of the location to search for
    * @return {Location}
    **/
-  public location(locationId: string) {
+  public location(locationId: string): Location {
     return new Location(this.client, locationId);
   }
 }

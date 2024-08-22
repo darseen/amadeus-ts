@@ -570,7 +570,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.travel.predictions.flightDelay.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.travel.predictions.flightDelay.get();
+      amadeus.travel.predictions.flightDelay.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/travel/predictions/flight-delay",
         {}

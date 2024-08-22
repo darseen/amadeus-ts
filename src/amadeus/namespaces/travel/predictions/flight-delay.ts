@@ -1,3 +1,8 @@
+import {
+  FlightDelayPredictionParams,
+  FlightDelayPredictionResult,
+  FlightDelayPredictionReturnedResponse,
+} from "../../../../types/amadeus/namespaces/travel/predictions/flight-delay";
 import Client from "../../../client";
 
 /**
@@ -55,7 +60,12 @@ export default class FlightDelay {
    * })
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/travel/predictions/flight-delay", params);
+  public get(
+    params: FlightDelayPredictionParams
+  ): Promise<FlightDelayPredictionReturnedResponse> {
+    return this.client.get<
+      FlightDelayPredictionResult,
+      FlightDelayPredictionResult["data"]
+    >("/v1/travel/predictions/flight-delay", params);
   }
 }

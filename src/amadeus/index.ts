@@ -112,6 +112,24 @@ import type {
   FlightOrdersResult,
 } from "../types/amadeus/namespaces/booking/flight-orders";
 
+// flight-delay-prediction
+import type {
+  FlightDelayPredictionParams,
+  FlightDelayPredictionResult,
+} from "../types/amadeus/namespaces/travel/predictions/flight-delay";
+
+// recommended-locations
+import type {
+  RecommendedLocationsParams,
+  RecommendedLocationsResult,
+} from "../types/amadeus/namespaces/reference-data/recommended-locations";
+
+// schedule-flights
+import type {
+  ScheduleFlightsParams,
+  ScheduleFlightsResult,
+} from "../types/amadeus/namespaces/schedule/flights";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -365,4 +383,10 @@ export type {
   FlightOrderGetResult,
   FlightOrdersParams,
   FlightOrdersResult,
+  FlightDelayPredictionParams,
+  FlightDelayPredictionResult,
+  RecommendedLocationsParams,
+  RecommendedLocationsResult,
+  ScheduleFlightsParams,
+  ScheduleFlightsResult,
 };

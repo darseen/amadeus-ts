@@ -1,3 +1,8 @@
+import {
+  ReferenceDataLocationsParams,
+  ReferenceDataLocationsResult,
+  ReferenceDataLocationsReturnedResponse,
+} from "../../../../types/amadeus/namespaces/reference-data/locations";
 import Client from "../../../client";
 import Airports from "./airports";
 import Cities from "./cities";
@@ -55,8 +60,13 @@ export default class Locations {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/locations", params);
+  public get(
+    params: ReferenceDataLocationsParams
+  ): Promise<ReferenceDataLocationsReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsResult,
+      ReferenceDataLocationsResult["data"]
+    >("/v1/reference-data/locations", params);
   }
 
   public pointOfInterest(poiId: string) {

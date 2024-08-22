@@ -136,6 +136,12 @@ import type {
   AirpoerPredictionsOnTimeResult,
 } from "../types/amadeus/namespaces/airport/predictions/on-time";
 
+// reference-data-locations
+import type {
+  ReferenceDataLocationsParams,
+  ReferenceDataLocationsResult,
+} from "../types/amadeus/namespaces/reference-data/locations";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -397,4 +403,6 @@ export type {
   ScheduleFlightsResult,
   AirpoerPredictionsOnTimeParams,
   AirpoerPredictionsOnTimeResult,
+  ReferenceDataLocationsParams,
+  ReferenceDataLocationsResult,
 };

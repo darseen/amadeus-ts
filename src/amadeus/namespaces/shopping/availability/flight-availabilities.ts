@@ -41,6 +41,9 @@ export default class FlightAvailabilities {
     return this.client.post<
       FlightAvailabilitiesResult,
       FlightAvailabilitiesResult["data"]
-    >("/v1/shopping/availability/flight-availabilities", params);
+    >(
+      "/v1/shopping/availability/flight-availabilities",
+      JSON.stringify(params)
+    );
   }
 }

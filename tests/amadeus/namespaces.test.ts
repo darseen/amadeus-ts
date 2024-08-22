@@ -600,7 +600,7 @@ describe("Namespaces", () => {
       amadeus.shopping.availability.flightAvailabilities.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/availability/flight-availabilities",
-        {}
+        JSON.stringify({})
       );
     });
 

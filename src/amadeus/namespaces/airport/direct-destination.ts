@@ -1,3 +1,8 @@
+import {
+  AirportDirectDestinationParams,
+  AirportDirectDestinationResult,
+  AirportDirectDestinationReturnedResponse,
+} from "../../../types/amadeus/namespaces/airport/direct-destination";
 import Client from "../../client";
 
 /**
@@ -33,7 +38,12 @@ export default class DirectDestinations {
    * })
    * ```
    */
-  public get(params = {}) {
-    return this.client.get("/v1/airport/direct-destinations", params);
+  public get(
+    params: AirportDirectDestinationParams
+  ): Promise<AirportDirectDestinationReturnedResponse> {
+    return this.client.get<
+      AirportDirectDestinationResult,
+      AirportDirectDestinationResult["data"]
+    >("/v1/airport/direct-destinations", params);
   }
 }

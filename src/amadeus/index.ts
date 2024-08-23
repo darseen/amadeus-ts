@@ -148,6 +148,12 @@ import type {
   ReferenceDataLocationsAirportsResult,
 } from "../types/amadeus/namespaces/reference-data/locations/airports";
 
+// airport-direct-destinations
+import type {
+  AirportDirectDestinationParams,
+  AirportDirectDestinationResult,
+} from "../types/amadeus/namespaces/airport/direct-destination";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -413,4 +419,6 @@ export type {
   ReferenceDataLocationsResult,
   ReferenceDataLocationsAirportsParams,
   ReferenceDataLocationsAirportsResult,
+  AirportDirectDestinationParams,
+  AirportDirectDestinationResult,
 };

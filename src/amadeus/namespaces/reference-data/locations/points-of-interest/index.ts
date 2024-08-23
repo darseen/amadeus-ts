@@ -1,3 +1,8 @@
+import {
+  ReferenceDataLocationsPoisParams,
+  ReferenceDataLocationsPoisResult,
+  ReferenceDataLocationsPoisReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/reference-data/locations/points-of-interest";
 import Client from "../../../../client";
 import BySquare from "./by-square";
 
@@ -43,7 +48,12 @@ export default class PointsOfInterest {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/locations/pois", params);
+  public get(
+    params: ReferenceDataLocationsPoisParams
+  ): Promise<ReferenceDataLocationsPoisReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsPoisResult,
+      ReferenceDataLocationsPoisResult["data"]
+    >("/v1/reference-data/locations/pois", params);
   }
 }

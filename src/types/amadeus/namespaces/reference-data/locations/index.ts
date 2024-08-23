@@ -1,8 +1,7 @@
 import { ReturnedResponseSuccess } from "../../../client/response";
 import { Analytics, CollectionMetaLink, Distance, GeoCode } from "../../shared";
 
-// renamed to avoid conflict with Location type in lib.dom.d.ts
-type Location$1 = {
+type Location = {
   id?: string;
   self?: Links;
   type?: string;
@@ -56,7 +55,7 @@ export type ReferenceDataLocationsParams = {
 
 export type ReferenceDataLocationsResult = {
   meta?: CollectionMetaLink;
-  data: Location$1[];
+  data: Location[];
 };
 
 export type ReferenceDataLocationsReturnedResponse = ReturnedResponseSuccess<

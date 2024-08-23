@@ -275,7 +275,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.locations.pointsOfInterest.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.locations.pointsOfInterest.get();
+      amadeus.referenceData.locations.pointsOfInterest.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/reference-data/locations/pois",
         {}

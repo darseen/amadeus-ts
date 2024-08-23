@@ -172,6 +172,12 @@ import type {
   AirlineDestinationsResult,
 } from "../types/amadeus/namespaces/airline/destinations";
 
+// reference-data-locations-points-of-interest
+import type {
+  ReferenceDataLocationsPoisParams,
+  ReferenceDataLocationsPoisResult,
+} from "../types/amadeus/namespaces/reference-data/locations/points-of-interest";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -445,4 +451,6 @@ export type {
   ReferenceDataAirlinesResult,
   AirlineDestinationsParams,
   AirlineDestinationsResult,
+  ReferenceDataLocationsPoisParams,
+  ReferenceDataLocationsPoisResult,
 };

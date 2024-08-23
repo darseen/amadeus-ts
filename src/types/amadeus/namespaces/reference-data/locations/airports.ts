@@ -1,8 +1,7 @@
 import { ReturnedResponseSuccess } from "../../../client/response";
 import { Analytics, CollectionMetaLink, Distance, GeoCode } from "../../shared";
 
-// renamed to avoid conflict with Location type in lib.dom.d.ts
-type Location$2 = {
+type Location = {
   type?: string;
   subType?: "AIRPORT" | "CITY" | "POINT_OF_INTEREST" | "DISTRICT";
   name?: string;
@@ -42,7 +41,7 @@ export type ReferenceDataLocationsAirportsParams = {
 
 export type ReferenceDataLocationsAirportsResult = {
   meta?: CollectionMetaLink;
-  data: Location$2[];
+  data: Location[];
 };
 
 export type ReferenceDataLocationsAirportsReturnedResponse =

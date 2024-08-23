@@ -160,6 +160,12 @@ import type {
   ReferenceDataCheckinLinksResult,
 } from "../types/amadeus/namespaces/reference-data/urls/checkin-links";
 
+// reference-data-airlines
+import type {
+  ReferenceDataAirlinesParams,
+  ReferenceDataAirlinesResult,
+} from "../types/amadeus/namespaces/reference-data/airlines";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -429,4 +435,6 @@ export type {
   AirportDirectDestinationResult,
   ReferenceDataCheckinLinksParams,
   ReferenceDataCheckinLinksResult,
+  ReferenceDataAirlinesParams,
+  ReferenceDataAirlinesResult,
 };

@@ -29,7 +29,7 @@ export type FlightDelayPredictionParams = {
 };
 
 export type FlightDelayPredictionResult = {
-  data?: DelayPrediction[];
+  data: DelayPrediction[];
   meta?: CollectionMetaLink;
 };
 

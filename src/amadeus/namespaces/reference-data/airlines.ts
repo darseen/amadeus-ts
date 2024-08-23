@@ -1,3 +1,8 @@
+import {
+  ReferenceDataAirlinesParams,
+  ReferenceDataAirlinesResult,
+  ReferenceDataAirlinesReturnedResponse,
+} from "../../../types/amadeus/namespaces/reference-data/airlines";
 import Client from "../../client";
 
 /**
@@ -35,7 +40,12 @@ export default class Airlines {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/airlines", params);
+  public get(
+    params: ReferenceDataAirlinesParams
+  ): Promise<ReferenceDataAirlinesReturnedResponse> {
+    return this.client.get<
+      ReferenceDataAirlinesResult,
+      ReferenceDataAirlinesResult["data"]
+    >("/v1/reference-data/airlines", params);
   }
 }

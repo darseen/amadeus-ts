@@ -26,7 +26,7 @@ export type AirpoerPredictionsOnTimeParams = {
 };
 
 export type AirpoerPredictionsOnTimeResult = {
-  data?: OnTimePrediction;
+  data: OnTimePrediction;
   meta?: Meta;
 };
 

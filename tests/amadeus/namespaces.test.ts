@@ -185,7 +185,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.urls.checkinLinks.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.urls.checkinLinks.get();
+      amadeus.referenceData.urls.checkinLinks.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v2/reference-data/urls/checkin-links",
         {}

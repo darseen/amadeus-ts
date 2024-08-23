@@ -1,3 +1,8 @@
+import {
+  ReferenceDataCheckinLinksParams,
+  ReferenceDataCheckinLinksResult,
+  ReferenceDataCheckinLinksReturnedResponse,
+} from "../../../../types/amadeus/namespaces/reference-data/urls/checkin-links";
 import Client from "../../../client";
 
 /**
@@ -37,7 +42,12 @@ export default class CheckinLinks {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v2/reference-data/urls/checkin-links", params);
+  public get(
+    params: ReferenceDataCheckinLinksParams
+  ): Promise<ReferenceDataCheckinLinksReturnedResponse> {
+    return this.client.get<
+      ReferenceDataCheckinLinksResult,
+      ReferenceDataCheckinLinksResult["data"]
+    >("/v2/reference-data/urls/checkin-links", params);
   }
 }

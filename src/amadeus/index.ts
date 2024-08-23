@@ -154,6 +154,12 @@ import type {
   AirportDirectDestinationResult,
 } from "../types/amadeus/namespaces/airport/direct-destination";
 
+// reference-data-urls-checkin-links
+import type {
+  ReferenceDataCheckinLinksParams,
+  ReferenceDataCheckinLinksResult,
+} from "../types/amadeus/namespaces/reference-data/urls/checkin-links";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -421,4 +427,6 @@ export type {
   ReferenceDataLocationsAirportsResult,
   AirportDirectDestinationParams,
   AirportDirectDestinationResult,
+  ReferenceDataCheckinLinksParams,
+  ReferenceDataCheckinLinksResult,
 };

@@ -1,3 +1,8 @@
+import {
+  ReferenceDataLocationsAirportsParams,
+  ReferenceDataLocationsAirportsResult,
+  ReferenceDataLocationsAirportsReturnedResponse,
+} from "../../../../types/amadeus/namespaces/reference-data/locations/airports";
 import Client from "../../../client";
 
 /**
@@ -39,7 +44,12 @@ export default class Airports {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/locations/airports", params);
+  public get(
+    params: ReferenceDataLocationsAirportsParams
+  ): Promise<ReferenceDataLocationsAirportsReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsAirportsResult,
+      ReferenceDataLocationsAirportsResult["data"]
+    >("/v1/reference-data/locations/airports", params);
   }
 }

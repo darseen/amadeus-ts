@@ -669,3 +669,26 @@ export type Meta = {
   links?: Links;
   defaults?: Defaults;
 };
+
+export type Distance = {
+  value?: number;
+  unit?: "KM" | "MI";
+};
+
+export type GeoCode = {
+  latitude?: number;
+  longitude?: number;
+};
+
+export type Analytics = {
+  flights?: Flights;
+  travelers?: Travelers;
+};
+
+export type Flights = {
+  score?: number;
+};
+
+export type Travelers = {
+  score?: number;
+};

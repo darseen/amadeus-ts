@@ -2,9 +2,7 @@ import { ReturnedResponseSuccess } from "../../../client/response";
 import { Analytics, CollectionMetaLink, Distance, GeoCode } from "../../shared";
 
 // renamed to avoid conflict with Location type in lib.dom.d.ts
-type Location$1 = {
-  id?: string;
-  self?: Links;
+type Location$2 = {
   type?: string;
   subType?: "AIRPORT" | "CITY" | "POINT_OF_INTEREST" | "DISTRICT";
   name?: string;
@@ -16,15 +14,6 @@ type Location$1 = {
   distance?: Distance;
   analytics?: Analytics;
   relevance?: number;
-  category?:
-    | "SIGHTS"
-    | "BEACH_PARK"
-    | "HISTORICAL"
-    | "NIGHTLIFE"
-    | "RESTAURANT"
-    | "SHOPPING";
-  tags?: string[];
-  rank?: string;
 };
 
 type Address = {
@@ -36,30 +25,28 @@ type Address = {
   regionCode?: string;
 };
 
-type Links = {
-  href: string;
-  methods?: ("GET" | "PUT" | "DELETE" | "POST" | "PATCH")[];
-  count?: number;
-};
-
-export type ReferenceDataLocationsParams = {
-  subType: "AIRPORT" | "CITY" | "AIRPORT,CITY";
-  keyword: string;
-  countryCode?: string;
+export type ReferenceDataLocationsAirportsParams = {
+  latitude: number;
+  longitude: number;
+  radius?: number;
   page?: {
     limit?: number;
     offset?: number;
   };
-  sort?: "analytics.travelers.score";
-  view?: "FULL" | "LIGHT";
+  sort?:
+    | "relevance"
+    | "distance"
+    | "analytics.travelers.score"
+    | "analytics.flights.score";
 };
 
-export type ReferenceDataLocationsResult = {
+export type ReferenceDataLocationsAirportsResult = {
   meta?: CollectionMetaLink;
-  data: Location$1[];
+  data: Location$2[];
 };
 
-export type ReferenceDataLocationsReturnedResponse = ReturnedResponseSuccess<
-  ReferenceDataLocationsResult,
-  ReferenceDataLocationsResult["data"]
->;
+export type ReferenceDataLocationsAirportsReturnedResponse =
+  ReturnedResponseSuccess<
+    ReferenceDataLocationsAirportsResult,
+    ReferenceDataLocationsAirportsResult["data"]
+  >;

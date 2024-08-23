@@ -142,6 +142,12 @@ import type {
   ReferenceDataLocationsResult,
 } from "../types/amadeus/namespaces/reference-data/locations";
 
+// reference-data-locations-airports
+import type {
+  ReferenceDataLocationsAirportsParams,
+  ReferenceDataLocationsAirportsResult,
+} from "../types/amadeus/namespaces/reference-data/locations/airports";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -405,4 +411,6 @@ export type {
   AirpoerPredictionsOnTimeResult,
   ReferenceDataLocationsParams,
   ReferenceDataLocationsResult,
+  ReferenceDataLocationsAirportsParams,
+  ReferenceDataLocationsAirportsResult,
 };

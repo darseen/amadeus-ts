@@ -8,19 +8,19 @@ type Meta = {
   };
 };
 
-export type AirportDirectDestinationParams = {
-  departureAirportCode: string;
+export type AirlineDestinationsParams = {
+  airlineCode: string;
   max?: number;
   arrivalCountryCode?: string;
 };
 
-export type AirportDirectDestinationResult = {
+export type AirlineDestinationsResult = {
   warnings?: Issue[];
   data: Locations[];
   meta?: Meta;
 };
 
-export type AirportDirectDestinationReturnedResponse = ReturnedResponseSuccess<
-  AirportDirectDestinationResult,
-  AirportDirectDestinationResult["data"]
+export type AirlineDestinationsReturnedResponse = ReturnedResponseSuccess<
+  AirlineDestinationsResult,
+  AirlineDestinationsResult["data"]
 >;

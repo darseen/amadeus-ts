@@ -1,3 +1,7 @@
+import {
+  ReferenceDataLocationsPoisPoiResult,
+  ReferenceDataLocationsPoisPoiReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/reference-data/locations/points-of-interest/poi";
 import Client from "../../../../client";
 
 /**
@@ -30,7 +34,10 @@ export default class PointOfInterest {
    * amadeus.referenceData.locations.pointOfInterest('9CB40CB5D0').get();
    * ```
    */
-  public get() {
-    return this.client.get(`/v1/reference-data/locations/pois/${this.poiId}`);
+  public get(): Promise<ReferenceDataLocationsPoisPoiReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsPoisPoiResult,
+      ReferenceDataLocationsPoisPoiResult["data"]
+    >(`/v1/reference-data/locations/pois/${this.poiId}`);
   }
 }

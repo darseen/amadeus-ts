@@ -292,7 +292,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.locations.pointsOfInterest.bySquare.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.locations.pointsOfInterest.bySquare.get();
+      amadeus.referenceData.locations.pointsOfInterest.bySquare.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/reference-data/locations/pois/by-square",
         {}

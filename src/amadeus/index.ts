@@ -178,6 +178,12 @@ import type {
   ReferenceDataLocationsPoisResult,
 } from "../types/amadeus/namespaces/reference-data/locations/points-of-interest";
 
+// reference-data-locations-points-of-interest-by-square
+import type {
+  ReferenceDataLocationsPoisBySquareParams,
+  ReferenceDataLocationsPoisBySquareResult,
+} from "../types/amadeus/namespaces/reference-data/locations/points-of-interest/by-square";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -453,4 +459,6 @@ export type {
   AirlineDestinationsResult,
   ReferenceDataLocationsPoisParams,
   ReferenceDataLocationsPoisResult,
+  ReferenceDataLocationsPoisBySquareParams,
+  ReferenceDataLocationsPoisBySquareResult,
 };

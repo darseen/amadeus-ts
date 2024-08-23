@@ -1,3 +1,8 @@
+import {
+  ReferenceDataLocationsPoisBySquareParams,
+  ReferenceDataLocationsPoisBySquareResult,
+  ReferenceDataLocationsPoisBySquareReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/reference-data/locations/points-of-interest/by-square";
 import Client from "../../../../client";
 
 /**
@@ -41,10 +46,12 @@ export default class BySquare {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get(
-      "/v1/reference-data/locations/pois/by-square",
-      params
-    );
+  public get(
+    params: ReferenceDataLocationsPoisBySquareParams
+  ): Promise<ReferenceDataLocationsPoisBySquareReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsPoisBySquareResult,
+      ReferenceDataLocationsPoisBySquareResult["data"]
+    >("/v1/reference-data/locations/pois/by-square", params);
   }
 }

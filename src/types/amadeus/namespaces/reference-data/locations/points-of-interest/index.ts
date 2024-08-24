@@ -1,7 +1,7 @@
 import { ReturnedResponseSuccess } from "../../../../client/response";
 import { CollectionMetaLink, GeoCode } from "../../../shared";
 
-export type Location = {
+type Location = {
   id?: string;
   self?: Links;
   type?: string;
@@ -19,7 +19,7 @@ export type Location = {
   rank?: string;
 };
 
-export type Links = {
+type Links = {
   href?: string;
   methods?: ("GET" | "PUT" | "DELETE" | "POST" | "PATCH")[];
 };

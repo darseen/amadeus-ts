@@ -1,7 +1,3 @@
-import { Location } from ".";
-import { ReturnedResponseSuccess } from "../../../../client/response";
-import { CollectionMetaLink } from "../../../shared";
-
 export type ReferenceDataLocationsPoisBySquareParams = {
   north: number;
   west: number;
@@ -19,13 +15,5 @@ export type ReferenceDataLocationsPoisBySquareParams = {
     | (string & {});
 };
 
-export type ReferenceDataLocationsPoisBySquareResult = {
-  meta?: CollectionMetaLink;
-  data: Location[];
-};
-
-export type ReferenceDataLocationsPoisBySquareReturnedResponse =
-  ReturnedResponseSuccess<
-    ReferenceDataLocationsPoisBySquareResult,
-    ReferenceDataLocationsPoisBySquareResult["data"]
-  >;
+export type { ReferenceDataLocationsPoisResult as ReferenceDataLocationsPoisBySquareResult } from ".";
+export type { ReferenceDataLocationsPoisReturnedResponse as ReferenceDataLocationsPoisBySquareReturnedResponse } from ".";

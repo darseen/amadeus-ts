@@ -184,6 +184,24 @@ import type {
   ReferenceDataLocationsPoisBySquareResult,
 } from "../types/amadeus/namespaces/reference-data/locations/points-of-interest/by-square";
 
+// reference-data-locations-points-of-poi
+import type { ReferenceDataLocationsPoisPoiResult } from "../types/amadeus/namespaces/reference-data/locations/points-of-interest/poi";
+
+// shopping-activities
+import type {
+  ActivitiesParams,
+  ActivitiesResult,
+} from "../types/amadeus/namespaces/shopping/activities";
+
+// shopping-activities-by-square
+import type {
+  ActivitiesBySquareParams,
+  ActivitiesBySquareResult,
+} from "../types/amadeus/namespaces/shopping/activities/by-square";
+
+// shopping-activity
+import type { ActivityResult } from "../types/amadeus/namespaces/shopping/activity";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -461,4 +479,10 @@ export type {
   ReferenceDataLocationsPoisResult,
   ReferenceDataLocationsPoisBySquareParams,
   ReferenceDataLocationsPoisBySquareResult,
+  ReferenceDataLocationsPoisPoiResult,
+  ActivitiesParams,
+  ActivitiesResult,
+  ActivitiesBySquareParams,
+  ActivitiesBySquareResult,
+  ActivityResult,
 };

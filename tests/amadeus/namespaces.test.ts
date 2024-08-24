@@ -478,7 +478,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.activities.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.activities.get();
+      amadeus.shopping.activities.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/shopping/activities",
         {}
@@ -487,7 +487,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.activities.bySquare.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.activities.bySquare.get();
+      amadeus.shopping.activities.bySquare.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/shopping/activities/by-square",
         {}

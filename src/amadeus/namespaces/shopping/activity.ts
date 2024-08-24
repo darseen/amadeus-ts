@@ -1,3 +1,7 @@
+import {
+  ActivityResult,
+  ActivityReturnedResponse,
+} from "../../../types/amadeus/namespaces/shopping/activity";
 import Client from "../../client";
 
 /**
@@ -30,7 +34,9 @@ export default class Activity {
    * amadeus.shopping.activity('3216547684').get();
    * ```
    */
-  public get() {
-    return this.client.get(`/v1/shopping/activities/${this.activityId}`);
+  public get(): Promise<ActivityReturnedResponse> {
+    return this.client.get<ActivityResult, ActivityResult["data"]>(
+      `/v1/shopping/activities/${this.activityId}`
+    );
   }
 }

@@ -1,3 +1,8 @@
+import {
+  ActivitiesBySquareParams,
+  ActivitiesBySquareResult,
+  ActivitiesBySquareReturnedResponse,
+} from "../../../../types/amadeus/namespaces/shopping/activities/by-square";
 import Client from "../../../client";
 
 /**
@@ -41,7 +46,12 @@ export default class BySquare {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/shopping/activities/by-square", params);
+  public get(
+    params: ActivitiesBySquareParams
+  ): Promise<ActivitiesBySquareReturnedResponse> {
+    return this.client.get<
+      ActivitiesBySquareResult,
+      ActivitiesBySquareResult["data"]
+    >("/v1/shopping/activities/by-square", params);
   }
 }

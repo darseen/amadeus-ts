@@ -624,7 +624,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.transferOffers.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.shopping.transferOffers.post();
+      amadeus.shopping.transferOffers.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/transfer-offers",
         {}
@@ -633,10 +633,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.ordering.transferOrders.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.ordering.transferOrders.post({}, "1234123123");
+      amadeus.ordering.transferOrders.post({} as any, "1234123123");
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/ordering/transfer-orders?offerId=1234123123",
-        {}
+        JSON.stringify({})
       );
     });
 
@@ -647,7 +647,7 @@ describe("Namespaces", () => {
         .transfers.cancellation.post({}, "12345");
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/ordering/transfer-orders/XXX/transfers/cancellation?confirmNbr=12345",
-        {}
+        JSON.stringify({})
       );
     });
   });

@@ -1,3 +1,8 @@
+import {
+  ShoppingTransferOffersParams,
+  ShoppingTransferOffersResult,
+  ShoppingTransferOffersReturnedResponse,
+} from "../../../types/amadeus/namespaces/shopping/transfer-offers";
 import Client from "../../client";
 
 /**
@@ -33,7 +38,12 @@ export default class TransferOffers {
 
    * ```
   */
-  public post(params: Object = {}) {
-    return this.client.post("/v1/shopping/transfer-offers", params);
+  public post(
+    params: ShoppingTransferOffersParams
+  ): Promise<ShoppingTransferOffersReturnedResponse> {
+    return this.client.post<
+      ShoppingTransferOffersResult,
+      ShoppingTransferOffersResult["data"]
+    >("/v1/shopping/transfer-offers", JSON.stringify(params));
   }
 }

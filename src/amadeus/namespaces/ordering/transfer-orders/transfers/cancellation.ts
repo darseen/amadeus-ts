@@ -1,3 +1,4 @@
+import { OrderingTransferCancellationReturnedResponse } from "../../../../../types/amadeus/namespaces/ordering/transfer-orders/transfers/cancellation";
 import Client from "../../../../client";
 
 /**
@@ -32,10 +33,13 @@ export default class Cancellation {
    * amadeus.ordering.transferOrder('XXX').transfers.cancellation.post(JSON.stringify({}), '12345');;
    * ```
    */
-  public post(body: any, confirmNbr: string) {
+  public post(
+    body: Object,
+    confirmNbr: string
+  ): Promise<OrderingTransferCancellationReturnedResponse> {
     return this.client.post(
       `/v1/ordering/transfer-orders/${this.orderId}/transfers/cancellation?confirmNbr=${confirmNbr}`,
-      body
+      JSON.stringify(body)
     );
   }
 }

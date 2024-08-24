@@ -208,6 +208,21 @@ import type {
   ReferenceDataLocationsCitiesResult,
 } from "../types/amadeus/namespaces/reference-data/locations/cities";
 
+// ordering-transfer-orders
+import type {
+  OrderingTransferOrdersParams,
+  OrderingTransferOrdersResult,
+} from "../types/amadeus/namespaces/ordering/transfer-orders";
+
+// ordering-transfer-orders-transfers-cancellation
+import type { OrderingTransferCancellationResult } from "../types/amadeus/namespaces/ordering/transfer-orders/transfers/cancellation";
+
+// shopping-transfer-offers
+import type {
+  ShoppingTransferOffersParams,
+  ShoppingTransferOffersResult,
+} from "../types/amadeus/namespaces/shopping/transfer-offers";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -493,4 +508,9 @@ export type {
   ActivityResult,
   ReferenceDataLocationsCitiesParams,
   ReferenceDataLocationsCitiesResult,
+  OrderingTransferOrdersParams,
+  OrderingTransferOrdersResult,
+  OrderingTransferCancellationResult,
+  ShoppingTransferOffersParams,
+  ShoppingTransferOffersResult,
 };

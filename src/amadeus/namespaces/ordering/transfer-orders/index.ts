@@ -1,3 +1,8 @@
+import {
+  OrderingTransferOrdersParams,
+  OrderingTransferOrdersResult,
+  OrderingTransferOrdersReturnedResponse,
+} from "../../../../types/amadeus/namespaces/ordering/transfer-orders";
 import Client from "../../../client";
 
 /**
@@ -31,10 +36,13 @@ export default class TransferOrders {
    * amadeus.ordering.transferOrders.post(body, '2094123123');;
    * ```
    */
-  public post(body: any, offerId: string) {
-    return this.client.post(
-      `/v1/ordering/transfer-orders?offerId=${offerId}`,
-      body
-    );
+  public post(
+    body: OrderingTransferOrdersParams,
+    offerId: string
+  ): Promise<OrderingTransferOrdersReturnedResponse> {
+    return this.client.post<
+      OrderingTransferOrdersResult,
+      OrderingTransferOrdersResult["data"]
+    >(`/v1/ordering/transfer-orders?offerId=${offerId}`, JSON.stringify(body));
   }
 }

@@ -202,6 +202,12 @@ import type {
 // shopping-activity
 import type { ActivityResult } from "../types/amadeus/namespaces/shopping/activity";
 
+// reference-data-locations-cities
+import type {
+  ReferenceDataLocationsCitiesParams,
+  ReferenceDataLocationsCitiesResult,
+} from "../types/amadeus/namespaces/reference-data/locations/cities";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -485,4 +491,6 @@ export type {
   ActivitiesBySquareParams,
   ActivitiesBySquareResult,
   ActivityResult,
+  ReferenceDataLocationsCitiesParams,
+  ReferenceDataLocationsCitiesResult,
 };

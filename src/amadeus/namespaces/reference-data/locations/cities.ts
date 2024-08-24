@@ -1,3 +1,8 @@
+import {
+  ReferenceDataLocationsCitiesParams,
+  ReferenceDataLocationsCitiesResult,
+  ReferenceDataLocationsCitiesReturnedResponse,
+} from "../../../../types/amadeus/namespaces/reference-data/locations/cities";
 import Client from "../../../client";
 
 /**
@@ -36,7 +41,12 @@ export default class Cities {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/locations/cities", params);
+  public get(
+    params: ReferenceDataLocationsCitiesParams
+  ): Promise<ReferenceDataLocationsCitiesReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsCitiesResult,
+      ReferenceDataLocationsCitiesResult["data"]
+    >("/v1/reference-data/locations/cities", params);
   }
 }

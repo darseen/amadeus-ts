@@ -627,7 +627,7 @@ describe("Namespaces", () => {
       amadeus.shopping.transferOffers.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/transfer-offers",
-        {}
+        JSON.stringify({})
       );
     });
 

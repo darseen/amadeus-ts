@@ -1,3 +1,3 @@
-export type { ReferecneDataLocationsHotelsParams as ReferecneDataLocationsByHotelsParams } from ".";
-export type { ReferecneDataLocationsHotelsResult as ReferecneDataLocationsByHotelsResult } from ".";
-export type { ReferecneDataLocationsHotelsReturnedResponse as ReferecneDataLocationsByHotelsReturnedResponse } from ".";
+export type { ReferenceDataLocationsHotelsByHotelsParams } from ".";
+export type { ReferenceDataLocationsHotelsResult as ReferenceDataLocationsHotelsByHotelsResult } from ".";
+export type { ReferenceDataLocationsHotelsReturnedResponse as ReferenceDataLocationsHotelsByHotelsReturnedResponse } from ".";

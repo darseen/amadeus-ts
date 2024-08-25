@@ -247,6 +247,24 @@ import type {
   CategoryRatedAreaResult,
 } from "../types/amadeus/namespaces/location/analytics/category-reted-areas";
 
+// reference-data-locations-hotels-by-hotels
+import type {
+  ReferenceDataLocationsHotelsByHotelsParams,
+  ReferenceDataLocationsHotelsByHotelsResult,
+} from "../types/amadeus/namespaces/reference-data/locations/hotels/by-hotels";
+
+// reference-data-locations-hotels-by-city
+import type {
+  ReferenceDataLocationsHotelsByCityParams,
+  ReferenceDataLocationsHotelsByCityResult,
+} from "../types/amadeus/namespaces/reference-data/locations/hotels/by-city";
+
+// reference-data-locations-hotels-by-geocode
+import type {
+  ReferenceDataLocationsHotelsByGeoCodeParams,
+  ReferenceDataLocationsHotelsByGeoCodeResult,
+} from "../types/amadeus/namespaces/reference-data/locations/hotels/by-geocode";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -545,4 +563,10 @@ export type {
   TravelAnalayticsAirTrafficBusiestPeriodResult,
   CategoryRatedAreaParams,
   CategoryRatedAreaResult,
+  ReferenceDataLocationsHotelsByHotelsParams,
+  ReferenceDataLocationsHotelsByHotelsResult,
+  ReferenceDataLocationsHotelsByCityParams,
+  ReferenceDataLocationsHotelsByCityResult,
+  ReferenceDataLocationsHotelsByGeoCodeParams,
+  ReferenceDataLocationsHotelsByGeoCodeResult,
 };

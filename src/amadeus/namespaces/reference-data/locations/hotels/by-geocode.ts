@@ -1,3 +1,8 @@
+import { ReferenceDataLocationsHotelsByGeoCodeParams } from "../../../../../types/amadeus/namespaces/reference-data/locations/hotels";
+import {
+  ReferenceDataLocationsHotelsByGeoCodeResult,
+  ReferenceDataLocationsHotelsByGeoCodeReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/reference-data/locations/hotels/by-geocode";
 import Client from "../../../../client";
 
 /**
@@ -39,10 +44,12 @@ export default class byGeocode {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get(
-      "/v1/reference-data/locations/hotels/by-geocode",
-      params
-    );
+  public get(
+    params: ReferenceDataLocationsHotelsByGeoCodeParams
+  ): Promise<ReferenceDataLocationsHotelsByGeoCodeReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsHotelsByGeoCodeResult,
+      ReferenceDataLocationsHotelsByGeoCodeResult["data"]
+    >("/v1/reference-data/locations/hotels/by-geocode", params);
   }
 }

@@ -1,5 +1,5 @@
 import { ReturnedResponseSuccess } from "../../../../client/response";
-import { CollectionMetaLink, GeoCode } from "../../../shared";
+import { Amenities, CollectionMetaLink, GeoCode } from "../../../shared";
 
 type Hotel = ({
   subtype?: string;
@@ -35,17 +35,40 @@ type Hotel = ({
   last_update?: string;
 };
 
-export type ReferecneDataLocationsHotelsParams = {
-  hotelIds: string[];
+type HotelScore = "BEDBANK" | "DIRECTCHAIN" | "ALL";
+
+export type ReferenceDataLocationsHotelsByHotelsParams = {
+  hotelIds: string;
 };
 
-export type ReferecneDataLocationsHotelsResult = {
+export type ReferenceDataLocationsHotelsByCityParams = {
+  cityCode: string;
+  radius?: number;
+  radiusUnit?: "MILE" | "KM";
+  chainCodes?: string;
+  amenities?: Amenities | (string & {});
+  ratings?: string;
+  hotelScore?: HotelScore;
+};
+
+export type ReferenceDataLocationsHotelsByGeoCodeParams = {
+  latitude: number;
+  longitude: number;
+  radius?: number;
+  radiusUnit?: "MILE" | "KM";
+  chainCodes?: string;
+  amenities?: Amenities | (string & {});
+  ratings?: string;
+  hotelScore?: HotelScore;
+};
+
+export type ReferenceDataLocationsHotelsResult = {
   data: Hotel[];
   meta?: CollectionMetaLink;
 };
 
-export type ReferecneDataLocationsHotelsReturnedResponse =
+export type ReferenceDataLocationsHotelsReturnedResponse =
   ReturnedResponseSuccess<
-    ReferecneDataLocationsHotelsResult,
-    ReferecneDataLocationsHotelsResult["data"]
+    ReferenceDataLocationsHotelsResult,
+    ReferenceDataLocationsHotelsResult["data"]
   >;

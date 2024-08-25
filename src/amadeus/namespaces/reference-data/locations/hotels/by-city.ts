@@ -1,3 +1,8 @@
+import { ReferenceDataLocationsHotelsByCityParams } from "../../../../../types/amadeus/namespaces/reference-data/locations/hotels";
+import {
+  ReferenceDataLocationsHotelsByCityResult,
+  ReferenceDataLocationsHotelsByCityReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/reference-data/locations/hotels/by-city";
 import Client from "../../../../client";
 
 /**
@@ -35,10 +40,12 @@ export default class byCity {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get(
-      "/v1/reference-data/locations/hotels/by-city",
-      params
-    );
+  public get(
+    params: ReferenceDataLocationsHotelsByCityParams
+  ): Promise<ReferenceDataLocationsHotelsByCityReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsHotelsByCityResult,
+      ReferenceDataLocationsHotelsByCityResult["data"]
+    >("/v1/reference-data/locations/hotels/by-city", params);
   }
 }

@@ -239,7 +239,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.locations.hotels.byCity.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.locations.hotels.byCity.get();
+      amadeus.referenceData.locations.hotels.byCity.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/reference-data/locations/hotels/by-city",
         {}
@@ -248,7 +248,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.locations.hotels.byGeocode.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.locations.hotels.byGeocode.get();
+      amadeus.referenceData.locations.hotels.byGeocode.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/reference-data/locations/hotels/by-geocode",
         {}

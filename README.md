@@ -2,10 +2,8 @@
 
 Amadeus provides a rich set of APIs for the travel industry. For more details, check out the [Amadeus for Developers portal](https://developers.amadeus.com).
 
-## Important message
-
-- This SDK is maintained **by the developer community only**. The Amadeus for Developers team doesn't support or maintain it.
-- This package currently doesn't include types for all endpoints, but additional types are being added.
+> [!IMPORTANT]  
+> This SDK is maintained **by the developer community only**. The Amadeus for Developers team doesn't support or maintain it.
 
 ## Installation
 

@@ -257,7 +257,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.locations.hotels.byHotels.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.locations.hotels.byHotels.get();
+      amadeus.referenceData.locations.hotels.byHotels.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/reference-data/locations/hotels/by-hotels",
         {}

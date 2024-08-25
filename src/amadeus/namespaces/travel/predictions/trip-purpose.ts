@@ -1,3 +1,8 @@
+import {
+  TripPurposeParams,
+  TripPurposeResult,
+  TripPurposesReturnedResponse,
+} from "../../../../types/amadeus/namespaces/travel/predictions/trip-purpose";
 import Client from "../../../client";
 
 /**
@@ -41,7 +46,10 @@ export default class TripPurpose {
    * })
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/travel/predictions/trip-purpose", params);
+  public get(params: TripPurposeParams): Promise<TripPurposesReturnedResponse> {
+    return this.client.get<TripPurposeResult, TripPurposeResult["data"]>(
+      "/v1/travel/predictions/trip-purpose",
+      params
+    );
   }
 }

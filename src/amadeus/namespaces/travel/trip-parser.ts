@@ -1,3 +1,8 @@
+import {
+  TripParserParams,
+  TripParserResult,
+  TripParserReturnedResponse,
+} from "../../../types/amadeus/namespaces/travel/trip-parser";
 import Client from "../../client";
 
 /**
@@ -32,8 +37,11 @@ export default class TripParser {
    * amadeus.tripParser.post(body);
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post("/v3/travel/trip-parser", params);
+  public post(params: TripParserParams): Promise<TripParserReturnedResponse> {
+    return this.client.post<TripParserResult, TripParserResult["data"]>(
+      "/v3/travel/trip-parser",
+      params
+    );
   }
   /**
    * Helper method to convert file contents in UTF-8 encoded string

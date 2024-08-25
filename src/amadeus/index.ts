@@ -289,6 +289,12 @@ import type {
   ReferenceDataLocationsHotelResult,
 } from "../types/amadeus/namespaces/reference-data/locations/hotel";
 
+// trip-parser
+import type {
+  TripParserParams,
+  TripParserResult,
+} from "../types/amadeus/namespaces/travel/trip-parser";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -596,4 +602,6 @@ export type {
   HotelOrdersResult,
   ReferenceDataLocationsHotelParams,
   ReferenceDataLocationsHotelResult,
+  TripParserParams,
+  TripParserResult,
 };

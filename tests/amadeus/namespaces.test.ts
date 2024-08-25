@@ -301,7 +301,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.location.analytics.categoryRatedAreas.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.location.analytics.categoryRatedAreas.get();
+      amadeus.location.analytics.categoryRatedAreas.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/location/analytics/category-rated-areas",
         {}

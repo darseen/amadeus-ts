@@ -241,6 +241,12 @@ import type {
   TravelAnalayticsAirTrafficBusiestPeriodResult,
 } from "../types/amadeus/namespaces/travel/analytics/air-traffic/busiest-period";
 
+// location-analytics-category-rated-areas
+import type {
+  CategoryRatedAreaParams,
+  CategoryRatedAreaResult,
+} from "../types/amadeus/namespaces/location/analytics/category-reted-areas";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -537,4 +543,6 @@ export type {
   TravelAnalayticsAirTrafficBookedResult,
   TravelAnalayticsAirTrafficBusiestPeriodParams,
   TravelAnalayticsAirTrafficBusiestPeriodResult,
+  CategoryRatedAreaParams,
+  CategoryRatedAreaResult,
 };

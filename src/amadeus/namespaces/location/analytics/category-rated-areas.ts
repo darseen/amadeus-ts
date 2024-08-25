@@ -1,3 +1,8 @@
+import {
+  CategoryRatedAreaParams,
+  CategoryRatedAreaResult,
+  CategoryRatedAreasReturnedResponse,
+} from "../../../../types/amadeus/namespaces/location/analytics/category-reted-areas";
 import Client from "../../../client";
 
 /**
@@ -40,10 +45,12 @@ export default class CategoryRatedAreas {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get(
-      "/v1/location/analytics/category-rated-areas",
-      params
-    );
+  public get(
+    params: CategoryRatedAreaParams
+  ): Promise<CategoryRatedAreasReturnedResponse> {
+    return this.client.get<
+      CategoryRatedAreaResult,
+      CategoryRatedAreaResult["data"]
+    >("/v1/location/analytics/category-rated-areas", params);
   }
 }

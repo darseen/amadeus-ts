@@ -1,5 +1,5 @@
 import Client from "../../../client";
-import AirTraffic from "./air_traffic";
+import AirTraffic from "./air-traffic";
 
 /**
  * A namespaced client for the

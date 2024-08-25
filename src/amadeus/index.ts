@@ -223,6 +223,24 @@ import type {
   ShoppingTransferOffersResult,
 } from "../types/amadeus/namespaces/shopping/transfer-offers";
 
+// travel-analytics-air-traffic-traveled
+import type {
+  TravelAnalayticsAirTrafficTraveledParams,
+  TravelAnalayticsAirTrafficTraveledResult,
+} from "../types/amadeus/namespaces/travel/analytics/air-traffic/traveled";
+
+// travel-analytics-air-traffic-booked
+import type {
+  TravelAnalayticsAirTrafficBookedParams,
+  TravelAnalayticsAirTrafficBookedResult,
+} from "../types/amadeus/namespaces/travel/analytics/air-traffic/booked";
+
+// travel-analytics-air-traffic-busiest-period
+import type {
+  TravelAnalayticsAirTrafficBusiestPeriodParams,
+  TravelAnalayticsAirTrafficBusiestPeriodResult,
+} from "../types/amadeus/namespaces/travel/analytics/air-traffic/busiest-period";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -513,4 +531,10 @@ export type {
   OrderingTransferCancellationResult,
   ShoppingTransferOffersParams,
   ShoppingTransferOffersResult,
+  TravelAnalayticsAirTrafficTraveledParams,
+  TravelAnalayticsAirTrafficTraveledResult,
+  TravelAnalayticsAirTrafficBookedParams,
+  TravelAnalayticsAirTrafficBookedResult,
+  TravelAnalayticsAirTrafficBusiestPeriodParams,
+  TravelAnalayticsAirTrafficBusiestPeriodResult,
 };

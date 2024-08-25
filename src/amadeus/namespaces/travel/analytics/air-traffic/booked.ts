@@ -1,3 +1,8 @@
+import {
+  TravelAnalayticsAirTrafficBookedParams,
+  TravelAnalayticsAirTrafficBookedResult,
+  TravelAnalayticsAirTrafficBookedReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/travel/analytics/air-traffic/booked";
 import Client from "../../../../client";
 
 /**
@@ -39,7 +44,12 @@ export default class Booked {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/travel/analytics/air-traffic/booked", params);
+  public get(
+    params: TravelAnalayticsAirTrafficBookedParams
+  ): Promise<TravelAnalayticsAirTrafficBookedReturnedResponse> {
+    return this.client.get<
+      TravelAnalayticsAirTrafficBookedResult,
+      TravelAnalayticsAirTrafficBookedResult["data"]
+    >("/v1/travel/analytics/air-traffic/booked", params);
   }
 }

@@ -1,3 +1,8 @@
+import {
+  TravelAnalayticsAirTrafficBusiestPeriodParams,
+  TravelAnalayticsAirTrafficBusiestPeriodResult,
+  TravelAnalayticsAirTrafficBusiestPeriodReturnedResponse,
+} from "../../../../../types/amadeus/namespaces/travel/analytics/air-traffic/busiest-period";
 import Client from "../../../../client";
 
 /**
@@ -42,10 +47,12 @@ export default class BusiestPeriod {
    * });
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get(
-      "/v1/travel/analytics/air-traffic/busiest-period",
-      params
-    );
+  public get(
+    params: TravelAnalayticsAirTrafficBusiestPeriodParams
+  ): Promise<TravelAnalayticsAirTrafficBusiestPeriodReturnedResponse> {
+    return this.client.get<
+      TravelAnalayticsAirTrafficBusiestPeriodResult,
+      TravelAnalayticsAirTrafficBusiestPeriodResult["data"]
+    >("/v1/travel/analytics/air-traffic/busiest-period", params);
   }
 }

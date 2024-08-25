@@ -337,7 +337,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.travel.analytics.airTraffic.traveled.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.travel.analytics.airTraffic.traveled.get();
+      amadeus.travel.analytics.airTraffic.traveled.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/travel/analytics/air-traffic/traveled",
         {}
@@ -346,7 +346,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.travel.analytics.airTraffic.booked.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.travel.analytics.airTraffic.booked.get();
+      amadeus.travel.analytics.airTraffic.booked.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/travel/analytics/air-traffic/booked",
         {}
@@ -355,7 +355,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.travel.analytics.airTraffic.busiestPeriod.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.travel.analytics.airTraffic.busiestPeriod.get();
+      amadeus.travel.analytics.airTraffic.busiestPeriod.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/travel/analytics/air-traffic/busiest-period",
         {}

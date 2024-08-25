@@ -1,3 +1,8 @@
+import {
+  HotelOffersSearchParams,
+  HotelOffersSearchResult,
+  HotelOffersSearchReturnedResponse,
+} from "../../../types/amadeus/namespaces/shopping/hotel-offers-search";
 import Client from "../../client";
 
 /**
@@ -38,7 +43,12 @@ export default class HotelOffersSearch {
    * })
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v3/shopping/hotel-offers", params);
+  public get(
+    params: HotelOffersSearchParams
+  ): Promise<HotelOffersSearchReturnedResponse> {
+    return this.client.get<
+      HotelOffersSearchResult,
+      HotelOffersSearchResult["data"]
+    >("/v3/shopping/hotel-offers", params);
   }
 }

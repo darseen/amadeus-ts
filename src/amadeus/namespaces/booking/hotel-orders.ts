@@ -1,3 +1,8 @@
+import {
+  HotelOrdersParams,
+  HotelOrdersResult,
+  HotelOrdersReturnedResponse,
+} from "../../../types/amadeus/namespaces/booking/hotel-orders";
 import Client from "../../client";
 
 /**
@@ -30,18 +35,21 @@ export default class HotelOrders {
    *
    * ```ts
    * amadeus.booking.hotelOrders.post(
-   * JSON.stringfy({
-   * 'data': {
-   *     'type': 'hotel-order',
-   *     'guests': [],
-   *     'travelAgent': {},
-   *     'roomAssociations': [],
-   *     'payment': {}
-   * }})
-   *)
+   *  {
+   *  'data': {
+   *       'type': 'hotel-order',
+   *       'guests': [],
+   *       'travelAgent': {},
+   *       'roomAssociations': [],
+   *       'payment': {}
+   *     }
+   *   })
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post("/v2/booking/hotel-orders", params);
+  public post(params: HotelOrdersParams): Promise<HotelOrdersReturnedResponse> {
+    return this.client.post<HotelOrdersResult, HotelOrdersResult["data"]>(
+      "/v2/booking/hotel-orders",
+      JSON.stringify(params)
+    );
   }
 }

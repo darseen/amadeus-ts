@@ -230,7 +230,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.referenceData.locations.hotel.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.referenceData.locations.hotel.get();
+      amadeus.referenceData.locations.hotel.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v1/reference-data/locations/hotel",
         {}
@@ -469,7 +469,7 @@ describe("Namespaces", () => {
 
     it(".amadeus.shopping.hotelOffersSearch.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.shopping.hotelOffersSearch.get();
+      amadeus.shopping.hotelOffersSearch.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v3/shopping/hotel-offers",
         {}
@@ -543,16 +543,16 @@ describe("Namespaces", () => {
 
     it(".amadeus.booking.hotelOrders.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.booking.hotelOrders.post();
+      amadeus.booking.hotelOrders.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v2/booking/hotel-orders",
-        {}
+        JSON.stringify({})
       );
     });
 
     it(".amadeus.eReputation.hotelSentiments.get", () => {
       amadeus["client"].get = vi.fn();
-      amadeus.eReputation.hotelSentiments.get();
+      amadeus.eReputation.hotelSentiments.get({} as any);
       expect(amadeus["client"].get).toHaveBeenCalledWith(
         "/v2/e-reputation/hotel-sentiments",
         {}

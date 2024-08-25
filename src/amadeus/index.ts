@@ -265,6 +265,30 @@ import type {
   ReferenceDataLocationsHotelsByGeoCodeResult,
 } from "../types/amadeus/namespaces/reference-data/locations/hotels/by-geocode";
 
+// shopping-hotel-offers-search
+import type {
+  HotelOffersSearchParams,
+  HotelOffersSearchResult,
+} from "../types/amadeus/namespaces/shopping/hotel-offers-search";
+
+// shopping-hotel-offer-search
+import type {
+  HotelOfferSearchParams,
+  HotelOfferSearchResult,
+} from "../types/amadeus/namespaces/shopping/hotel-offer-search";
+
+// booking-hotel-orders
+import type {
+  HotelOrdersParams,
+  HotelOrdersResult,
+} from "../types/amadeus/namespaces/booking/hotel-orders";
+
+// reference-data-locations-hotel
+import type {
+  ReferenceDataLocationsHotelParams,
+  ReferenceDataLocationsHotelResult,
+} from "../types/amadeus/namespaces/reference-data/locations/hotel";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -485,12 +509,7 @@ export type {
   TravelerType,
   DiscountType,
   DiscountTravelerType,
-  Traveler,
-  Contact,
-  Address,
-  Phone,
   CreditCardBrand,
-  OtherPaymentMethod,
   PaymentBrand,
   FlightOffersSearchGetParams,
   FlightOffersSearchPostParams,
@@ -569,4 +588,12 @@ export type {
   ReferenceDataLocationsHotelsByCityResult,
   ReferenceDataLocationsHotelsByGeoCodeParams,
   ReferenceDataLocationsHotelsByGeoCodeResult,
+  HotelOffersSearchParams,
+  HotelOffersSearchResult,
+  HotelOfferSearchParams,
+  HotelOfferSearchResult,
+  HotelOrdersParams,
+  HotelOrdersResult,
+  ReferenceDataLocationsHotelParams,
+  ReferenceDataLocationsHotelResult,
 };

@@ -753,3 +753,36 @@ export type Amenities =
   | "ROOM_SERVICE"
   | "GUARDED_PARKG"
   | "SERV_SPEC_MENU";
+
+export type QualifiedFreeText = {
+  text?: string;
+  lang?: string;
+};
+
+export type HotelProductPaymentPolicy = {
+  creditCards?: string[];
+  methods?: (
+    | "CREDIT_CARD"
+    | "CREDIT_CARD_AGENCY"
+    | "CREDIT_CARD_TRAVELER"
+    | "VCC_BILLBACK"
+    | "VCC_B2B_WALLET"
+    | "TRAVEL_AGENT_ID"
+    | "AGENCY_ACCOUNT"
+    | "CORPORATE_ID"
+    | "CHECK"
+    | "ADVANCE_DEPOSIT"
+    | "COMPANY_ADDRESS"
+    | "HOTEL_GUEST_ID"
+    | "MISC_CHARGE_ORDER"
+    | "DEFERED_PAYMENT"
+    | "TRAVEL_AGENT_IMMEDIATE"
+  )[];
+};
+
+export type HotelProductDepositPolicy = {
+  amount?: string;
+  deadline?: string;
+  description?: QualifiedFreeText;
+  acceptedPayments?: HotelProductPaymentPolicy;
+};

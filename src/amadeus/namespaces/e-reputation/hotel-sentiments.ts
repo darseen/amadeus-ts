@@ -1,3 +1,8 @@
+import {
+  HotelSentimentReturnedResponse,
+  HotelSentimentsParams,
+  HotelSentimentsResult,
+} from "../../../types/amadeus/namespaces/e-reputation/hotel-sentiments";
 import Client from "../../client";
 
 /**
@@ -36,7 +41,12 @@ export default class HotelSentiments {
    * })
    * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v2/e-reputation/hotel-sentiments", params);
+  public get(
+    params: HotelSentimentsParams
+  ): Promise<HotelSentimentReturnedResponse> {
+    return this.client.get<
+      HotelSentimentsResult,
+      HotelSentimentsResult["data"]
+    >("/v2/e-reputation/hotel-sentiments", params);
   }
 }

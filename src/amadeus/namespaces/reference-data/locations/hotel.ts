@@ -1,3 +1,8 @@
+import {
+  ReferenceDataLocationsHotelParams,
+  ReferenceDataLocationsHotelResult,
+  ReferenceDataLocationsHotelReturnedResponse,
+} from "../../../../types/amadeus/namespaces/reference-data/locations/hotel";
 import Client from "../../../client";
 
 /**
@@ -30,11 +35,17 @@ export default class Hotel {
    *  Find relevant points of interest within an area in Barcelona
    * ```ts
    * amadeus.referenceData.locations.hotel.get({
-   *   keyword: 'PARI',
+   *   keyword: 'PARIS',
    *   subType: 'HOTEL_GDS'
    * })
+   * ```
    */
-  public get(params: Object = {}) {
-    return this.client.get("/v1/reference-data/locations/hotel", params);
+  public get(
+    params: ReferenceDataLocationsHotelParams
+  ): Promise<ReferenceDataLocationsHotelReturnedResponse> {
+    return this.client.get<
+      ReferenceDataLocationsHotelResult,
+      ReferenceDataLocationsHotelResult["data"]
+    >("/v1/reference-data/locations/hotel", params);
   }
 }

@@ -7,6 +7,7 @@ import {
   FlightOffer,
   Issue,
   LocationEntry,
+  QualifiedFreeText,
   Tax,
   Traveler,
 } from "../shared";
@@ -165,11 +166,6 @@ type Link = {
   href: string;
   methods?: ("GET" | "PUT" | "DELETE" | "POST" | "PATCH")[];
   count?: number;
-};
-
-type QualifiedFreeText = {
-  text?: string;
-  lang?: string;
 };
 
 type Dictionaries = {

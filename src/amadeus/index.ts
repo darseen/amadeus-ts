@@ -301,6 +301,9 @@ import type {
   TripPurposeResult,
 } from "../types/amadeus/namespaces/travel/predictions/trip-purpose";
 
+// hotel-bookings
+import type { HotelBookingParams } from "../types/amadeus/namespaces/booking/hotel-bookings";
+
 /**
  * The Amadeus client library for accessing the travel APIs.
  *
@@ -612,4 +615,5 @@ export type {
   TripParserResult,
   TripPurposeParams,
   TripPurposeResult,
+  HotelBookingParams,
 };

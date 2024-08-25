@@ -534,10 +534,10 @@ describe("Namespaces", () => {
 
     it(".amadeus.booking.hotelBookings.post", () => {
       amadeus["client"].post = vi.fn();
-      amadeus.booking.hotelBookings.post();
+      amadeus.booking.hotelBookings.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/booking/hotel-bookings",
-        {}
+        JSON.stringify({})
       );
     });
 

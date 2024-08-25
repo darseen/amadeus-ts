@@ -1,3 +1,4 @@
+import { HotelBookingParams } from "../../../types/amadeus/namespaces/booking/hotel-bookings";
 import Client from "../../client";
 
 /**
@@ -30,17 +31,20 @@ export default class HotelBookings {
    *
    * ```ts
    * amadeus.booking.hotelBookings.post(
-   * JSON.stringify({
+   * {
    * 'data': {
    *   'offerId': 'XXXX',
    *   'guests': [],
    *   'payments': [],
    *   'rooms': []
-   * }})
-   * )
+   * }
+   * })
    * ```
    */
-  public post(params: Object = {}) {
-    return this.client.post("/v1/booking/hotel-bookings", params);
+  public post(params: HotelBookingParams) {
+    return this.client.post(
+      "/v1/booking/hotel-bookings",
+      JSON.stringify(params)
+    );
   }
 }

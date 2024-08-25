@@ -112,22 +112,6 @@ type PaymentOutput = {
   };
 };
 
-type CreateHotelBooking = {
-  arrivalInformation?: {
-    arrivalFlightDetails?: ArrivalFlightDetails;
-  };
-  payment?: PaymentInput;
-  roomAssociations?: RoomAssociation[];
-  travelAgent: {
-    contact: {
-      email: string;
-      fax?: string;
-      phone?: string;
-    };
-    travelAgentId?: string;
-  };
-};
-
 type PaymentInput = {
   iataTravelAgency?: {
     iataNumber?: string;

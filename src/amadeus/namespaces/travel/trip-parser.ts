@@ -40,7 +40,7 @@ export default class TripParser {
   public post(params: TripParserParams): Promise<TripParserReturnedResponse> {
     return this.client.post<TripParserResult, TripParserResult["data"]>(
       "/v3/travel/trip-parser",
-      params
+      JSON.stringify(params)
     );
   }
   /**

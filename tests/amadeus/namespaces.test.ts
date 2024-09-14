@@ -367,7 +367,7 @@ describe("Namespaces", () => {
       amadeus.travel.tripParser.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v3/travel/trip-parser",
-        {}
+        JSON.stringify({})
       );
     });
 

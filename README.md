@@ -8,7 +8,7 @@ Amadeus provides a rich set of APIs for the travel industry. For more details, c
 ## Key Features
 
 - ✅ Full TypeScript support.
-- 🚀 Smaller bundle size.
+- 🚀 Smaller package size.
 - ✨ Eliminates the need for manual `JSON.stringify` usage.
 
 ## Installation

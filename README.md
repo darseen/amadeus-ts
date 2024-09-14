@@ -5,6 +5,12 @@ Amadeus provides a rich set of APIs for the travel industry. For more details, c
 > [!IMPORTANT]  
 > This SDK is maintained **by the developer community only**. The Amadeus for Developers team doesn't support or maintain it.
 
+## Key Features
+
+- ✅ Full TypeScript support.
+- 🚀 Smaller bundle size.
+- ✨ Eliminates the need for manual `JSON.stringify`.
+
 ## Installation
 
 This module has been tested using [Node LTS versions](https://nodejs.org/en/about/releases/) (16.x, 18.x, 20.x). You can install it using npm, pnpm or yarn.

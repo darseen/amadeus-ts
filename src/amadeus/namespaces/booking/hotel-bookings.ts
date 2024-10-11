@@ -42,9 +42,6 @@ export default class HotelBookings {
    * ```
    */
   public post(params: HotelBookingParams) {
-    return this.client.post(
-      "/v1/booking/hotel-bookings",
-      JSON.stringify(params)
-    );
+    return this.client.post("/v1/booking/hotel-bookings", params);
   }
 }

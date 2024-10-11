@@ -78,7 +78,7 @@ export default class Seatmaps {
   ): Promise<SeatmapsPostReturnedResponse> {
     return this.client.post<SeatmapsPostResult, SeatmapsPostResult["data"]>(
       "/v1/shopping/seatmaps",
-      JSON.stringify(params)
+      params
     );
   }
 }

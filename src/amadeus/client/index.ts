@@ -61,7 +61,7 @@ export default class Client implements Options {
   public customAppVersion?: string;
 
   constructor(options: Options = {}) {
-    new Validator().validateAndInitialize(this, options);
+    Validator.validateAndInitialize(this, options);
     this.accessToken = new AccessToken();
     this.version = pkg.version;
   }
@@ -97,7 +97,7 @@ export default class Client implements Options {
     path: string,
     params: object | string = {}
   ): Promise<ReturnedResponseSuccess<T, K>> {
-    return this.request<T, K>("POST", path, params);
+    return this.request<T, K>("POST", path, JSON.stringify(params));
   }
 
   /**
@@ -134,7 +134,7 @@ export default class Client implements Options {
     path: string,
     params: object | string = {}
   ): Promise<ReturnedResponseSuccess<T, K>> {
-    const bearerToken = (await this.accessToken.bearerToken(this)) as string;
+    const bearerToken = await this.accessToken.bearerToken(this);
     return this.unauthenticatedRequest<T, K>(verb, path, params, bearerToken);
   }
 

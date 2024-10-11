@@ -44,6 +44,6 @@ export default class TransferOffers {
     return this.client.post<
       ShoppingTransferOffersResult,
       ShoppingTransferOffersResult["data"]
-    >("/v1/shopping/transfer-offers", JSON.stringify(params));
+    >("/v1/shopping/transfer-offers", params);
   }
 }

@@ -140,6 +140,6 @@ export default class FlightOffersSearch {
     return this.client.post<
       FlightOffersSearchPostResult,
       FlightOffersSearchPostResult["data"]
-    >("/v2/shopping/flight-offers", JSON.stringify(params));
+    >("/v2/shopping/flight-offers", params);
   }
 }

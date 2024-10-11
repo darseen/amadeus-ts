@@ -129,7 +129,7 @@ describe("Client", () => {
         expect(client.unauthenticatedRequest).toHaveBeenCalledWith(
           "POST",
           path,
-          params,
+          JSON.stringify(params),
           "token"
         );
       });
@@ -142,7 +142,7 @@ describe("Client", () => {
         expect(client.unauthenticatedRequest).toHaveBeenCalledWith(
           "POST",
           path,
-          {},
+          JSON.stringify({}),
           "token"
         );
       });

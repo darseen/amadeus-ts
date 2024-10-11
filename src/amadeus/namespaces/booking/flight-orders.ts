@@ -46,7 +46,7 @@ export default class FlightOrders {
   ): Promise<FlightOrdersReturnedResponse> {
     return this.client.post<FlightOrdersResult, FlightOrdersResult["data"]>(
       "/v1/booking/flight-orders",
-      JSON.stringify(params)
+      params
     );
   }
 }

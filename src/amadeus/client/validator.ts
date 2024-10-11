@@ -19,7 +19,7 @@ class Validator {
    * @param  {Object} options the associative array of options passed to the
    *  client on initialization
    */
-  public validateAndInitialize(client: Client, options: Options): void {
+  public static validateAndInitialize(client: Client, options: Options): void {
     this.initializeClientCredentials(client, options);
     this.initializeLogger(client, options);
     this.initializeHost(client, options);
@@ -29,12 +29,12 @@ class Validator {
     this.warnOnUnrecognizedOptions(options, client, RECOGNIZED_OPTIONS);
   }
 
-  private initializeClientCredentials(client: Client, options: Options): void {
+  static initializeClientCredentials(client: Client, options: Options): void {
     client.clientId = this.initRequired("clientId", options) as string;
     client.clientSecret = this.initRequired("clientSecret", options) as string;
   }
 
-  private initializeLogger(client: Client, options: Options) {
+  static initializeLogger(client: Client, options: Options) {
     client.logLevel = this.initOptional(
       "logLevel",
       options,
@@ -43,7 +43,7 @@ class Validator {
     client.logger = this.initOptional("logger", options, console) as Console;
   }
 
-  private initializeHost(client: Client, options: Options): void {
+  static initializeHost(client: Client, options: Options): void {
     const hostname = this.initOptional(
       "hostname",
       options,
@@ -54,7 +54,7 @@ class Validator {
     client.ssl = this.initOptional("ssl", options, true) as boolean;
   }
 
-  private initializeCustomApp(client: Client, options: Options): void {
+  static initializeCustomApp(client: Client, options: Options): void {
     client.customAppId = this.initOptional("customAppId", options) as
       | string
       | undefined;
@@ -64,18 +64,18 @@ class Validator {
       | undefined;
   }
 
-  private initializeHttp(client: Client, options: Options): void {
+  static initializeHttp(client: Client, options: Options): void {
     const network = client.ssl ? https : http;
     client.http = this.initOptional("http", options, network) as Network;
   }
 
-  private initRequired(key: "clientId" | "clientSecret", options: Options) {
+  static initRequired(key: "clientId" | "clientSecret", options: Options) {
     const result = this.initOptional(key, options);
     if (!result) throw new ArgumentError(`Missing required argument: ${key}`);
     return result;
   }
 
-  private initOptional(
+  static initOptional(
     key: RecognizedOptionsItem,
     options: Options,
     fallback?: Fallback
@@ -88,7 +88,7 @@ class Validator {
     return value;
   }
 
-  private warnOnUnrecognizedOptions(
+  static warnOnUnrecognizedOptions(
     options: Options,
     client: Client,
     recognizedOptions: RecognizedOptionsArray

@@ -49,7 +49,7 @@ export default class HotelOrders {
   public post(params: HotelOrdersParams): Promise<HotelOrdersReturnedResponse> {
     return this.client.post<HotelOrdersResult, HotelOrdersResult["data"]>(
       "/v2/booking/hotel-orders",
-      JSON.stringify(params)
+      params
     );
   }
 }

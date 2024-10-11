@@ -9,7 +9,7 @@ import Client from "../../../../client";
  *
  * ```ts
  * const amadeus = new Amadeus();
- * amadeus.ordering.transferOrder('XXX').transfers.cancellation.post(JSON.stringify({}), '12345');;
+ * amadeus.ordering.transferOrder('XXX').transfers.cancellation.post({}, '12345');;
  * ```
  *
  * @param {Client} client
@@ -30,7 +30,7 @@ export default class Cancellation {
    * To cancel a transfer order with ID 'XXX' and confirmation number '12345'
    *
    * ```ts
-   * amadeus.ordering.transferOrder('XXX').transfers.cancellation.post(JSON.stringify({}), '12345');;
+   * amadeus.ordering.transferOrder('XXX').transfers.cancellation.post({}, '12345');;
    * ```
    */
   public post(
@@ -39,7 +39,7 @@ export default class Cancellation {
   ): Promise<OrderingTransferCancellationReturnedResponse> {
     return this.client.post(
       `/v1/ordering/transfer-orders/${this.orderId}/transfers/cancellation?confirmNbr=${confirmNbr}`,
-      JSON.stringify(body)
+      body
     );
   }
 }

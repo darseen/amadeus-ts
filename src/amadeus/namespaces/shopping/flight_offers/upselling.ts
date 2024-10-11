@@ -41,6 +41,6 @@ export default class Upselling {
     return this.client.post<
       FlightOffersUpsellingResult,
       FlightOffersUpsellingResult["data"]
-    >("/v1/shopping/flight-offers/upselling", JSON.stringify(params));
+    >("/v1/shopping/flight-offers/upselling", params);
   }
 }

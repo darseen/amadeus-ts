@@ -71,6 +71,6 @@ export default class Pricing {
     return this.client.post<
       FlightOffersPricingResult,
       FlightOffersPricingResult["data"]
-    >(url, JSON.stringify(params));
+    >(url, params);
   }
 }

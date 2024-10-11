@@ -382,7 +382,7 @@ describe("Namespaces", () => {
       amadeus.shopping.flightOffers.prediction.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v2/shopping/flight-offers/prediction",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -391,7 +391,7 @@ describe("Namespaces", () => {
       amadeus.booking.flightOrders.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/booking/flight-orders",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -400,7 +400,7 @@ describe("Namespaces", () => {
       amadeus.shopping.flightOffers.pricing.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/flight-offers/pricing",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -418,7 +418,7 @@ describe("Namespaces", () => {
       amadeus.shopping.flightOffersSearch.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v2/shopping/flight-offers",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -436,7 +436,7 @@ describe("Namespaces", () => {
       amadeus.shopping.seatmaps.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/seatmaps",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -519,7 +519,7 @@ describe("Namespaces", () => {
       amadeus.booking.hotelBookings.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/booking/hotel-bookings",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -528,7 +528,7 @@ describe("Namespaces", () => {
       amadeus.booking.hotelOrders.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v2/booking/hotel-orders",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -582,7 +582,7 @@ describe("Namespaces", () => {
       amadeus.shopping.availability.flightAvailabilities.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/availability/flight-availabilities",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -591,7 +591,7 @@ describe("Namespaces", () => {
       amadeus.shopping.flightOffers.upselling.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/flight-offers/upselling",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -609,7 +609,7 @@ describe("Namespaces", () => {
       amadeus.shopping.transferOffers.post({} as any);
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/shopping/transfer-offers",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -618,7 +618,7 @@ describe("Namespaces", () => {
       amadeus.ordering.transferOrders.post({} as any, "1234123123");
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/ordering/transfer-orders?offerId=1234123123",
-        JSON.stringify({})
+        {}
       );
     });
 
@@ -629,7 +629,7 @@ describe("Namespaces", () => {
         .transfers.cancellation.post({}, "12345");
       expect(amadeus["client"].post).toHaveBeenCalledWith(
         "/v1/ordering/transfer-orders/XXX/transfers/cancellation?confirmNbr=12345",
-        JSON.stringify({})
+        {}
       );
     });
   });

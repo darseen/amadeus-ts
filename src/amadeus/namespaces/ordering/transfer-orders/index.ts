@@ -43,6 +43,6 @@ export default class TransferOrders {
     return this.client.post<
       OrderingTransferOrdersResult,
       OrderingTransferOrdersResult["data"]
-    >(`/v1/ordering/transfer-orders?offerId=${offerId}`, JSON.stringify(body));
+    >(`/v1/ordering/transfer-orders?offerId=${offerId}`, body);
   }
 }

@@ -4,11 +4,9 @@ import Client from "../../../src/amadeus/client";
 import { RECOGNIZED_OPTIONS } from "../../../src/constants";
 import { Options } from "../../../src/types/amadeus";
 
-const validator = new Validator();
-
 describe("Validator", () => {
   it("should exports the functions", () => {
-    expect(validator).not.toBe(null);
+    expect(Validator).not.toBe(null);
   });
 
   describe(".initRequired", () => {
@@ -18,15 +16,15 @@ describe("Validator", () => {
         clientSecret: "qwe",
       };
       process.env.AMADEUS_TEST2 = "2";
-      expect(validator["initRequired"]("clientId", options)).toBe("asd");
-      expect(validator["initRequired"]("clientSecret", options)).toBe("qwe");
+      expect(Validator["initRequired"]("clientId", options)).toBe("asd");
+      expect(Validator["initRequired"]("clientSecret", options)).toBe("qwe");
       process.env.AMADEUS_TEST2 = undefined;
     });
 
     it("should throw error if key not found", () => {
       expect(() => {
         // @ts-expect-error
-        validator["initRequired"]("randomKey", {});
+        Validator["initRequired"]("randomKey", {});
       }).toThrowError();
     });
   });
@@ -39,15 +37,15 @@ describe("Validator", () => {
       process.env.AMADEUS_CLIENT_ID = "asd";
       process.env.AMADEUS_CLIENT_SECRET = "qwe";
 
-      expect(validator["initOptional"]("clientId", options)).toBe("asd");
-      expect(validator["initOptional"]("clientSecret", options)).toBe("qwe");
-      expect(validator["initOptional"]("logLevel", options, "silent")).toBe(
+      expect(Validator["initOptional"]("clientId", options)).toBe("asd");
+      expect(Validator["initOptional"]("clientSecret", options)).toBe("qwe");
+      expect(Validator["initOptional"]("logLevel", options, "silent")).toBe(
         "debug"
       );
-      expect(validator["initOptional"]("port", options, 443)).toBe(443);
-      expect(validator["initOptional"]("ssl", options, true)).toBe(true);
-      expect(validator["initOptional"]("customAppId", options)).toBe(undefined);
-      expect(validator["initOptional"]("customAppVersion", options)).toBe(
+      expect(Validator["initOptional"]("port", options, 443)).toBe(443);
+      expect(Validator["initOptional"]("ssl", options, true)).toBe(true);
+      expect(Validator["initOptional"]("customAppId", options)).toBe(undefined);
+      expect(Validator["initOptional"]("customAppVersion", options)).toBe(
         undefined
       );
 
@@ -70,7 +68,7 @@ describe("Validator", () => {
       const options: Options = { clientId: "asd", clientSecret: "qwe" };
 
       expect(
-        validator["warnOnUnrecognizedOptions"](
+        Validator["warnOnUnrecognizedOptions"](
           options,
           client,
           RECOGNIZED_OPTIONS
@@ -83,7 +81,7 @@ describe("Validator", () => {
       const options = { randomKey: "123" };
       const recognizedOptions: string[] = [];
 
-      validator["warnOnUnrecognizedOptions"](
+      Validator["warnOnUnrecognizedOptions"](
         // @ts-expect-error
         options,
         client,

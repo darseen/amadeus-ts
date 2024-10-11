@@ -56,6 +56,6 @@ export default class FlightChoicePrediction {
     return this.client.post<
       FlightOffersPredictionResult,
       FlightOffersPredictionResult["data"]
-    >("/v2/shopping/flight-offers/prediction", JSON.stringify(params));
+    >("/v2/shopping/flight-offers/prediction", params);
   }
 }

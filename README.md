@@ -1,5 +1,7 @@
 # Amadeus Node SDK Written In TypeScript
 
+[![npm version](https://badge.fury.io/js/amadeus-ts.svg)](https://badge.fury.io/js/amadeus-ts)
+
 Amadeus provides a rich set of APIs for the travel industry. For more details, check out the [Amadeus for Developers portal](https://developers.amadeus.com).
 
 > [!IMPORTANT]  
@@ -40,6 +42,7 @@ async function getFlightOffers() {
       departureDate: "2024-12-01",
       adults: 2,
     });
+
     console.log(response.data);
   } catch (error: unknown) {
     if (error instanceof ResponseError) {
@@ -73,7 +76,3 @@ const flightOffersSearch: FlightOffersSearchGetParams = {
 
 amadeus.shopping.flightOffersSearch.get(flightOffersSearch);
 ```
-
-## Documentation
-
-See the official [amadeus-node](https://github.com/amadeus4dev/amadeus-node) documentation.

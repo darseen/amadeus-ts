@@ -1,7 +1,6 @@
 import Client from "../../client";
 import Analytics from "./analytics";
 import Predictions from "./predictions";
-import TripParser from "./trip-parser";
 
 /**
  * A namespaced client for the
@@ -17,19 +16,14 @@ import TripParser from "./trip-parser";
  * @param {Client} client
  * @property {Analytics} analytics
  * @property {Predictions} predictions
- * @property {TripParser} tripParser
  * @protected
  */
 export default class Travel {
-  private client: Client;
   public analytics: Analytics;
   public predictions: Predictions;
-  public tripParser: TripParser;
 
   constructor(client: Client) {
-    this.client = client;
     this.analytics = new Analytics(client);
     this.predictions = new Predictions(client);
-    this.tripParser = new TripParser(client);
   }
 }

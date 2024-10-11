@@ -9,8 +9,9 @@ Amadeus provides a rich set of APIs for the travel industry. For more details, c
 
 ## Key Features
 
-- ✅ Full TypeScript support.
-- 🚀 Smaller package size.
+- ✅ Full TypeScript Support.
+- 🚀 Smaller Package Size.
+- 🛠️ Enhanced Error Handling
 
 ## Installation
 
@@ -76,3 +77,7 @@ const flightOffersSearch: FlightOffersSearchGetParams = {
 
 amadeus.shopping.flightOffersSearch.get(flightOffersSearch);
 ```
+
+## Documentation
+
+See the official [amadeus-node](https://amadeus4dev.github.io/amadeus-node/) documentation.

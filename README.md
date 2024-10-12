@@ -1,6 +1,8 @@
 # Amadeus Node SDK Written In TypeScript
 
-[![npm version](https://badge.fury.io/js/amadeus-ts.svg)](https://badge.fury.io/js/amadeus-ts)
+![NPM Version](https://img.shields.io/npm/v/amadeus-ts?label=npm%20package&color=green)
+![NPM Downloads](https://img.shields.io/npm/dm/amadeus-ts)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/darseen/amadeus-ts/build.yml)
 
 Amadeus provides a rich set of APIs for the travel industry. For more details, check out the [Amadeus for Developers portal](https://developers.amadeus.com).
 
@@ -11,7 +13,7 @@ Amadeus provides a rich set of APIs for the travel industry. For more details, c
 
 - ✅ Full TypeScript Support.
 - 🚀 Smaller Package Size.
-- 🛠️ Enhanced Error Handling
+- 🛠️ Enhanced Error Handling.
 
 ## Installation
 

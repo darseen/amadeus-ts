@@ -1,8 +1,9 @@
 # Amadeus Node SDK Written In TypeScript
 
-![NPM Version](https://img.shields.io/npm/v/amadeus-ts?label=npm%20package&color=green)
+![NPM Version](https://img.shields.io/npm/v/amadeus-ts)
 ![NPM Downloads](https://img.shields.io/npm/dm/amadeus-ts)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/darseen/amadeus-ts/build.yml)
+![GitHub License](https://img.shields.io/github/license/darseen/amadeus-ts)
 
 Amadeus provides a rich set of APIs for the travel industry. For more details, check out the [Amadeus for Developers portal](https://developers.amadeus.com).
 

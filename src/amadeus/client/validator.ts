@@ -1,16 +1,16 @@
-import * as http from "http";
-import * as https from "https";
+import * as http from "node:http";
+import * as https from "node:https";
 
+import Client from "../client";
+import { HOSTS, RECOGNIZED_OPTIONS } from "../../constants";
 import { LogLevel, Network, Options } from "../../types/amadeus";
 import {
   Fallback,
   RecognizedOptionsArray,
   RecognizedOptionsItem,
 } from "../../types/amadeus/client/validator";
-import Client from "../client";
-import { HOSTS, RECOGNIZED_OPTIONS } from "../../constants";
 
-class Validator {
+export default class Validator {
   /**
    * Initialise the client's default value, ensuring the required values are
    * present
@@ -29,12 +29,15 @@ class Validator {
     this.warnOnUnrecognizedOptions(options, client, RECOGNIZED_OPTIONS);
   }
 
-  static initializeClientCredentials(client: Client, options: Options): void {
+  private static initializeClientCredentials(
+    client: Client,
+    options: Options
+  ): void {
     client.clientId = this.initRequired("clientId", options) as string;
     client.clientSecret = this.initRequired("clientSecret", options) as string;
   }
 
-  static initializeLogger(client: Client, options: Options) {
+  private static initializeLogger(client: Client, options: Options) {
     client.logLevel = this.initOptional(
       "logLevel",
       options,
@@ -43,7 +46,7 @@ class Validator {
     client.logger = this.initOptional("logger", options, console) as Console;
   }
 
-  static initializeHost(client: Client, options: Options): void {
+  private static initializeHost(client: Client, options: Options): void {
     const hostname = this.initOptional(
       "hostname",
       options,
@@ -54,7 +57,7 @@ class Validator {
     client.ssl = this.initOptional("ssl", options, true) as boolean;
   }
 
-  static initializeCustomApp(client: Client, options: Options): void {
+  private static initializeCustomApp(client: Client, options: Options): void {
     client.customAppId = this.initOptional("customAppId", options) as
       | string
       | undefined;
@@ -64,18 +67,21 @@ class Validator {
       | undefined;
   }
 
-  static initializeHttp(client: Client, options: Options): void {
-    const network = client.ssl ? https : http;
+  private static initializeHttp(client: Client, options: Options): void {
+    const network: Network = client.ssl ? https : http;
     client.http = this.initOptional("http", options, network) as Network;
   }
 
-  static initRequired(key: "clientId" | "clientSecret", options: Options) {
+  private static initRequired(
+    key: "clientId" | "clientSecret",
+    options: Options
+  ) {
     const result = this.initOptional(key, options);
     if (!result) throw new ArgumentError(`Missing required argument: ${key}`);
     return result;
   }
 
-  static initOptional(
+  private static initOptional(
     key: RecognizedOptionsItem,
     options: Options,
     fallback?: Fallback
@@ -88,7 +94,7 @@ class Validator {
     return value;
   }
 
-  static warnOnUnrecognizedOptions(
+  private static warnOnUnrecognizedOptions(
     options: Options,
     client: Client,
     recognizedOptions: RecognizedOptionsArray
@@ -110,5 +116,3 @@ class ArgumentError extends Error {
     this.name = "ArgumentError";
   }
 }
-
-export default Validator;

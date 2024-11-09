@@ -33,13 +33,9 @@ import type {
   TravelerType,
   DiscountType,
   DiscountTravelerType,
-  Traveler,
-  Contact,
-  Address,
-  Phone,
   CreditCardBrand,
-  OtherPaymentMethod,
   PaymentBrand,
+  FlightOffer,
 } from "../types/amadeus/namespaces/shared";
 
 // Namespaces Types
@@ -512,6 +508,7 @@ export default class Amadeus implements IAmadeus {
 export { ResponseError };
 
 export type {
+  FlightOffer,
   TravelClass,
   DocumentType,
   CurrencyCode,

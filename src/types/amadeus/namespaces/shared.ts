@@ -53,38 +53,38 @@ export type CurrencyEntry = Record<string, string>;
 export type CarrierEntry = Record<string, string>;
 
 export type FlightSegment = {
-  departure?: FlightEndPoint;
-  arrival?: FlightEndPoint;
-  carrierCode?: string;
-  number?: string;
-  aircraft?: AircraftEquipment;
-  operating?: OperatingFlight;
-  duration?: string;
+  departure: FlightEndPoint;
+  arrival: FlightEndPoint;
+  carrierCode: string;
+  number: string;
+  aircraft: AircraftEquipment;
+  operating: OperatingFlight;
+  duration: string;
   stops?: FlightStop[];
 };
 
 export type FlightEndPoint = {
-  iataCode?: string;
+  iataCode: string;
   terminal?: string;
-  at?: string;
+  at: string;
 };
 
 export type OriginalFlightStop = {
-  iataCode?: string;
-  duration?: string;
+  iataCode: string;
+  duration: string;
 };
 
 export type FlightStop = OriginalFlightStop & {
-  arrivalAt?: string;
-  departureAt?: string;
+  arrivalAt: string;
+  departureAt: string;
 };
 
 export type AircraftEquipment = {
-  code?: string;
+  code: string;
 };
 
 export type OperatingFlight = {
-  carrierCode?: string;
+  carrierCode: string;
 };
 
 export type CurrencyCode =
@@ -123,10 +123,10 @@ export type CurrencyCode =
   | "MYR";
 
 export type Price = {
-  currency?: string;
-  total?: string;
-  base?: string;
-  fees?: Fee[];
+  currency: string;
+  total: string;
+  base: string;
+  fees: Fee[];
   taxes?: Tax[];
   refundableTaxes?: string;
 };
@@ -148,8 +148,8 @@ export type AdditionalServiceType =
   | "OTHER_SERVICES";
 
 export type Fee = {
-  amount?: string;
-  type?: FeeType;
+  amount: string;
+  type: FeeType;
 };
 
 export type FeeType = "TICKETING" | "FORM_OF_PAYMENT" | "SUPPLIER";
@@ -193,20 +193,20 @@ export type CabinRestriction = {
 export type FlightOffer = {
   type: string;
   id: string;
-  source?: FlightOfferSource;
-  instantTicketingRequired?: boolean;
+  source: FlightOfferSource;
+  instantTicketingRequired: boolean;
   disablePricing?: boolean;
-  nonHomogeneous?: boolean;
-  oneWay?: boolean;
+  nonHomogeneous: boolean;
+  oneWay: boolean;
   paymentCardRequired?: boolean;
   lastTicketingDate?: string;
   lastTicketingDateTime?: string;
-  numberOfBookableSeats?: number;
-  itineraries?: {
-    duration?: string;
+  numberOfBookableSeats: number;
+  itineraries: {
+    duration: string;
     segments: Segment[];
   }[];
-  price?: ExtendedPrice;
+  price: ExtendedPrice;
   pricingOptions?: {
     fareType?: PricingOptionsFareType;
     includedCheckedBagsOnly?: boolean;
@@ -243,9 +243,9 @@ export type FlightOffer = {
 };
 
 export type Segment = {
-  id?: string;
-  numberOfStops?: number;
-  blacklistedInEU?: boolean;
+  id: string;
+  numberOfStops: number;
+  blacklistedInEU: boolean;
   co2Emissions?: Co2Emission[];
 } & FlightSegment;
 

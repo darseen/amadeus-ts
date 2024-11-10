@@ -70,7 +70,7 @@ const amadeus = new Amadeus({
   clientSecret: process.env.AMADEUS_CLIENT_SECRET,
 });
 
-// Define the object's type using the FlightOffersSearchGetParams type
+// Define the type of the flightOffersSearch object using FlightOffersSearchGetParams
 const flightOffersSearch: FlightOffersSearchGetParams = {
   originLocationCode: "SYD",
   destinationLocationCode: "BKK",
@@ -80,6 +80,10 @@ const flightOffersSearch: FlightOffersSearchGetParams = {
 
 amadeus.shopping.flightOffersSearch.get(flightOffersSearch);
 ```
+
+## Project Example
+
+I created [flight-path](https://github.com/darseen/flight-path) as a reference project to demonstrate how to use the `amadeus-ts` library with [Next.js 15](https://nextjs.org/).
 
 ## Documentation
 

@@ -83,7 +83,7 @@ amadeus.shopping.flightOffersSearch.get(flightOffersSearch);
 
 ## Project Example
 
-I created [flight-path](https://github.com/darseen/flight-path) as a reference project to demonstrate how to use the `amadeus-ts` library with [Next.js 15](https://nextjs.org/).
+I created [flight-path](https://github.com/darseen/flight-path) as a reference project to demonstrate how to use the `amadeus-ts` library with Next.js 15.
 
 ## Documentation
 

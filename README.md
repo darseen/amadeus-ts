@@ -18,7 +18,7 @@ Amadeus provides a rich set of APIs for the travel industry. For more details, c
 
 ## Installation
 
-This module has been tested using [Node LTS versions](https://nodejs.org/en/about/releases/) (16.x, 18.x, 20.x). You can install it using npm, pnpm or yarn.
+This module has been tested using [Node LTS versions](https://nodejs.org/en/about/releases/) (18.x, 20.x, 22.x). You can install it using npm, pnpm or yarn.
 
 ```sh
 npm install amadeus-ts

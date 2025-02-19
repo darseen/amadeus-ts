@@ -123,7 +123,9 @@ export default class Request implements IRequest {
 
   private fullQueryPath(): string {
     if (this.verb === "POST") return this.path;
-    return `${this.path}?${qs.stringify(this.params)}`;
+    return `${this.path}?${qs.stringify(this.params, {
+      arrayFormat: "comma",
+    })}`;
   }
 
   /**

@@ -81,6 +81,12 @@ const flightOffersSearch: FlightOffersSearchGetParams = {
 amadeus.shopping.flightOffersSearch.get(flightOffersSearch);
 ```
 
+## Usage with CJS
+
+```js
+const { default: Amadeus, ResponseError } = require("amadeus-ts");
+```
+
 ## Project Example
 
 I created [flight-path](https://github.com/darseen/flight-path) as a reference project to demonstrate how to use the `amadeus-ts` library with Next.js 15.
